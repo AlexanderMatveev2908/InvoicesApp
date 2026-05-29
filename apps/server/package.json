@@ -1,0 +1,9 @@
+{
+  "name": "server",
+  "private": true,
+  "scripts": {
+    "install_pkg": "dotnet restore",
+    "dev": "dotnet watch run --launch-profile https",
+    "build": "dotnet build"
+  }
+}
