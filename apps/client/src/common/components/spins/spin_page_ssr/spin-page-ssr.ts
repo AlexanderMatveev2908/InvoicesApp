@@ -1,0 +1,31 @@
+import { ChangeDetectionStrategy, Component, inject, input, InputSignal } from '@angular/core';
+import { v4 } from 'uuid';
+import { UseMetaEventDir } from '../../../../core/directives/use_meta_event';
+
+@Component({
+  selector: 'app-spin-page-ssr',
+  imports: [],
+  templateUrl: './spin-page-ssr.html',
+  styleUrl: './spin-page-ssr.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class SpinPageSsr {
+  // ? directives
+  public readonly useMetaEventDir: UseMetaEventDir = inject(UseMetaEventDir);
+
+  // ? personal props
+  public readonly minH: InputSignal<string> = input('100vh');
+
+  // ? static helpers
+  public readonly IDs: string[] = Array.from({ length: 10 }, () => v4());
+  private readonly dotsCount: number = this.IDs.length;
+
+  // ? derived
+  public getRotation(idx: number): string {
+    return `${(360 / this.dotsCount) * idx}deg`;
+  }
+
+  public getDelay(idx: number): string {
+    return `${(1 / this.dotsCount) * idx}s`;
+  }
+}
