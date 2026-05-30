@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { LibLog } from '../../core/lib/logger';
+import { WakeUpApiSvc } from '../../features/wakeup/api';
 
 @Component({
   selector: 'app-home-page',
@@ -9,5 +10,10 @@ import { LibLog } from '../../core/lib/logger';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePage implements OnInit {
-  ngOnInit(): void {}
+  private wakeUpSvc: WakeUpApiSvc = inject(WakeUpApiSvc);
+
+  ngOnInit(): void {
+    const res = this.wakeUpSvc.wakeUp().subscribe();
+    LibLog.main('result', res);
+  }
 }
