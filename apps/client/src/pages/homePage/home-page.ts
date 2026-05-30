@@ -2,6 +2,8 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, inject, OnInit } fro
 import { LibLog } from '../../core/lib/logger';
 import { WakeUpApiSvc } from '../../features/wakeup/api';
 import { ToastSlice } from '../../features/toast/slice';
+import { UsePlatformSvc } from '../../core/services/use_platform';
+import { switchMap, timer } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -12,11 +14,13 @@ import { ToastSlice } from '../../features/toast/slice';
 })
 export class HomePage implements AfterViewInit {
   private wakeUpSvc: WakeUpApiSvc = inject(WakeUpApiSvc);
+  private usePlatform: UsePlatformSvc = inject(UsePlatformSvc);
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      const res = this.wakeUpSvc.wakeUp().subscribe();
-      LibLog.main('result', res);
-    }, 2000);
+    this.usePlatform
+      .whenClientStable(timer(2000).pipe(switchMap(() => this.wakeUpSvc.wakeUp())))
+      .subscribe((res) => {
+        LibLog.main('result', res);
+      });
   }
 }
