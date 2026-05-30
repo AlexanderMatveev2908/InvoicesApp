@@ -10,7 +10,7 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideStore } from '@ngrx/store';
-import { rootReducer } from '../store';
+import { rootReducer } from '../core/store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
