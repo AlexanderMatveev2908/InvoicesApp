@@ -33,3 +33,7 @@ export interface ConfApiT {
 }
 
 export type HttpResT = HttpResponse<unknown> | HttpErrorResponse;
+
+export enum SsrKeyT {
+  WAKE_UP = 'WAKE_UP',
+}
