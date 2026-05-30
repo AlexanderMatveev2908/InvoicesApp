@@ -23,22 +23,22 @@
           @apply txt__lg text-center;
         }
       }
+      .body__link {
+        @apply flex justify-center items-center border-2 rounded-xl;
+        border-color: var(--clr);
 
-      .body__header {
-        @apply w-full flex justify-center;
-      }
+        &:hover {
+          @apply transition-all duration-300;
+          cursor: pointer;
+          color: white;
+          background: var(--clr);
+        }
 
-      .body__mail {
-        @apply mt-[50px] w-full flex justify-center;
-
-        .mail__link {
-          @apply w-[250px] sm:w-[275px];
+        > a {
+          @apply block w-full h-full px-4 py-2 text-center;
+          pointer-events: auto;
         }
       }
-    }
-
-    .content__footer {
-      @apply flex mx-auto w-[200px] mt-6;
     }
   }
 }

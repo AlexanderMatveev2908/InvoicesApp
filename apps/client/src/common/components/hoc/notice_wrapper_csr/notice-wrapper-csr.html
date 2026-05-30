@@ -6,16 +6,31 @@
           <ng-container *ngComponentOutlet="useMetaDir.Svg()" />
         </div>
 
-        <div id="csr_notice__content" class="content__body">
-          <div id="csr_notice__span_status" class="body__span">
+        <div class="content__body">
+          <div class="body__span">
             @let dataStatus = props().status || useMetaDir.eventT();
             <span class="text-5xl sm:text-6xl font-extrabold">
               {{ dataStatus }}
             </span>
           </div>
 
-          <div id="csr_notice__span_msg" class="body__span">
+          <div class="body__span">
             <span>{{ props().msg }}</span>
+          </div>
+
+          <div class="body__link">
+            @if (props().tmpt === 'HOME') {
+              <a routerLink="/" class="link__content txt__lg">Go Home</a>
+            } @else if (props().tmpt === 'MAIL') {
+              <a
+                href="https://mail.google.com"
+                target="_blank"
+                rel="noopener"
+                class="link__content txt__lg"
+              >
+                Open Gmail
+              </a>
+            }
           </div>
         </div>
       </div>

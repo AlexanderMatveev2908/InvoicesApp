@@ -8,16 +8,18 @@ import { UseNavSvc } from '../../core/services/use_nav';
   styleUrl: './home-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePage implements AfterViewInit {
+export class HomePage {
   private useNav: UseNavSvc = inject(UseNavSvc);
 
   ngAfterViewInit(): void {
-    this.useNav.pushNotice({
-      cb: null,
-      tmpt: null,
-      eventT: 'INFO',
-      msg: 'something',
-      status: 400,
-    });
+    setTimeout(() => {
+      this.useNav.pushNotice({
+        cb: null,
+        tmpt: 'HOME',
+        eventT: 'INFO',
+        msg: 'something',
+        status: 400,
+      });
+    }, 2000);
   }
 }

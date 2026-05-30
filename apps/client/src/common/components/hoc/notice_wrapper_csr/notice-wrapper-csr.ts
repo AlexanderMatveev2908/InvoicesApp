@@ -15,10 +15,11 @@ import { UseInjCtxHk } from '../../../../core/hooks/use_inj_ctx';
 import { ElDomT, RefTemplateT } from '../../../types/dom';
 import { NoticeAnimations } from './etc/animations';
 import { NoticeStateT } from '../../../../features/notice/reducer';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-notice-wrapper-csr',
-  imports: [NgComponentOutlet, PageWrapper],
+  imports: [NgComponentOutlet, PageWrapper, RouterLink],
   templateUrl: './notice-wrapper-csr.html',
   styleUrl: './notice-wrapper-csr.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
