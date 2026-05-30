@@ -1,0 +1,23 @@
+@if (isClient) {
+  <ng-container *ngTemplateOutlet="toastTpl" />
+}
+
+<ng-template #toastTpl>
+  <div [attr.data-testid]="'toast'" #toast class="root" [style.--clr]="cssVar()">
+    <div class="root__close_row">
+      <app-close-btn [closeClick]="closeClick" />
+    </div>
+
+    <div class="root__status_row">
+      <div class="status_row__status">
+        <span>{{ toastState().status }}</span>
+      </div>
+    </div>
+
+    <div class="root__content">
+      <span #msgContainer class="content__msg" [style.--clr]="cssVar()">{{ trimmedMsg() }}</span>
+    </div>
+
+    <div #timerToast class="root__timer"></div>
+  </div>
+</ng-template>

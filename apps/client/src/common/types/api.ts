@@ -48,3 +48,9 @@ export interface ErrApiT<T> extends HttpErrorResponse {
 
 export type ObsResT<T> = Observable<ResApiT<T>>;
 export type ObsOnOkT<T> = Observable<ResApiT<T> | never>;
+
+export interface OptToastApiT {
+  toastOk: boolean;
+  toastErr: boolean;
+  okMsg: Nullable<string>;
+}

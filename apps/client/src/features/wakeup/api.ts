@@ -11,6 +11,6 @@ export class WakeUpApiSvc {
   private readonly api: UseApiSvc = inject(UseApiSvc);
 
   public wakeUp(): Observable<ResApiT<void>> {
-    return this.api.get(LibApiArgs.withURL('/wake-up'));
+    return this.api.get(LibApiArgs.withURL('/wake-up').toastOnFulfilled());
   }
 }

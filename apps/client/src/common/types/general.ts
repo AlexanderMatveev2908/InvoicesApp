@@ -21,3 +21,7 @@ export interface AppPayloadEventT {
   status: number;
   eventT: AppEventT;
 }
+
+export type WithIdT<T> = T & {
+  id: string;
+};

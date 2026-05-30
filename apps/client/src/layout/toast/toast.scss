@@ -1,0 +1,39 @@
+.root {
+  border-color: var(--clr);
+  @apply z-toast fixed top-5 right-5 w-[90%] max-w-[600px] border-3 p-3 bg-neutral-950 rounded-xl min-h-[75px] overflow-hidden translate-x-[150%] opacity-0;
+
+  @media (min-width: 600px) {
+    @apply w-[80%];
+  }
+
+  .root__close_row {
+    @apply absolute top-1 right-1;
+  }
+
+  .root__status_row {
+    color: var(--clr);
+    @apply absolute top-1 left-4;
+
+    .status_row__status {
+      @apply flex justify-start items-center;
+
+      > span {
+        @apply txt__3xl;
+      }
+    }
+  }
+
+  .root__content {
+    @apply w-full flex justify-center mt-8 sm:mt-10 lg:mt-12 pb-4;
+    color: var(--clr);
+
+    .content__msg {
+      @apply px-3 txt__lg;
+    }
+  }
+
+  .root__timer {
+    background: var(--clr);
+    @apply absolute bottom-0 left-0 w-full h-[7.5px];
+  }
+}

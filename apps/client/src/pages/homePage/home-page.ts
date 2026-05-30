@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { LibLog } from '../../core/lib/logger';
 import { WakeUpApiSvc } from '../../features/wakeup/api';
+import { ToastSlice } from '../../features/toast/slice';
 
 @Component({
   selector: 'app-home-page',
@@ -9,11 +10,13 @@ import { WakeUpApiSvc } from '../../features/wakeup/api';
   styleUrl: './home-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePage implements OnInit {
+export class HomePage implements AfterViewInit {
   private wakeUpSvc: WakeUpApiSvc = inject(WakeUpApiSvc);
 
-  ngOnInit(): void {
-    const res = this.wakeUpSvc.wakeUp().subscribe();
-    LibLog.main('result', res);
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      const res = this.wakeUpSvc.wakeUp().subscribe();
+      LibLog.main('result', res);
+    }, 2000);
   }
 }
