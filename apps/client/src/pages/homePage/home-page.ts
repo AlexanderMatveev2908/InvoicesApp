@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { LibLog } from '../../core/lib/logger';
 
 @Component({
   selector: 'app-home-page',
@@ -7,4 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './home-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePage {}
+export class HomePage implements OnInit {
+  ngOnInit(): void {}
+}
