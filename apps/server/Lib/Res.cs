@@ -4,7 +4,7 @@ public static class Res
 {
   public static IResult Json(
     int status,
-    string message,
+    string msg,
     object? data = null
 )
   {
@@ -12,7 +12,7 @@ public static class Res
           new
           {
             status,
-            message,
+            msg,
             data
           },
           statusCode: status
