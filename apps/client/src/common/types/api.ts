@@ -1,5 +1,6 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Dict, Nullable } from './general';
+import { Observable } from 'rxjs';
 
 export enum ApiStatusT {
   OK = 200,
@@ -33,3 +34,17 @@ export interface ConfApiT {
 }
 
 export type HttpResT = HttpResponse<unknown> | HttpErrorResponse;
+
+interface BaseResT {
+  msg?: string;
+  status: number;
+}
+
+export type ResApiT<T> = T extends void ? BaseResT : BaseResT & T;
+
+export interface ErrApiT<T> extends HttpErrorResponse {
+  error: ResApiT<T>;
+}
+
+export type ObsResT<T> = Observable<ResApiT<T>>;
+export type ObsOnOkT<T> = Observable<ResApiT<T> | never>;

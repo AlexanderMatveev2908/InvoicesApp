@@ -2,7 +2,7 @@ import { HttpErrorResponse, HttpEvent, HttpParams, HttpRequest } from '@angular/
 import { Dict, Nullable } from '../../../../common/types/general';
 import { LibShape } from '../../../lib/data_structures/shape';
 import { UseConfApiSvc } from '../../../services/use_conf_api';
-import { LibApiShape } from '../../../lib/data_structures/api';
+import { LibApiShape } from '../../../lib/data_structures/api_shape';
 import { ConfApiT, HttpMethod, HttpResT } from '../../../../common/types/api';
 
 export class ConfApiMdwMng {
