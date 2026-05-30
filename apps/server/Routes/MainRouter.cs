@@ -1,4 +1,5 @@
 using UserAccountsApi.RoutesNS.UserNS;
+using UserAccountsApi.RoutesNS.WakeUpNS;
 
 namespace UserAccountsApi.RoutesNS;
 
@@ -12,5 +13,6 @@ public static class MainRouter
     TestRouter.MapAPi(api);
     CloudRouter.MapAPi(api);
     UsersRouter.MapApi(api);
+    WakeUpRouter.MapApi(api);
   }
 }
