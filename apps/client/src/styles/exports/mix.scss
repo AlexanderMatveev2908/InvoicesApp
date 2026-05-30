@@ -10,3 +10,31 @@
     transition: transform 0.1s ease;
   }
 }
+
+@mixin app__btn__res($padding) {
+  padding: $padding;
+  @apply flex w-full justify-center max-w-full border-2 rounded-xl;
+}
+
+@mixin el__shw($clr) {
+  border-color: $clr;
+
+  &:hover {
+    @include app__shadow($clr);
+  }
+}
+
+@mixin app__el__scl($scale_hover) {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale($scale_hover);
+  }
+
+  &:active {
+    transform: scale(0.8);
+    transition:
+      transform 0.1s ease,
+      color 0.3s ease;
+  }
+}

@@ -26,4 +26,11 @@
   --neutral__800: #262626;
   --neutral__900: #171717;
   --neutral__950: #0a0a0a;
+
+  --app__shadow: 0 10px 40px -7px rgba(55, 63, 104, 0.35);
+  top: calc(100% + 16px);
+}
+
+html {
+  background: #000;
 }

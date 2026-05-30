@@ -12,8 +12,12 @@ export class HomePage implements AfterViewInit {
   private useNav: UseNavSvc = inject(UseNavSvc);
 
   ngAfterViewInit(): void {
-    this.useNav.push('notice', {
-      from: 'OK',
+    this.useNav.pushNotice({
+      cb: null,
+      tmpt: null,
+      eventT: 'INFO',
+      msg: 'something',
+      status: 400,
     });
   }
 }

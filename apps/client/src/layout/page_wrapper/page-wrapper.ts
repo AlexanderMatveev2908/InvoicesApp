@@ -10,15 +10,15 @@ import {
   TemplateRef,
   WritableSignal,
 } from '@angular/core';
-import { UseInjCtxHk } from '../../core/hooks/use_inj_ctx';
-import { SpinPageSsr } from '../../common/components/spins/spin_page_ssr/spin-page-ssr';
 import { UseMetaEventDir } from '../../core/directives/use_meta_event';
+import { UseInjCtxHk } from '../../core/hooks/use_inj_ctx';
 import { RefTemplateT } from '../../common/types/dom';
 import { AppEventT } from '../../common/types/general';
+import { SpinPageSsr } from '../../common/components/spins/spin_page_ssr/spin-page-ssr';
 
 @Component({
   selector: 'app-page-wrapper',
-  imports: [SpinPageSsr, NgTemplateOutlet, UseMetaEventDir],
+  imports: [NgTemplateOutlet, UseMetaEventDir, SpinPageSsr],
   templateUrl: './page-wrapper.html',
   styleUrl: './page-wrapper.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
