@@ -52,7 +52,7 @@ export class Toast implements AfterViewInit {
 
   private setCutMsg(): void {
     const msg: string = this.toastState().msg;
-    const MAX_LINES = 3;
+    const MAX_LINES = 2;
 
     const elDOM: ElDomT = this.msgContainer?.nativeElement;
     if (!elDOM) return;
@@ -84,6 +84,7 @@ export class Toast implements AfterViewInit {
     } else {
       this.clearTmr();
       this.toastAnimations.toastOut(toastEl, toastTimerEl);
+
       setTimeout(() => {
         this.toastAnimations.toastIn(toastEl, toastTimerEl);
         this.programClose();

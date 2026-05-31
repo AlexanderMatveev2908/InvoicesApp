@@ -28,9 +28,10 @@
   }
 
   .root__msg {
-    @apply mt-2 px-5;
+    @apply mt-3 px-5;
 
     > span {
+      @apply text-xl;
       display: block;
       color: var(--clr);
     }
