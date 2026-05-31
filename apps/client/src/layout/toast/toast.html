@@ -1,5 +1,21 @@
-<div class="root">
-  <div class="root__close_area svg__2xl">
+<div #toast class="root" [style.--clr]="mainColor()">
+  <button class="root__close_area svg__2xl" (click)="closeClick()">
     <ng-container *ngComponentOutlet="SvgFillClose" />
+  </button>
+
+  <div class="root__status">
+    <span>
+      {{ toastState().status }}
+    </span>
   </div>
+
+  <div class="root__msg">
+    <span
+      >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi saepe modi repellendus
+      assumenda laboriosam quia maxime aut incidunt magni voluptatum iste harum voluptate, facere
+      ipsum nemo sunt quod porro atque!</span
+    >
+  </div>
+
+  <div #timerToast class="root__timer"></div>
 </div>
