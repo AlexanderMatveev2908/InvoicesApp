@@ -34,6 +34,7 @@ export class ToastAnimations {
     animate(
       toastDOM,
       {
+        // eslint-disable-next-line no-magic-numbers
         opacity: [1, 1, 0.5],
         x: ['0%', '-60%', '120%'],
       },

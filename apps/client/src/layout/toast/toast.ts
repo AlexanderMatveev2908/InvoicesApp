@@ -24,6 +24,7 @@ import {
 } from '@angular/core';
 import { ToastAnimations } from './animations';
 import { TxtDom } from '@/core/lib/dom/txt';
+import { ErrApp } from '@/core/lib/errApp';
 
 @Component({
   selector: 'app-toast',
@@ -70,6 +71,14 @@ export class Toast implements AfterViewInit {
   }
   public programClose(): void {
     const IN_ANIMATION_LAST: number = 5000;
+
+    const isToast: boolean = this.toastState().isToast;
+    if (this.timerID && !isToast) {
+      this.clearTmr();
+      return;
+    } else if (!this.timerID || !isToast) {
+      return;
+    }
 
     this.timerID = setTimeout(() => {
       this.closeClick();
@@ -123,23 +132,21 @@ export class Toast implements AfterViewInit {
 
         if (state.isToast && state.currID) {
           this.handleToastOpen(toastEl, toastTimerEl);
-        } else {
+        } else if (state.isToast && !state.currID) {
+          throw new ErrApp('toast active with no ID');
+        } else if (!state.isToast) {
           this.handleToastClose(toastEl, toastTimerEl);
         }
       });
     });
 
-    setTimeout(
-      () =>
-        this.toastSlice.openToast({
-          eventT: 'ERR',
-          msg: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi saepe modi repellendus
-      assumenda laboriosam quia maxime aut incidunt magni voluptatum iste harum voluptate, facere
-      ipsum nemo sunt quod porro atque`,
-          status: 500,
-        }),
-      1500,
-    );
+    setTimeout(() => {
+      this.toastSlice.openToast({
+        eventT: 'INFO',
+        msg: 'banana',
+        status: 200,
+      });
+    }, 1500);
   }
 
   @HostListener('window:resize')
