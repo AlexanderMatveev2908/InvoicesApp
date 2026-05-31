@@ -1,1 +1,30 @@
-.root{}
+.root {
+  @apply absolute w-full min-h-screen bg-neutral-950 flex justify-center items-center flex-col gap-[50px];
+
+  .root__svg {
+    @apply flex justify-center items-center;
+
+    .svg__content {
+      width: 400px;
+      height: 400px;
+      color: var(--clr);
+    }
+  }
+
+  .root__status {
+    @apply w-full h-fit flex justify-center items-center;
+
+    > span {
+      @apply text-9xl;
+      color: var(--clr);
+    }
+  }
+
+  .root__msg {
+    @apply px-14;
+    > span {
+      @apply text-4xl;
+      color: var(--clr);
+    }
+  }
+}

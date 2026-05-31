@@ -18,7 +18,7 @@ import { NoticeStateT } from '@/features/notice/reducer';
 @Injectable({
   providedIn: 'root',
 })
-export class UseNav extends UseInjCtxHk {
+export class UseNavSvc extends UseInjCtxHk {
   private readonly noticeSlice: NoticeSlice = inject(NoticeSlice);
   private readonly router: Router = inject(Router);
 

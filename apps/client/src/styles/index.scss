@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: 'Sour Gummy', sans-serif;
+}
+
 :root {
   --gray__300: #d1d5dc;
 

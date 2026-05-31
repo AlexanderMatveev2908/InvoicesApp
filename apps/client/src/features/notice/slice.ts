@@ -8,7 +8,7 @@ import { NoticeActT } from './reducer/actions';
   providedIn: 'root',
 })
 export class NoticeSlice extends UseKitSliceSvc {
-  public get _noticeState(): Signal<NoticeStateT> {
+  public get noticeState(): Signal<NoticeStateT> {
     return this.store.selectSignal(getNoticeState);
   }
 

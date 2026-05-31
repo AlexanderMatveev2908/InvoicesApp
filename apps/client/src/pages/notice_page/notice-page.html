@@ -1,3 +1,22 @@
-<div class="root">
-  <p>NoticePage generated 🎉</p>
+<div class="root" [style.--clr]="mainColor()">
+  <div class="root__svg">
+    <div class="svg__content">
+      <ng-container *ngComponentOutlet="Svg()" />
+    </div>
+  </div>
+
+  <div class="root__status">
+    <span>
+      {{ noticeState().status }}
+    </span>
+  </div>
+
+  <div class="root__msg">
+    <span>
+      {{ noticeState().msg }}
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem tempora ad voluptatum natus eaque
+      quos quae nemo tenetur provident ullam expedita quis reprehenderit id cupiditate possimus
+      illum dolor, voluptatibus illo.
+    </span>
+  </div>
 </div>
