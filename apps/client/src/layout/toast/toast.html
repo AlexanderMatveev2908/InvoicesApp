@@ -10,11 +10,9 @@
   </div>
 
   <div class="root__msg">
-    <span
-      >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi saepe modi repellendus
-      assumenda laboriosam quia maxime aut incidunt magni voluptatum iste harum voluptate, facere
-      ipsum nemo sunt quod porro atque!</span
-    >
+    <span #msgContainer>
+      {{ trimmedMsg() }}
+    </span>
   </div>
 
   <div #timerToast class="root__timer"></div>

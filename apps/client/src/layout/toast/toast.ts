@@ -1,5 +1,5 @@
 import { SvgFillClose } from '@/common/components/svgs/fill/close/close';
-import { RefDomT } from '@/common/types/dom';
+import { ElDomT, RefDomT } from '@/common/types/dom';
 import { Optional, TimerIdT } from '@/common/types/general';
 import { LibTimer } from '@/core/lib/data_structures/timer';
 import { LibMetaEvent } from '@/core/lib/meta_event';
@@ -15,11 +15,15 @@ import {
   DestroyRef,
   effect,
   EffectRef,
+  HostListener,
   inject,
+  signal,
   Signal,
   ViewChild,
+  WritableSignal,
 } from '@angular/core';
 import { ToastAnimations } from './animations';
+import { TxtDom } from '@/core/lib/dom/txt';
 
 @Component({
   selector: 'app-toast',
@@ -42,6 +46,19 @@ export class Toast implements AfterViewInit {
 
   @ViewChild('toast') toast: RefDomT;
   @ViewChild('timerToast') timerToast: RefDomT;
+  @ViewChild('msgContainer') msgContainer: RefDomT;
+
+  public readonly trimmedMsg: WritableSignal<string> = signal('');
+
+  private setCutMsg(): void {
+    const msg: string = this.toastState().msg;
+    const MAX_LINES = 3;
+
+    const elDOM: ElDomT = this.msgContainer?.nativeElement;
+    if (!elDOM) return;
+
+    this.trimmedMsg.set(TxtDom.binaryTrim(msg, { el: elDOM, maxLines: MAX_LINES }));
+  }
 
   private clearTmr(): void {
     this.timerID = LibTimer.clear(this.timerID);
@@ -80,9 +97,21 @@ export class Toast implements AfterViewInit {
   }
 
   public timerEffect?: EffectRef;
+  public trimEffect?: EffectRef;
 
   ngAfterViewInit(): void {
+    if (!this.usePlatform.isClient) return;
+
+    this.setCutMsg();
+
     this.usePlatform.inGlobalCtx(() => {
+      this.trimEffect = effect(() => {
+        const state = this.toastState();
+        void state.msg;
+
+        this.setCutMsg();
+      });
+
       this.timerEffect = effect(() => {
         const state = this.toastState();
 
@@ -99,14 +128,23 @@ export class Toast implements AfterViewInit {
       });
     });
 
-    // setTimeout(
-    //   () =>
-    //     this.toastSlice.openToast({
-    //       eventT: 'ERR',
-    //       msg: 'banana issue',
-    //       status: 500,
-    //     }),
-    //   1500,
-    // );
+    setTimeout(
+      () =>
+        this.toastSlice.openToast({
+          eventT: 'ERR',
+          msg: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi saepe modi repellendus
+      assumenda laboriosam quia maxime aut incidunt magni voluptatum iste harum voluptate, facere
+      ipsum nemo sunt quod porro atque`,
+          status: 500,
+        }),
+      1500,
+    );
+  }
+
+  @HostListener('window:resize')
+  onresize(): void {
+    if (!this.usePlatform.isClient) return;
+
+    this.setCutMsg();
   }
 }

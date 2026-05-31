@@ -1,8 +1,8 @@
 .root {
   z-index: 9999;
   right: 20px;
-  // opacity: 0;
-  // transform: translateX(120%);
+  opacity: 0;
+  transform: translateX(120%);
 
   @apply fixed top-5 h-[150px] w-[600px] bg-neutral-950 rounded-2xl;
 
@@ -28,9 +28,10 @@
   }
 
   .root__msg {
-    @apply border-2 mt-2 px-5;
+    @apply mt-2 px-5;
 
     > span {
+      display: block;
       color: var(--clr);
     }
   }
