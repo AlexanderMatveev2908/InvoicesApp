@@ -1,0 +1,21 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "tasks": {
+    "install_pkg": {
+      "cache": false,
+      "persistent": false,
+      "dependsOn": ["^install_pkg"],
+      "outputs": []
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^dev"],
+      "outputs": []
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "bin/**"]
+    }
+  }
+}

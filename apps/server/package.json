@@ -1,0 +1,10 @@
+{
+  "name": "server",
+  "private": true,
+  "packageManager": "yarn@1.22.22",
+  "scripts": {
+    "install_pkg": "dotnet restore",
+    "dev": "dotnet watch run --launch-profile https",
+    "build": "dotnet build"
+  }
+}
