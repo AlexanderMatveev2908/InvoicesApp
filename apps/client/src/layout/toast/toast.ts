@@ -131,14 +131,6 @@ export class Toast implements AfterViewInit {
         }
       });
     });
-
-    setTimeout(() => {
-      this.toastSlice.openToast({
-        eventT: 'INFO',
-        msg: 'banana',
-        status: 200,
-      });
-    }, 1500);
   }
 
   @HostListener('window:resize')
