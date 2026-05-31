@@ -1,0 +1,16 @@
+.root {
+  z-index: 99999;
+  @apply fixed top-5 right-5 h-[150px] w-[600px] bg-neutral-950 rounded-2xl;
+
+  .root__close_area {
+    @apply absolute top-0 right-2 text-red-600 cursor-pointer;
+
+    &:hover {
+      @apply transition-all duration-200 scale-[1.2];
+    }
+
+    &:active {
+      @apply scale-[0.6];
+    }
+  }
+}
