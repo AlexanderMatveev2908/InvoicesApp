@@ -72,14 +72,6 @@ export class Toast implements AfterViewInit {
   public programClose(): void {
     const IN_ANIMATION_LAST: number = 5000;
 
-    const isToast: boolean = this.toastState().isToast;
-    if (this.timerID && !isToast) {
-      this.clearTmr();
-      return;
-    } else if (!this.timerID || !isToast) {
-      return;
-    }
-
     this.timerID = setTimeout(() => {
       this.closeClick();
     }, IN_ANIMATION_LAST);
