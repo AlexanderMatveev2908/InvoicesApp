@@ -9,8 +9,16 @@ export class ToastAnimations {
     animate(
       toastDOM,
       {
-        x: ['120%', '-60%', '40%', '-30%', '20%', '-10%', '0%'],
-        opacity: [0, ...new Array(6).fill(1)],
+        transform: [
+          'translateX(120%)',
+          'translateX(-60%)',
+          'translateX(40%)',
+          'translateX(-30%)',
+          'translateX(20%)',
+          'translateX(-10%)',
+          'translateX(0%)',
+        ],
+        opacity: [0, 1, 1, 1, 1, 1, 1],
       },
       {
         duration: 0.6,
@@ -34,9 +42,8 @@ export class ToastAnimations {
     animate(
       toastDOM,
       {
-        // eslint-disable-next-line no-magic-numbers
-        opacity: [1, 1, 0.5],
-        x: ['0%', '-60%', '120%'],
+        transform: ['translateX(0%)', 'translateX(-60%)', 'translateX(120%)'],
+        opacity: [1, 1, 0],
       },
       {
         duration: 0.3,
@@ -44,6 +51,6 @@ export class ToastAnimations {
       },
     );
 
-    void timerDOM;
+    timerDOM.style.width = '100%';
   }
 }
