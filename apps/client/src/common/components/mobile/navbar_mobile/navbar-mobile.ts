@@ -1,6 +1,8 @@
 import { NgComponentOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, Signal } from '@angular/core';
 import { SvgAdvLogoApp } from '../../svgs/advanced/logo_app/logo-app';
+import { SvgT } from '@/common/types/general';
+import { SvgFillMoon } from '../../svgs/fill/moon/moon';
 
 @Component({
   selector: 'app-navbar-mobile',
@@ -10,5 +12,6 @@ import { SvgAdvLogoApp } from '../../svgs/advanced/logo_app/logo-app';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarMobile {
-  public readonly SvgLogo = SvgAdvLogoApp;
+  public readonly SvgLogo: SvgT = SvgAdvLogoApp;
+  public readonly SvgToggle: Signal<SvgT> = computed(() => SvgFillMoon);
 }

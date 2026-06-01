@@ -4,7 +4,11 @@
       <ng-container *ngComponentOutlet="SvgLogo" />
     </div>
 
-    <hr class="left__break" />
+    <div class="left__toggle_mode">
+      <button class="toggle_mode__svg">
+        <ng-container *ngComponentOutlet="SvgToggle()" />
+      </button>
+    </div>
   </div>
 
   <div class="root__right">
