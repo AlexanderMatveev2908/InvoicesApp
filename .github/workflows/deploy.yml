@@ -11,10 +11,10 @@ jobs:
     strategy:
       matrix:
         app:
-          - name: Invoices App Client
+          - name: invoices_app_client
             dir: ./apps/client
 
-          - name: Invoices App Server
+          - name: invoices_app_server
             dir: ./apps/server
 
     concurrency: deploy-${{ matrix.app.name }}
