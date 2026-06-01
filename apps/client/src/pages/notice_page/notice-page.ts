@@ -17,10 +17,11 @@ import {
 } from '@angular/core';
 import { NoticeAnimations } from './animations';
 import { UsePlatformSvc } from '@/core/services/use_platform';
+import { PageWrapper } from '@/common/components/hoc/page_wrapper/page-wrapper';
 
 @Component({
   selector: 'app-notice-page',
-  imports: [NgComponentOutlet],
+  imports: [NgComponentOutlet, PageWrapper],
   templateUrl: './notice-page.html',
   styleUrl: './notice-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

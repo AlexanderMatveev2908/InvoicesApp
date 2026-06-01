@@ -1,21 +1,25 @@
-<div class="root" [style.--clr]="mainColor()">
-  <div class="root__svg">
-    <div id="svg__content" class="svg__content">
-      <ng-container *ngComponentOutlet="Svg()" />
+<app-page-wrapper [waitClient]="true">
+  <ng-template #contentRef>
+    <div class="root" [style.--clr]="mainColor()">
+      <div class="root__svg">
+        <div id="svg__content" class="svg__content">
+          <ng-container *ngComponentOutlet="Svg()" />
+        </div>
+      </div>
+
+      <div class="root__status">
+        <span id="root__status">
+          {{ noticeState().status }}
+        </span>
+      </div>
+
+      <div class="root__msg">
+        <span id="root__msg">
+          {{ noticeState().msg }}
+        </span>
+      </div>
+
+      <div id="root__content" class="root__content"></div>
     </div>
-  </div>
-
-  <div class="root__status">
-    <span id="root__status">
-      {{ noticeState().status }}
-    </span>
-  </div>
-
-  <div class="root__msg">
-    <span id="root__msg">
-      {{ noticeState().msg }}
-    </span>
-  </div>
-
-  <div id="root__content" class="root__content"></div>
-</div>
+  </ng-template>
+</app-page-wrapper>

@@ -1,6 +1,7 @@
 import { Nullable } from '@/common/types/general';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import {
+  afterNextRender,
   ApplicationRef,
   EnvironmentInjector,
   inject,
@@ -8,7 +9,7 @@ import {
   PLATFORM_ID,
   runInInjectionContext,
 } from '@angular/core';
-import { filter, Observable, switchMap, take } from 'rxjs';
+import { filter, Observable, of, switchMap, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -33,8 +34,20 @@ export class UsePlatformSvc {
     return this.appRef.isStable.pipe(filter(Boolean), take(1));
   }
 
-  public whenStable<T>(cb: Observable<T>): Observable<T> {
-    return this.isStable().pipe(switchMap(() => cb));
+  public onStable(cb: () => void): void {
+    if (this.isServer) return;
+
+    this.isStable().subscribe(() => cb());
+  }
+
+  public withDOM(cb: () => void): void {
+    if (this.isServer) return;
+
+    this.onStable(() => {
+      this.inGlobalCtx(() => {
+        afterNextRender(() => cb());
+      });
+    });
   }
 
   public inGlobalCtx(cb: () => void): void {
