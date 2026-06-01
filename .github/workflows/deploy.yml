@@ -9,30 +9,36 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         app:
           - name: invoices_app_client
             dir: ./apps/client
+            token: INVOICES_APP__CLIENT
 
           - name: invoices_app_server
             dir: ./apps/server
+            token: INVOICES_APP__SERVER
 
-    concurrency: deploy-${{ matrix.app.name }}
+    concurrency:
+      group: deploy-${{ matrix.app.name }}
+      cancel-in-progress: true
 
     defaults:
       run:
         working-directory: ${{ matrix.app.dir }}
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
 
       - name: Deploy ${{ matrix.app.name }}
         run: flyctl deploy --remote-only -a ${{ matrix.app.name }}
         env:
-          FLY_CLIENT_TOKEN: ${{ secrets.INVOICES_APP__CLIENT }}
-          FLY_SERVER_TOKEN: ${{ secrets.INVOICES_APP__SERVER }}
+          FLY_API_TOKEN: ${{ secrets[matrix.app.token] }}
           REDIS_URL: ${{ secrets.REDIS_URL }}
           REDIS_HOST: ${{ secrets.REDIS_HOST }}
           REDIS_PORT: ${{ secrets.REDIS_PORT }}
