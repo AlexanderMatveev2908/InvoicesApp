@@ -8,6 +8,7 @@ public static class EnvVarsLib
     "REDIS_PORT",
     "REDIS_PASSWORD",
     "FRONTEND_URL",
+    "FRONTEND_URL_DEV",
     "CLOUD_NAME",
     "CLOUD_API_KEY",
     "CLOUD_API_SECRET",

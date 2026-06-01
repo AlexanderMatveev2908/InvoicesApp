@@ -49,7 +49,8 @@ public static class SettingsConf
       {
         policy
         .WithOrigins(
-            EnvVarsLib.Get("FRONTEND_URL")
+            EnvVarsLib.Get("FRONTEND_URL"),
+            EnvVarsLib.Get("FRONTEND_URL_DEV")
         )
         .AllowAnyMethod()
         .AllowAnyHeader();
@@ -80,8 +81,8 @@ public static class SettingsConf
     if (app.Environment.IsDevelopment())
       app.MapOpenApi();
 
-    app.UseHttpsRedirection();
     app.UseCors("Frontend");
+    app.UseHttpsRedirection();
     MainMdw.UseMainMdw(app);
 
     MainRouter.MapAPi(app);

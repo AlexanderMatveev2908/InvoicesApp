@@ -13,7 +13,9 @@ export abstract class _UseSideEffectsMngLogHk extends _UseSideEffectsMngInitHk {
     const conf: Nullable<ConfApiT> = this.confApi.getCurr();
     const result: ResApiT<T> = res instanceof HttpErrorResponse ? res.error : res;
 
-    const title: string = (conf?.url ?? 'Unknown url').replace(EnvVars.backURL, '').split('?')[0];
+    const title: string = (conf?.url ?? 'Unknown url')
+      .replace(EnvVars.currBackURL(), '')
+      .split('?')[0];
 
     LibLog.main(`${emoji} ${title}`, conf, result);
   }

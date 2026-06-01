@@ -5,7 +5,7 @@ export const useRootApiMdw: HttpInterceptorFn = (
   req: HttpRequest<unknown>,
   next: HttpHandlerFn,
 ) => {
-  const baseURL: string = EnvVars.backURL;
+  const baseURL: string = EnvVars.currBackURL();
 
   const clone = req.clone({
     url: `${baseURL}${req.url}`,
