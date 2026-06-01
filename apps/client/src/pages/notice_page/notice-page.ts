@@ -1,3 +1,4 @@
+import { ElDomT } from '@/common/types/dom';
 import { Nullable, SvgT } from '@/common/types/general';
 import { LibMetaEvent } from '@/core/lib/meta_event';
 import { UseNavSvc } from '@/core/services/use_nav';
@@ -6,6 +7,7 @@ import { NoticeStateT } from '@/features/notice/reducer';
 import { NoticeSlice } from '@/features/notice/slice';
 import { NgComponentOutlet } from '@angular/common';
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   computed,
@@ -13,6 +15,8 @@ import {
   OnInit,
   Signal,
 } from '@angular/core';
+import { NoticeAnimations } from './animations';
+import { UsePlatformSvc } from '@/core/services/use_platform';
 
 @Component({
   selector: 'app-notice-page',
@@ -21,11 +25,13 @@ import {
   styleUrl: './notice-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NoticePage implements OnInit {
+export class NoticePage implements OnInit, AfterViewInit {
   private readonly noticeSlice: NoticeSlice = inject(NoticeSlice);
   private readonly useNav: UseNavSvc = inject(UseNavSvc);
   private readonly useStorage: UseStorageSvc = inject(UseStorageSvc);
+  private readonly usePlatform: UsePlatformSvc = inject(UsePlatformSvc);
 
+  public readonly isClient: boolean = this.usePlatform.isClient;
   public readonly noticeState: Signal<NoticeStateT> = computed(() =>
     this.noticeSlice.noticeState(),
   );
@@ -35,6 +41,8 @@ export class NoticePage implements OnInit {
   public readonly mainColor: Signal<string> = computed(() =>
     LibMetaEvent.cssVarByT(this.noticeState().eventT),
   );
+
+  private run: boolean = false;
 
   ngOnInit(): void {
     this.useNav.usePlatform.onClient(() => {
@@ -47,5 +55,21 @@ export class NoticePage implements OnInit {
     });
 
     this.useNav.pushOutIfNotFrom('/notice');
+  }
+
+  ngAfterViewInit(): void {
+    if (!this.usePlatform.isClient) return;
+
+    if (this.run) return;
+    this.run = true;
+
+    const svgDOM: ElDomT = document.getElementById('svg__content');
+    const statusDOM: ElDomT = document.getElementById('root__status');
+    const msgDOM: ElDomT = document.getElementById('root__msg');
+    const contentDOM: ElDomT = document.getElementById('root__content');
+
+    if ([svgDOM, msgDOM, statusDOM, contentDOM].some((el: ElDomT) => !el)) return;
+
+    NoticeAnimations.main(svgDOM, msgDOM, statusDOM, contentDOM);
   }
 }

@@ -1,22 +1,21 @@
 <div class="root" [style.--clr]="mainColor()">
   <div class="root__svg">
-    <div class="svg__content">
+    <div id="svg__content" class="svg__content">
       <ng-container *ngComponentOutlet="Svg()" />
     </div>
   </div>
 
   <div class="root__status">
-    <span>
+    <span id="root__status">
       {{ noticeState().status }}
     </span>
   </div>
 
   <div class="root__msg">
-    <span>
+    <span id="root__msg">
       {{ noticeState().msg }}
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem tempora ad voluptatum natus eaque
-      quos quae nemo tenetur provident ullam expedita quis reprehenderit id cupiditate possimus
-      illum dolor, voluptatibus illo.
     </span>
   </div>
+
+  <div id="root__content" class="root__content"></div>
 </div>

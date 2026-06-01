@@ -1,4 +1,5 @@
 import { UseNavSvc } from '@/core/services/use_nav';
+import { ToastSlice } from '@/features/toast/slice';
 import { AfterViewInit, ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 @Component({
@@ -10,6 +11,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, inject } from '@angu
 })
 export class HomePage implements AfterViewInit {
   private readonly useNav: UseNavSvc = inject(UseNavSvc);
+  private readonly toastSlice: ToastSlice = inject(ToastSlice);
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -21,5 +23,11 @@ export class HomePage implements AfterViewInit {
         status: 205,
       });
     }, 2000);
+
+    this.toastSlice.openToast({
+      eventT: 'WARN',
+      msg: 'banana',
+      status: 300,
+    });
   }
 }
