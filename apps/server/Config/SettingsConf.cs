@@ -52,8 +52,9 @@ public static class SettingsConf
             EnvVarsLib.Get("FRONTEND_URL"),
             EnvVarsLib.Get("FRONTEND_URL_DEV")
         )
+        .AllowAnyHeader()
         .AllowAnyMethod()
-        .AllowAnyHeader();
+        .AllowCredentials();
       }
   );
     });
