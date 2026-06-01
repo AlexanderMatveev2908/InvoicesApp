@@ -48,6 +48,7 @@
     "@angular/compiler-cli": "^21.2.15",
     "@eslint/js": "^10.0.1",
     "@faker-js/faker": "^10.4.0",
+    "@flydotio/dockerfile": "^0.7.10",
     "@playwright/test": "^1.60.0",
     "@types/express": "^5.0.6",
     "@types/jsdom": "^28.0.3",
