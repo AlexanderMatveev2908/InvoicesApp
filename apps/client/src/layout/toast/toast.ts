@@ -50,6 +50,7 @@ export class Toast implements AfterViewInit {
   @ViewChild('msgContainer') msgContainer: RefDomT;
 
   public readonly trimmedMsg: WritableSignal<string> = signal('');
+  private hasOpenedOnce = false;
 
   private setCutMsg(): void {
     const msg: string = this.toastState().msg;
@@ -124,9 +125,8 @@ export class Toast implements AfterViewInit {
 
         if (state.isToast && state.currID) {
           this.handleToastOpen(toastEl, toastTimerEl);
-        } else if (state.isToast && !state.currID) {
-          throw new ErrApp('toast active with no ID');
-        } else if (!state.isToast) {
+          this.hasOpenedOnce = true;
+        } else if (!state.isToast && this.hasOpenedOnce) {
           this.handleToastClose(toastEl, toastTimerEl);
         }
       });
