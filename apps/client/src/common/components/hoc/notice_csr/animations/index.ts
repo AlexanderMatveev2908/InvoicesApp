@@ -8,7 +8,7 @@ type NoticeAnimationElsT = {
   contentDOM: ElDomT;
 };
 
-export class NoticeAnimations {
+export class NoticeCsrAnimations {
   private static readonly textConf: AnimationOptionsWithOverrides = {
     delay: 0.2,
     duration: 1,

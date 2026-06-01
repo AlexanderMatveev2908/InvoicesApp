@@ -15,37 +15,27 @@ import {
   Signal,
 } from '@angular/core';
 import { UsePlatformSvc } from '@/core/services/use_platform';
-import { PageWrapper } from '@/common/components/hoc/page_wrapper/page-wrapper';
-import { RouterLink } from '@angular/router';
-import { ElDomT } from '@/common/types/dom';
-import { NoticeAnimations } from './animations';
+import { NoticeCsr } from '@/common/components/hoc/notice_csr/notice-csr';
 
 @Component({
   selector: 'app-notice-page',
-  imports: [NgComponentOutlet, PageWrapper, RouterLink],
+  imports: [NoticeCsr],
   templateUrl: './notice-page.html',
   styleUrl: './notice-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NoticePage implements OnInit, AfterViewInit {
+export class NoticePage implements OnInit {
   private readonly noticeSlice: NoticeSlice = inject(NoticeSlice);
   private readonly useNav: UseNavSvc = inject(UseNavSvc);
   private readonly useStorage: UseStorageSvc = inject(UseStorageSvc);
   private readonly usePlatform: UsePlatformSvc = inject(UsePlatformSvc);
 
-  public readonly isClient: boolean = this.usePlatform.isClient;
   public readonly noticeState: Signal<NoticeStateT> = computed(() =>
     this.noticeSlice.noticeState(),
   );
-  public readonly Svg: Signal<SvgT> = computed(() =>
-    LibMetaEvent.svgByT(this.noticeState().eventT),
-  );
-  public readonly mainColor: Signal<string> = computed(() =>
-    LibMetaEvent.cssVarByT(this.noticeState().eventT),
-  );
 
   ngOnInit(): void {
-    this.useNav.usePlatform.onClient(() => {
+    this.usePlatform.onClient(() => {
       const stored: Nullable<Omit<NoticeStateT, 'cb'>> = this.useStorage.getItem('notice');
       if (stored)
         this.noticeSlice.setNotice({
@@ -55,25 +45,5 @@ export class NoticePage implements OnInit, AfterViewInit {
     });
 
     this.useNav.pushOutIfNotFrom('/notice');
-  }
-
-  private run: boolean = false;
-
-  ngAfterViewInit(): void {
-    if (!this.usePlatform.isClient) return;
-
-    if (this.run) return;
-    this.run = true;
-
-    this.usePlatform.withDOM(() => {
-      requestAnimationFrame(() => {
-        NoticeAnimations.main({
-          svgDOM: document.getElementById('svg__content'),
-          contentDOM: document.getElementById('root__content'),
-          spanStatusDOM: document.getElementById('status__span'),
-          spanMsgDOM: document.getElementById('msg__span'),
-        });
-      });
-    });
   }
 }
