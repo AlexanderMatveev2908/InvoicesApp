@@ -7,7 +7,8 @@
   "scripts": {
     "install_pkg": "turbo run install_pkg",
     "dev": "turbo run dev",
-    "build": "turbo run build"
+    "build": "turbo run build",
+    "start": "turbo run start"
   },
   "devDependencies": {
     "turbo": "^2.9.16"

@@ -5,7 +5,8 @@
   "scripts": {
     "install_pkg": "yarn install",
     "dev": "ng serve --port 3001",
-    "build": "ng build"
+    "build": "ng build",
+    "start": "PORT=3001 node dist/client/server/server.mjs"
   },
   "prettier": {
     "printWidth": 100,

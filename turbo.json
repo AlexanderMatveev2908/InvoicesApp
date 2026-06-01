@@ -14,8 +14,16 @@
       "outputs": []
     },
     "build": {
+      "cache": false,
+      "persistent": false,
       "dependsOn": ["^build"],
       "outputs": ["dist/**", "bin/**"]
+    },
+    "start": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^start"],
+      "outputs": []
     }
   }
 }

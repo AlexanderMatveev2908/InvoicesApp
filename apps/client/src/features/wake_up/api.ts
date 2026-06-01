@@ -36,7 +36,7 @@ export class WakeUpApiSvc {
   public wakeUp(): ObsResT<void> {
     if (!this.shouldWakeUp()) return EMPTY;
 
-    return this.api.get(LibApiArgs.withURL('/wake-up').toastOnFulfilled().pushOnErr()).pipe(
+    return this.api.get(LibApiArgs.withURL('/wake-up').toastOnFulfilled()).pipe(
       retry({
         delay: () => timer(this.RETRY_DELAY),
       }),
