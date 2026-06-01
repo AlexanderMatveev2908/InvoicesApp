@@ -19,7 +19,13 @@
         </span>
       </div>
 
-      <div class="root__content"></div>
+      <div class="root__content">
+        @if (noticeState().tmpt === 'HOME') {
+          <a routerLink="/">Go Home</a>
+        } @else if (noticeState().tmpt === 'MAIL') {
+          <a href="https://mail.google.com" target="_blank" rel="noopener"> Open Gmail </a>
+        }
+      </div>
     </div>
   </ng-template>
 </app-page-wrapper>

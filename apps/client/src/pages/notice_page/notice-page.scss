@@ -1,5 +1,5 @@
 .root {
-  @apply absolute w-full min-h-screen bg-neutral-950 flex justify-center items-center flex-col gap-[50px];
+  @apply absolute w-full min-h-screen bg-neutral-950 flex justify-center items-center flex-col gap-[30px];
 
   .root__svg {
     @apply flex justify-center items-center;
@@ -25,6 +25,28 @@
     > span {
       @apply text-4xl;
       color: var(--clr);
+    }
+  }
+
+  .root__content {
+    @apply w-full flex justify-center;
+
+    > a {
+      @apply flex justify-center items-center border-2 rounded-xl px-10 py-2;
+      border-color: var(--clr);
+      color: var(--clr);
+
+      &:hover {
+        @apply transition-all duration-300;
+        cursor: pointer;
+        color: white;
+        background: var(--clr);
+      }
+
+      > a {
+        @apply block w-full h-full px-4 py-2 text-center;
+        pointer-events: auto;
+      }
     }
   }
 }
