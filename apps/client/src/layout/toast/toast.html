@@ -1,4 +1,9 @@
-<div #toast class="root" [style.--clr]="mainColor()">
+<div
+  #toast
+  class="root"
+  [style.--clr]="mainColor()"
+  [ngClass]="toastState().isToast ? 'pointer-events-auto' : 'pointer-events-none'"
+>
   <button class="root__close_area svg__2xl" (click)="closeClick()">
     <ng-container *ngComponentOutlet="SvgFillClose" />
   </button>

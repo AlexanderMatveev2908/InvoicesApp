@@ -1,10 +1,10 @@
 import { SvgAdvScreaming } from '@/common/components/svgs/advanced/screaming/screaming';
-import { NgComponentOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NavbarMobile } from '@/common/components/mobile/navbar_mobile/navbar-mobile';
 
 @Component({
   selector: 'app-home-page',
-  imports: [NgComponentOutlet],
+  imports: [NavbarMobile],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

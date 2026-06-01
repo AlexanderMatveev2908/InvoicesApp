@@ -1,0 +1,27 @@
+.root {
+  @apply fixed top-0 left-0 right-0 h-[72px] bg-[#373B53] flex;
+
+  .root__left {
+    @apply flex w-full justify-between;
+
+    .left__logo {
+      @apply w-[72px] h-[72px];
+    }
+
+    .left__break {
+      @apply h-full w-[1px] bg-[#494E6E];
+    }
+  }
+
+  .root__right {
+    @apply w-[100px] flex justify-center items-center;
+
+    .right__thumbnail_user {
+      @apply flex justify-center items-center mx-[24px];
+
+      .thumbnail_user__img {
+        @apply w-[32px] h-[32px] object-cover;
+      }
+    }
+  }
+}
