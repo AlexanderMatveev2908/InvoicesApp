@@ -4,7 +4,7 @@ import { Optional, TimerIdT } from '@/common/types/general';
 import { LibTimer } from '@/core/lib/data_structures/timer';
 import { LibMetaEvent } from '@/core/lib/meta_event';
 import { UsePlatformSvc } from '@/core/services/use_platform';
-import { ToastStateT } from '@/features/toast/reducer/reducer';
+import { ToastStateT } from '@/features/toast/reducer';
 import { ToastSlice } from '@/features/toast/slice';
 import { NgComponentOutlet } from '@angular/common';
 import {

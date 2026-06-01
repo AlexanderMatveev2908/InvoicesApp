@@ -1,6 +1,6 @@
 import { UseKitSliceSvc } from '@/core/services/use_kit_slice';
 import { Injectable, Signal } from '@angular/core';
-import { ToastStateT } from './reducer/reducer';
+import { ToastStateT } from './reducer';
 import { getToastState } from './reducer/selector';
 import { ToastActT } from './reducer/actions';
 import { AppPayloadEventT } from '@/common/types/general';

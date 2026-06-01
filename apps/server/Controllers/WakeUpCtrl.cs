@@ -6,6 +6,6 @@ public static class WakeUpCtrl
 {
   public static IResult WakeUp()
   {
-    return Res.Json(400, "Server crashed");
+    return Res.Json(200, "⏰ Ops I did not listen the alarm ⏰");
   }
 }
