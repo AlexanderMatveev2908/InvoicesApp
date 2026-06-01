@@ -12,11 +12,11 @@ jobs:
       fail-fast: false
       matrix:
         app:
-          - name: invoices_app_client
+          - name: invoices-app-client
             dir: ./apps/client
             token: INVOICES_APP__CLIENT
 
-          - name: invoices_app_server
+          - name: invoices-app-server
             dir: ./apps/server
             token: INVOICES_APP__SERVER
 
