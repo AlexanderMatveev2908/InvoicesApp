@@ -1,4 +1,3 @@
-import { ElDomT } from '@/common/types/dom';
 import { Nullable, SvgT } from '@/common/types/general';
 import { LibMetaEvent } from '@/core/lib/meta_event';
 import { UseNavSvc } from '@/core/services/use_nav';
@@ -15,7 +14,6 @@ import {
   OnInit,
   Signal,
 } from '@angular/core';
-import { NoticeAnimations } from './animations';
 import { UsePlatformSvc } from '@/core/services/use_platform';
 import { PageWrapper } from '@/common/components/hoc/page_wrapper/page-wrapper';
 
@@ -26,7 +24,7 @@ import { PageWrapper } from '@/common/components/hoc/page_wrapper/page-wrapper';
   styleUrl: './notice-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NoticePage implements OnInit, AfterViewInit {
+export class NoticePage implements OnInit {
   private readonly noticeSlice: NoticeSlice = inject(NoticeSlice);
   private readonly useNav: UseNavSvc = inject(UseNavSvc);
   private readonly useStorage: UseStorageSvc = inject(UseStorageSvc);
@@ -43,8 +41,6 @@ export class NoticePage implements OnInit, AfterViewInit {
     LibMetaEvent.cssVarByT(this.noticeState().eventT),
   );
 
-  private run: boolean = false;
-
   ngOnInit(): void {
     this.useNav.usePlatform.onClient(() => {
       const stored: Nullable<Omit<NoticeStateT, 'cb'>> = this.useStorage.getItem('notice');
@@ -56,21 +52,5 @@ export class NoticePage implements OnInit, AfterViewInit {
     });
 
     this.useNav.pushOutIfNotFrom('/notice');
-  }
-
-  ngAfterViewInit(): void {
-    if (!this.usePlatform.isClient) return;
-
-    if (this.run) return;
-    this.run = true;
-
-    const svgDOM: ElDomT = document.getElementById('svg__content');
-    const statusDOM: ElDomT = document.getElementById('root__status');
-    const msgDOM: ElDomT = document.getElementById('root__msg');
-    const contentDOM: ElDomT = document.getElementById('root__content');
-
-    if ([svgDOM, msgDOM, statusDOM, contentDOM].some((el: ElDomT) => !el)) return;
-
-    NoticeAnimations.main(svgDOM, msgDOM, statusDOM, contentDOM);
   }
 }
