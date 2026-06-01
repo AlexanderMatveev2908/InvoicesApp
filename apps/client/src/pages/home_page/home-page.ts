@@ -13,21 +13,5 @@ export class HomePage implements AfterViewInit {
   private readonly useNav: UseNavSvc = inject(UseNavSvc);
   private readonly toastSlice: ToastSlice = inject(ToastSlice);
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.useNav.pushNotice({
-        cb: null,
-        tmpt: 'HOME',
-        eventT: 'WARN',
-        msg: 'banana',
-        status: 300,
-      });
-
-      this.toastSlice.openToast({
-        eventT: 'WARN',
-        msg: 'banana',
-        status: 300,
-      });
-    }, 1500);
-  }
+  ngAfterViewInit(): void {}
 }

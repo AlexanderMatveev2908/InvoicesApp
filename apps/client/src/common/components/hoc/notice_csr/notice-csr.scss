@@ -1,5 +1,5 @@
 .root {
-  @apply absolute w-full min-h-screen bg-neutral-950 flex justify-center items-center flex-col gap-[30px];
+  @apply absolute w-full min-h-screen bg-neutral-950 flex justify-start items-center flex-col gap-[50px] pt-[25px];
 
   .root__svg {
     @apply flex justify-center items-center;
