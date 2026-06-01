@@ -45,3 +45,5 @@ The UI and layout are built following the official design from [Frontend Mentor]
 - **Cloudinary** — Cloud-based media management service used for secure image uploads, storage, optimization, and delivery
 
 ---
+
+## 📦 Setup
