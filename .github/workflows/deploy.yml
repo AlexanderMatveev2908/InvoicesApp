@@ -1,0 +1,51 @@
+name: Deploy client and server to Fly
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        app:
+          - name: Invoices App Client
+            dir: ./apps/client
+
+          - name: Invoices App Server
+            dir: ./apps/server
+
+    concurrency: deploy-${{ matrix.app.name }}
+
+    defaults:
+      run:
+        working-directory: ${{ matrix.app.dir }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy ${{ matrix.app.name }}
+        run: flyctl deploy --remote-only -a ${{ matrix.app.name }}
+        env:
+          FLY_CLIENT_TOKEN: ${{ secrets.INVOICES_APP__CLIENT }}
+          FLY_SERVER_TOKEN: ${{ secrets.INVOICES_APP__SERVER }}
+          REDIS_URL: ${{ secrets.REDIS_URL }}
+          REDIS_HOST: ${{ secrets.REDIS_HOST }}
+          REDIS_PORT: ${{ secrets.REDIS_PORT }}
+          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+          CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
+          CLOUD_URL: ${{ secrets.CLOUD_URL }}
+          CLOUD_API_KEY: ${{ secrets.CLOUD_API_KEY }}
+          CLOUD_API_SECRET: ${{ secrets.CLOUD_API_SECRET }}
+          DB_PWD: ${{ secrets.DB_PWD }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_DATABASE: ${{ secrets.DB_DATABASE }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_URL: ${{ secrets.DB_URL }}
+          FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
+          FRONTEND_URL_DEV: ${{ secrets.FRONTEND_URL_DEV }}
