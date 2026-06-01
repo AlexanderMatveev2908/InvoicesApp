@@ -2,6 +2,8 @@
   z-index: 9999;
   opacity: 0;
   right: 20px;
+  @apply border-[3px];
+  border-color: var(--clr);
 
   @apply fixed top-5 h-[150px] w-[600px] bg-neutral-950 rounded-2xl;
 

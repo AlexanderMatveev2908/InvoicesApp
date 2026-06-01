@@ -17,7 +17,7 @@ export class HomePage implements AfterViewInit {
     setTimeout(() => {
       this.useNav.pushNotice({
         cb: null,
-        tmpt: 'MAIL',
+        tmpt: 'HOME',
         eventT: 'WARN',
         msg: 'banana',
         status: 300,

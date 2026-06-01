@@ -16,10 +16,11 @@ import {
 } from '@angular/core';
 import { UsePlatformSvc } from '@/core/services/use_platform';
 import { PageWrapper } from '@/common/components/hoc/page_wrapper/page-wrapper';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-notice-page',
-  imports: [NgComponentOutlet, PageWrapper],
+  imports: [NgComponentOutlet, PageWrapper, RouterLink],
   templateUrl: './notice-page.html',
   styleUrl: './notice-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
