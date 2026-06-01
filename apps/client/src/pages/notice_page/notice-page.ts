@@ -17,6 +17,8 @@ import {
 import { UsePlatformSvc } from '@/core/services/use_platform';
 import { PageWrapper } from '@/common/components/hoc/page_wrapper/page-wrapper';
 import { RouterLink } from '@angular/router';
+import { ElDomT } from '@/common/types/dom';
+import { NoticeAnimations } from './animations';
 
 @Component({
   selector: 'app-notice-page',
@@ -25,7 +27,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './notice-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NoticePage implements OnInit {
+export class NoticePage implements OnInit, AfterViewInit {
   private readonly noticeSlice: NoticeSlice = inject(NoticeSlice);
   private readonly useNav: UseNavSvc = inject(UseNavSvc);
   private readonly useStorage: UseStorageSvc = inject(UseStorageSvc);
@@ -53,5 +55,25 @@ export class NoticePage implements OnInit {
     });
 
     this.useNav.pushOutIfNotFrom('/notice');
+  }
+
+  private run: boolean = false;
+
+  ngAfterViewInit(): void {
+    if (!this.usePlatform.isClient) return;
+
+    if (this.run) return;
+    this.run = true;
+
+    this.usePlatform.withDOM(() => {
+      requestAnimationFrame(() => {
+        NoticeAnimations.main({
+          svgDOM: document.getElementById('svg__content'),
+          contentDOM: document.getElementById('root__content'),
+          spanStatusDOM: document.getElementById('status__span'),
+          spanMsgDOM: document.getElementById('msg__span'),
+        });
+      });
+    });
   }
 }

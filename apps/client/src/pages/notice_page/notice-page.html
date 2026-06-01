@@ -2,24 +2,24 @@
   <ng-template #contentRef>
     <div class="root" [style.--clr]="mainColor()">
       <div class="root__svg">
-        <div class="svg__content">
+        <div id="svg__content" class="svg__content">
           <ng-container *ngComponentOutlet="Svg()" />
         </div>
       </div>
 
       <div class="root__status">
-        <span>
+        <span id="status__span">
           {{ noticeState().status }}
         </span>
       </div>
 
       <div class="root__msg">
-        <span>
+        <span id="msg__span">
           {{ noticeState().msg }}
         </span>
       </div>
 
-      <div class="root__content">
+      <div id="root__content" class="root__content">
         @if (noticeState().tmpt === 'HOME') {
           <a routerLink="/">Go Home</a>
         } @else if (noticeState().tmpt === 'MAIL') {

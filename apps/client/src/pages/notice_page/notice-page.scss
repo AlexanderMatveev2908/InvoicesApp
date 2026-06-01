@@ -15,7 +15,7 @@
     @apply w-full h-fit flex justify-center items-center;
 
     > span {
-      @apply text-9xl;
+      @apply text-9xl inline-block;
       color: var(--clr);
     }
   }
@@ -23,7 +23,7 @@
   .root__msg {
     @apply px-14;
     > span {
-      @apply text-4xl;
+      @apply text-4xl inline-block;
       color: var(--clr);
     }
   }
@@ -32,7 +32,7 @@
     @apply w-full flex justify-center;
 
     > a {
-      @apply flex justify-center items-center border-2 rounded-xl px-10 py-2;
+      @apply flex justify-center items-center border-2 rounded-xl px-10 py-2 text-lg;
       border-color: var(--clr);
       color: var(--clr);
 
