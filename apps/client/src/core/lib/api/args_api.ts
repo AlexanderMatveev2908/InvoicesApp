@@ -91,8 +91,8 @@ export class LibApiArgs<T> {
     return this._url;
   }
 
-  public getParamsOr(ifEmpty: None = null): OrNone<HttpParams> {
-    return !this._params ? ifEmpty : this._params;
+  public getParamsOrNone(): OrNone<HttpParams> {
+    return !this._params ? undefined : this._params;
   }
 
   public getBody(): Nullable<T | FormData> {

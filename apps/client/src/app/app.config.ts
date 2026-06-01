@@ -10,6 +10,8 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideStore } from '@ngrx/store';
 import { rootReducer } from '@/core/store';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { useRootApiMdw } from '@/core/api/middleware/use_root_api';
+import { useConfApiMdw } from '@/core/api/middleware/use_conf_api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +20,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideStore(rootReducer),
-    provideHttpClient(withFetch(), withInterceptors([])),
+    provideHttpClient(withFetch(), withInterceptors([useRootApiMdw, useConfApiMdw])),
     provideStoreDevtools({ maxAge: 25 }),
   ],
 };
