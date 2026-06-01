@@ -45,7 +45,9 @@ export class UsePlatformSvc {
 
     this.onStable(() => {
       this.inGlobalCtx(() => {
-        afterNextRender(() => cb());
+        afterNextRender(() => {
+          requestAnimationFrame(() => cb());
+        });
       });
     });
   }

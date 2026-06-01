@@ -1,5 +1,6 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Dict, Nullable } from './general';
+import { Observable } from 'rxjs';
 
 export interface OptToastApiT {
   toastOk: boolean;
@@ -55,3 +56,7 @@ export type ResApiT<T> = T extends void ? BaseResT : BaseResT & T;
 export interface ErrApiT<T> extends HttpErrorResponse {
   error: ResApiT<T>;
 }
+
+export type ObsResT<T> = Observable<ResApiT<T>>;
+
+export type ObsOnOkT<T> = Observable<ResApiT<T> | never>;

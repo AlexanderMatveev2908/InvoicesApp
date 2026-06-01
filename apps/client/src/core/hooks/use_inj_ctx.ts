@@ -18,14 +18,4 @@ export class UseInjCtxHk {
       effect(cb, { injector: this.inj });
     });
   }
-
-  public useDOM(cb: () => void): void {
-    this.usePlatform.onClient(() => {
-      this.usePlatform.inGlobalCtx(() => {
-        afterNextRender(() => {
-          requestAnimationFrame(() => cb());
-        });
-      });
-    });
-  }
 }
