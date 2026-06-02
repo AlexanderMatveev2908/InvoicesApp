@@ -1,0 +1,35 @@
+.root {
+  display: flex;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+
+  @apply w-full flex-col gap-[24px] p-[23px] rounded-[8px];
+
+  .item__header {
+    @apply flex justify-between items-center;
+
+    .header__left {
+    }
+
+    .header__right {
+    }
+  }
+
+  .root__body {
+    @apply w-full flex justify-between items-center;
+
+    .body__left {
+      @apply flex flex-col;
+    }
+
+    .body__right {
+      @apply relative py-[10px] px-[20px] rounded-[6px] overflow-hidden;
+
+      .right__bg {
+        @apply absolute top-0 left-0 w-full h-full opacity-15;
+      }
+    }
+  }
+}

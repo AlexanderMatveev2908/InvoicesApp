@@ -1,0 +1,50 @@
+<div class="root" [ngClass]="useTheme.ifDark('bg-blue_2', 'bg-white')">
+  <div class="root__client_id">
+    <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')">#</span>
+    <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{
+      inv().clientID
+    }}</span>
+  </div>
+
+  <div class="root__due_payment">
+    <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_0', 'text-gray_1')">{{
+      calcDueDate(inv())
+    }}</span>
+  </div>
+
+  <div class="root__client">
+    <span class="bd__m" [ngClass]="useTheme.ifDark('text-white', 'text-[#858BB2]')">
+      {{ inv().billTo.clientName }}
+    </span>
+  </div>
+
+  <div class="root__total">
+    <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-black_0')">
+      {{ calcTotItems(inv()) }}
+    </span>
+  </div>
+
+  <div class="root__status">
+    <div
+      class="status__bg"
+      [style.background]="
+        useTheme.isDarkMode() && inv().status === 'DRAFT' ? '#979797' : getCssStatus(inv())
+      "
+    ></div>
+
+    <span
+      class="hd__s"
+      [style.color]="
+        useTheme.isDarkMode() && inv().status === 'DRAFT' ? '#DFE3FA' : getCssStatus(inv())
+      "
+    >
+      •&nbsp;&nbsp;{{ inv().status }}</span
+    >
+  </div>
+
+  <div class="root__arrow">
+    <div class="arrow__svg">
+      <ng-container *ngComponentOutlet="SvgArrow" />
+    </div>
+  </div>
+</div>

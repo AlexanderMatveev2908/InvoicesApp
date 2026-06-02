@@ -1,0 +1,6 @@
+<div class="root">
+  @for (inv of appMockInvoices; track inv.id) {
+    <app-invoice-element-mobile [inv]="inv" />
+    <app-invoice-element-tablet-desktop [inv]="inv" />
+  }
+</div>
