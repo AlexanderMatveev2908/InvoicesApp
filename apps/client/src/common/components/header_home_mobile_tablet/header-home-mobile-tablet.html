@@ -1,0 +1,28 @@
+<div class="root" [ngClass]="useTheme.isDarkMode() ? 'bg-black_0' : 'bg-white_0'">
+  <div class="root__header">
+    <div class="header__left">
+      <span
+        class="hd__m tablet:text-[36px]"
+        [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')"
+        >Invoices</span
+      >
+      <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_0', 'text-gray_1')">
+        @if (appMockInvoices.length === 1) {
+          1 Invoice
+        } @else if (appMockInvoices.length > 1) {
+          {{ appMockInvoices.length }} Invoices
+        } @else {
+          No invoices
+        }
+      </span>
+    </div>
+
+    <div class="header__right">
+      <app-filter-invoices-mobile />
+      <app-filter-invoices-tablet />
+
+      <app-add-invoice-mobile />
+      <app-add-invoice-tablet />
+    </div>
+  </div>
+</div>

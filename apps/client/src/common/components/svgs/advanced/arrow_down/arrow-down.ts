@@ -1,17 +1,14 @@
 
-import { Nullable } from '@/common/types/general';
+
 import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 
 @Component({
-  selector: 'app-svg-fill-arrow-down',
+  selector: 'app-svg-advanced-arrow-down',
   templateUrl: `./arrow-down.html`,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SvgFillArrowDown {
+export class SvgAdvArrowDown {
     width: InputSignal<'auto' | string> = input('100%');
     height: InputSignal<'auto' | string> = input('100%');
-    
-    fill: InputSignal<string> = input<string>('currentColor');
-    stroke: InputSignal<Nullable<string>> = input<Nullable<string>>(null);
     
 }

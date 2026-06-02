@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  @media (min-width: 768px) {
+    display: none;
+  }
+
+  @apply justify-center items-center gap-[12px];
+
+  .root__svg {
+    @apply w-[10px] h-[10px] text-blue_0;
+  }
+}

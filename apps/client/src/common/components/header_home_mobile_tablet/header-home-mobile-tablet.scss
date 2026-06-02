@@ -1,0 +1,22 @@
+.root {
+  display: none;
+
+  @media (max-width: 1440px) {
+    display: block;
+    position: static;
+  }
+
+  @apply w-full px-[24px];
+
+  .root__header {
+    @apply mt-[72px] flex justify-between;
+
+    .header__left {
+      @apply flex flex-col gap-[3px];
+    }
+
+    .header__right {
+      @apply flex justify-center items-center gap-[16px];
+    }
+  }
+}
