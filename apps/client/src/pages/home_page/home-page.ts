@@ -1,13 +1,17 @@
-import { SvgAdvScreaming } from '@/common/components/svgs/advanced/screaming/screaming';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { InvoiceT } from '@/common/types/invoices';
+import { UseThemeSvc } from '@/core/services/use_theme';
+import { mockInvoices } from '@/mock/data';
+import { NgClass } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-home-page',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePage {
-  public readonly Svg = SvgAdvScreaming;
+  public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
+  public readonly mockInvoices: InvoiceT[] = mockInvoices;
 }

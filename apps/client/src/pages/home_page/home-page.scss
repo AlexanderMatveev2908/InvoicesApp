@@ -1,1 +1,23 @@
-.root{}
+.root {
+  @apply min-h-screen w-full px-[24px] pt-[32px];
+
+  .root__header {
+    @apply mt-[72px] border-2 flex justify-between;
+
+    .header__left {
+      @apply flex flex-col gap-[3px];
+
+      span:nth-child(1) {
+        @apply text-gray_3;
+      }
+
+      span:nth-child(2) {
+        @apply text-gray_1;
+      }
+    }
+
+    .header__right {
+      @apply flex justify-center items-center;
+    }
+  }
+}

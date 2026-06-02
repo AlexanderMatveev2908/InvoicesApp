@@ -1,0 +1,16 @@
+<div class="root" [ngClass]="useTheme.isDarkMode() ? 'bg-black_0' : 'bg-white_0'">
+  <div class="root__header">
+    <div class="header__left">
+      <span class="hd__m">Invoices</span>
+      <span class="bd__m">
+        @if (mockInvoices.length >= 1) {
+          {{ mockInvoices.length }} Invoices
+        } @else {
+          No invoices
+        }
+      </span>
+    </div>
+
+    <div class="header__right"></div>
+  </div>
+</div>
