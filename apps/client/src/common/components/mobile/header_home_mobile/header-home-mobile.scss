@@ -1,0 +1,35 @@
+.root {
+  @apply min-h-screen w-full px-[24px] pt-[32px];
+
+  .root__header {
+    @apply mt-[72px] flex justify-between;
+
+    .header__left {
+      @apply flex flex-col gap-[3px];
+    }
+
+    .header__right {
+      @apply flex justify-center items-center gap-[16px];
+
+      .right__filter {
+        @apply flex justify-center items-center gap-[12px];
+
+        .filter__svg {
+          @apply w-[10px] h-[10px] text-blue_0;
+        }
+      }
+
+      .right__add {
+        @apply bg-blue_0 w-[90px] h-[45px] flex justify-center items-center gap-[8px] rounded-full;
+
+        .add__bg {
+          @apply w-fit bg-white p-[10px] rounded-full;
+
+          .bg__svg {
+            @apply text-blue_0 w-[10px] h-[10px];
+          }
+        }
+      }
+    }
+  }
+}
