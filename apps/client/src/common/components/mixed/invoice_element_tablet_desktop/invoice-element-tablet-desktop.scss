@@ -10,4 +10,27 @@
   .root__client_id {
     @apply flex;
   }
+
+  .root__due_payment {
+  }
+
+  .root__client {
+  }
+
+  .root__total {
+  }
+
+  .root__status {
+    @apply relative px-[18px] py-[14px] rounded-[6px] overflow-hidden;
+
+    .status__bg {
+      @apply absolute top-0 left-0 w-full h-full opacity-15;
+    }
+  }
+
+  .root__arrow {
+    .arrow__svg {
+      @apply w-[15px] h-[15px];
+    }
+  }
 }
