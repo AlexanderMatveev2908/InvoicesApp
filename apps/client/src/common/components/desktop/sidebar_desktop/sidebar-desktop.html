@@ -1,0 +1,19 @@
+<div class="root" [ngClass]="useTheme.ifDark('bg-blue_2', 'bg-blue__light')">
+  <div class="root__top">
+    <div class="top__svg">
+      <ng-container *ngComponentOutlet="SvgLogo" />
+    </div>
+
+    <div class="top__moon">
+      <button (click)="useTheme.toggleTheme()" class="moon__svg">
+        <ng-container *ngComponentOutlet="SvgToggle()" />
+      </button>
+    </div>
+  </div>
+
+  <div class="root__bottom">
+    <div class="bottom__image">
+      <img src="/images/thumbnail_user.png" alt="thumbnail user" />
+    </div>
+  </div>
+</div>

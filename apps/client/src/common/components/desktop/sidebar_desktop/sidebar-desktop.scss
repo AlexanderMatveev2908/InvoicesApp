@@ -1,0 +1,34 @@
+.root {
+  display: none;
+
+  @media (min-width: 1440px) {
+    display: flex;
+  }
+
+  @apply fixed top-0 bottom-0 left-0 w-[103px] flex-col rounded-t-full;
+
+  .root__top {
+    @apply flex flex-col justify-between items-center h-full;
+
+    .top__svg {
+    }
+
+    .top__moon {
+      @apply w-full border-b border-[#494E6E] pb-[32px] flex justify-center items-center;
+
+      .moon__svg {
+        @apply w-[20px] h-[20px] text-[#DFE3FA];
+      }
+    }
+  }
+
+  .root__bottom {
+    @apply h-[100px] flex justify-center items-center;
+
+    .bottom__image {
+      > img {
+        @apply w-[40px] h-[40px] object-cover;
+      }
+    }
+  }
+}
