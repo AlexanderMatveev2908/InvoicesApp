@@ -5,7 +5,7 @@ import { UseThemeSvc } from '@/core/services/use_theme';
 import { InvoiceT } from '@/common/types/invoices';
 import { mockInvoices } from '@/mock/data';
 import { NoInvoicesMobile } from '@/common/components/mobile/no_invoices_mobile/no-invoices-mobile';
-import { HeaderHomeMobileTablet } from '@/common/components/header_home_mobile_tablet/header-home-mobile-tablet';
+import { HeaderHomeMobileTablet } from '@/common/components/mixed/header_home_mobile_tablet/header-home-mobile-tablet';
 
 @Component({
   selector: 'app-home-page',
