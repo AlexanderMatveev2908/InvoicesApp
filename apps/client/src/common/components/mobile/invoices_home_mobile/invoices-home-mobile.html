@@ -1,0 +1,50 @@
+<div class="root">
+  @for (inv of appMockInvoices; track inv.id) {
+    <div class="root__item" [ngClass]="useTheme.ifDark('bg-blue_2', 'bg-white')">
+      <div class="item__header">
+        <div class="header__left">
+          <span class="hd__s text-gray_2">#</span>
+          <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{
+            inv.clientID
+          }}</span>
+        </div>
+
+        <div class="header__right">
+          <span class="bd__m" [ngClass]="useTheme.ifDark('text-white', 'text-[#858BB2]')">
+            {{ inv.billTo.clientName }}
+          </span>
+        </div>
+      </div>
+
+      <div class="root__body">
+        <div class="body__left">
+          <span class="bd__m" [ngClass]="useTheme.ifDark('text-[#DFE3FA]', 'text-gray_2')">{{
+            calcDueDate(inv)
+          }}</span>
+
+          <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')"
+            >{{ calcTotItems(inv) }}
+          </span>
+        </div>
+
+        <div class="body__right">
+          <div
+            class="right__bg"
+            [style.background]="
+              useTheme.isDarkMode() && inv.status === 'DRAFT' ? '#979797' : getCssStatus(inv)
+            "
+          ></div>
+
+          <span
+            class="hd__s"
+            [style.color]="
+              useTheme.isDarkMode() && inv.status === 'DRAFT' ? '#DFE3FA' : getCssStatus(inv)
+            "
+          >
+            •&nbsp;&nbsp;{{ inv.status }}
+          </span>
+        </div>
+      </div>
+    </div>
+  }
+</div>

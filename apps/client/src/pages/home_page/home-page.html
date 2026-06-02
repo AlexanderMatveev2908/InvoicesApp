@@ -1,1 +1,5 @@
-<app-header-home-mobile />
+<div class="root" [ngClass]="useTheme.ifDark('bg-black_0', 'bg-white_0')">
+  <app-header-home-mobile />
+
+  <app-invoices-home-mobile />
+</div>

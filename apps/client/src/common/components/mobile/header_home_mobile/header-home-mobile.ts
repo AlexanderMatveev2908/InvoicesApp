@@ -16,7 +16,7 @@ import { NgClass, NgComponentOutlet } from '@angular/common';
 })
 export class HeaderHomeMobile {
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
-  public readonly mockInvoices: InvoiceT[] = mockInvoices;
+  public readonly appMockInvoices: InvoiceT[] = mockInvoices;
 
   public readonly SvgArrowDown: SvgT = SvgFillArrowDown;
   public readonly SvgPlus: SvgT = SvgFillPlus;

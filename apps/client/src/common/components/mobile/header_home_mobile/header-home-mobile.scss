@@ -1,5 +1,12 @@
 .root {
-  @apply min-h-screen w-full px-[24px] pt-[32px];
+  display: none;
+
+  @media (max-width: 375px) {
+    display: block;
+    position: static;
+  }
+
+  @apply w-full px-[24px];
 
   .root__header {
     @apply mt-[72px] flex justify-between;
