@@ -1,8 +1,8 @@
 <div class="root" [ngClass]="useTheme.isDarkMode() ? 'bg-black_0' : 'bg-white_0'">
   <div class="root__header">
     <div class="header__left">
-      <span class="hd__m">Invoices</span>
-      <span class="bd__m">
+      <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">Invoices</span>
+      <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_0', 'text-gray_1')">
         @if (mockInvoices.length >= 1) {
           {{ mockInvoices.length }} Invoices
         } @else {
@@ -11,6 +11,24 @@
       </span>
     </div>
 
-    <div class="header__right"></div>
+    <div class="header__right">
+      <button class="right__filter">
+        <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">Filter</span>
+
+        <div class="filter__svg">
+          <ng-container *ngComponentOutlet="SvgArrowDown" />
+        </div>
+      </button>
+
+      <button class="right__add">
+        <div class="add__bg">
+          <div class="bg__svg">
+            <ng-container *ngComponentOutlet="SvgPlus" />
+          </div>
+        </div>
+
+        <span class="text-white hd__s"> New </span>
+      </button>
+    </div>
   </div>
 </div>

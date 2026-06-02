@@ -14,4 +14,8 @@ export class UseThemeSvc {
   public readonly isDarkMode: Signal<boolean> = computed(
     () => this.themeSlice.themeState().theme === 'dark',
   );
+
+  public readonly ifDark = (ifDark: string, ifLight: string): string => {
+    return this.isDarkMode() ? ifDark : ifLight;
+  };
 }
