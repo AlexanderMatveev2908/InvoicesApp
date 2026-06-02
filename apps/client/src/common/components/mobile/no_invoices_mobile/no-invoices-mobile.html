@@ -1,0 +1,16 @@
+<div class="root">
+  <div class="root__svg">
+    <ng-container *ngComponentOutlet="SvgScreaming" />
+  </div>
+
+  <span class="hd__m mt-[42px]" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')"
+    >There is nothing here</span
+  >
+
+  <span class="bd__m mt-[24px]" [ngClass]="useTheme.ifDark('text-gray_0', 'text-gray_1')">
+    Create an invoice by clicking the
+  </span>
+  <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_0', 'text-gray_1')">
+    New button and get started
+  </span>
+</div>
