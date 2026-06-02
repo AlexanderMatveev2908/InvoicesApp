@@ -7,10 +7,11 @@ import { UseStorageSvc } from '@/core/services/use_storage';
 import { UsePlatformSvc } from '@/core/services/use_platform';
 import { ThemeT } from '@/features/theme/reducer';
 import { NavbarMobileTablet } from '@/common/components/navbar_mobile_tablet/navbar-mobile-tablet';
+import { SidebarDesktop } from '@/common/components/desktop/sidebar_desktop/sidebar-desktop';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Toast, WakeUp, NavbarMobileTablet],
+  imports: [RouterOutlet, Toast, WakeUp, NavbarMobileTablet, SidebarDesktop],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
