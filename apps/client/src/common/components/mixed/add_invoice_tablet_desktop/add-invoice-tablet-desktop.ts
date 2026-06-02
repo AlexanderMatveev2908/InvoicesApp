@@ -4,12 +4,12 @@ import { SvgFillPlus } from '../../svgs/fill/plus/plus';
 import { NgComponentOutlet } from '@angular/common';
 
 @Component({
-  selector: 'app-add-invoice-tablet',
+  selector: 'app-add-invoice-tablet-desktop',
   imports: [NgComponentOutlet],
-  templateUrl: './add-invoice-tablet.html',
-  styleUrl: './add-invoice-tablet.scss',
+  templateUrl: './add-invoice-tablet-desktop.html',
+  styleUrl: './add-invoice-tablet-desktop.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddInvoiceTablet {
+export class AddInvoiceTabletDesktop {
   public readonly SvgPlus: SvgT = SvgFillPlus;
 }

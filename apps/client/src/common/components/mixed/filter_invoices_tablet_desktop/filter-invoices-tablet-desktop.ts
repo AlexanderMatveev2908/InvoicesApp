@@ -5,13 +5,13 @@ import { NgClass, NgComponentOutlet } from '@angular/common';
 import { SvgAdvArrowDown } from '../../svgs/advanced/arrow_down/arrow-down';
 
 @Component({
-  selector: 'app-filter-invoices-tablet',
+  selector: 'app-filter-invoices-tablet-desktop',
   imports: [NgClass, NgComponentOutlet],
-  templateUrl: './filter-invoices-tablet.html',
-  styleUrl: './filter-invoices-tablet.scss',
+  templateUrl: './filter-invoices-tablet-desktop.html',
+  styleUrl: './filter-invoices-tablet-desktop.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FilterInvoicesTablet {
+export class FilterInvoicesTabletDesktop {
   public readonly SvgArrowDown: SvgT = SvgAdvArrowDown;
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
 }
