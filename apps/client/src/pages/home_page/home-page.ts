@@ -1,15 +1,20 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { InvoicesHomeMobile } from '@/common/components/mobile/invoices_home_mobile/invoices-home-mobile';
+import { InvoicesHomeMobileTabletDesktop } from '@/common/components/mixed/invoices_home_mobile_tablet_desktop/invoices-home-mobile-tablet-desktop';
 import { NgClass } from '@angular/common';
 import { UseThemeSvc } from '@/core/services/use_theme';
 import { InvoiceT } from '@/common/types/invoices';
 import { mockInvoices } from '@/mock/data';
 import { NoInvoicesMobile } from '@/common/components/mobile/no_invoices_mobile/no-invoices-mobile';
-import { HeaderHomeMobileTablet } from '@/common/components/mixed/header_home_mobile_tablet/header-home-mobile-tablet';
+import { HeaderHomeMobileTabletDesktop } from '@/common/components/mixed/header_home_mobile_tablet_desktop/header-home-mobile-tablet-desktop';
 
 @Component({
   selector: 'app-home-page',
-  imports: [HeaderHomeMobileTablet, InvoicesHomeMobile, NgClass, NoInvoicesMobile],
+  imports: [
+    HeaderHomeMobileTabletDesktop,
+    InvoicesHomeMobileTabletDesktop,
+    NgClass,
+    NoInvoicesMobile,
+  ],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

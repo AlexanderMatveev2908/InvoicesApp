@@ -9,7 +9,7 @@ import { FilterInvoicesMobile } from '../../mobile/filter_invoices_mobile/filter
 import { FilterInvoicesTablet } from '../../tablet/filter_invoices_tablet/filter-invoices-tablet';
 
 @Component({
-  selector: 'app-header-home-mobile-tablet',
+  selector: 'app-header-home-mobile-tablet-desktop',
   imports: [
     NgClass,
     AddInvoiceMobile,
@@ -17,11 +17,11 @@ import { FilterInvoicesTablet } from '../../tablet/filter_invoices_tablet/filter
     FilterInvoicesMobile,
     FilterInvoicesTablet,
   ],
-  templateUrl: './header-home-mobile-tablet.html',
-  styleUrl: './header-home-mobile-tablet.scss',
+  templateUrl: './header-home-mobile-tablet-desktop.html',
+  styleUrl: './header-home-mobile-tablet-desktop.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderHomeMobileTablet {
+export class HeaderHomeMobileTabletDesktop {
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
   public readonly appMockInvoices: InvoiceT[] = mockInvoices;
 }

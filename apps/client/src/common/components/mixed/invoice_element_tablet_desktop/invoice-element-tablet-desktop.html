@@ -1,0 +1,8 @@
+<div class="root" [ngClass]="useTheme.ifDark('bg-blue_2', 'bg-white')">
+  <div class="root__client_id">
+    <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')">#</span>
+    <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{
+      inv().clientID
+    }}</span>
+  </div>
+</div>

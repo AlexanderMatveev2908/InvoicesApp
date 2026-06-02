@@ -2,19 +2,18 @@ import { InvoiceT } from '@/common/types/invoices';
 import { LibInvoices } from '@/core/lib/invoices';
 import { LibMetaStatusInvoice } from '@/core/lib/meta_status_invoice';
 import { UseThemeSvc } from '@/core/services/use_theme';
-import { mockInvoices } from '@/mock/data';
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, InputSignal } from '@angular/core';
 
 @Component({
-  selector: 'app-invoices-home-mobile',
+  selector: 'app-invoice-element-mobile',
   imports: [NgClass],
-  templateUrl: './invoices-home-mobile.html',
-  styleUrl: './invoices-home-mobile.scss',
+  templateUrl: './invoice-element-mobile.html',
+  styleUrl: './invoice-element-mobile.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InvoicesHomeMobile {
-  public readonly appMockInvoices: InvoiceT[] = mockInvoices;
+export class InvoiceElementMobile {
+  public readonly inv: InputSignal<InvoiceT> = input.required();
 
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
 
