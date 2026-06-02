@@ -1,6 +1,6 @@
 .root {
   z-index: 100;
-  @apply fixed top-0 left-0 right-0 h-[72px] bg-[#373B53] flex;
+  @apply fixed top-0 left-0 right-0 h-[72px] flex;
 
   .root__left {
     @apply flex w-full justify-between;
@@ -13,7 +13,7 @@
       @apply flex justify-center items-center border-r pr-[24px] border-[#494E6E];
 
       .toggle_mode__svg {
-        @apply w-[20px] h-[20px] text-gray_2;
+        @apply text-gray_2;
       }
     }
   }

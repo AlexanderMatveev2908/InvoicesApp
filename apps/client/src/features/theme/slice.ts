@@ -33,7 +33,5 @@ export class ThemeSlice extends UseKitSliceSvc {
     const newTheme: ThemeT = curr === 'light' ? 'dark' : 'light';
 
     this.setTheme(newTheme);
-    this.useStorage.setItem<ThemeT>('theme', newTheme);
-    this.applyThemeDocument(newTheme);
   }
 }
