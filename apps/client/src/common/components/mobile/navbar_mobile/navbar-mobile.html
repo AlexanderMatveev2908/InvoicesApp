@@ -1,0 +1,23 @@
+<div class="root" [ngClass]="useThemeSvc.isDarkMode() ? 'bg-blue_2' : 'bg-blue__light'">
+  <div class="root__left">
+    <div class="left__logo">
+      <ng-container *ngComponentOutlet="SvgLogo" />
+    </div>
+
+    <div class="left__toggle_mode">
+      <button
+        (click)="useThemeSvc.toggleTheme()"
+        class="toggle_mode__svg"
+        [ngClass]="useThemeSvc.isDarkMode() ? 'w-[10px] h-[10px]' : 'w-[20px] h-[20px]'"
+      >
+        <ng-container *ngComponentOutlet="SvgToggle()" />
+      </button>
+    </div>
+  </div>
+
+  <div class="root__right">
+    <div class="root__thumbnail_user">
+      <img src="/images/thumbnail_user.png" alt="user thumbnail" class="thumbnail_user__img" />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+.root {
+  display: none;
+
+  @media (max-width: 375px) {
+    display: flex;
+    position: fixed;
+  }
+
+  z-index: 100;
+  @apply top-0 left-0 right-0 h-[72px];
+
+  .root__left {
+    @apply flex w-full justify-between;
+
+    .left__logo {
+      @apply w-[72px] h-[72px];
+    }
+
+    .left__toggle_mode {
+      @apply flex justify-center items-center border-r pr-[24px] border-[#494E6E];
+
+      .toggle_mode__svg {
+        @apply text-gray_2;
+      }
+    }
+  }
+
+  .root__right {
+    @apply w-[90px] flex justify-center items-center;
+
+    .right__thumbnail_user {
+      @apply flex justify-center items-center mx-[24px];
+
+      .thumbnail_user__img {
+        @apply w-[32px] h-[32px] object-cover;
+      }
+    }
+  }
+}

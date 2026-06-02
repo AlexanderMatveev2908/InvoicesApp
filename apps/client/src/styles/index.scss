@@ -1,4 +1,5 @@
 @use './tokens/svgs.scss';
+@use './tokens/fonts.scss';
 
 @tailwind base;
 @tailwind components;
@@ -29,4 +30,17 @@ body {
   --neutral__800: #262626;
   --neutral__900: #171717;
   --neutral__950: #0a0a0a;
+}
+
+button {
+  appearance: none;
+  @apply outline-none;
+}
+
+button:enabled:hover {
+  @apply cursor-pointer;
+}
+
+button:disabled {
+  @apply cursor-not-allowed opacity-50;
 }

@@ -1,0 +1,7 @@
+.root {
+  @apply mt-[102px] flex flex-col items-center;
+
+  .root__svg {
+    @apply w-[278px] h-[278px] mx-auto;
+  }
+}

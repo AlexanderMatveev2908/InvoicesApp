@@ -6,7 +6,7 @@ import { LibMetaEvent } from '@/core/lib/meta_event';
 import { UsePlatformSvc } from '@/core/services/use_platform';
 import { ToastStateT } from '@/features/toast/reducer';
 import { ToastSlice } from '@/features/toast/slice';
-import { NgComponentOutlet } from '@angular/common';
+import { NgClass, NgComponentOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -28,7 +28,7 @@ import { ErrApp } from '@/core/lib/errApp';
 
 @Component({
   selector: 'app-toast',
-  imports: [NgComponentOutlet],
+  imports: [NgComponentOutlet, NgClass],
   templateUrl: './toast.html',
   styleUrl: './toast.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
