@@ -1,7 +1,7 @@
 <div class="root" [ngClass]="useTheme.ifDark('bg-black_0', 'bg-[#F8F8FB]')">
   <app-header-home-mobile-tablet-desktop />
 
-  @if (!appMockInvoices.length) {
+  @if (appMockInvoices.length) {
     <app-invoices-home-mobile-tablet-desktop />
   } @else {
     <app-no-invoices-mobile-tablet-desktop />
