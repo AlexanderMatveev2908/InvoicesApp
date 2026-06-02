@@ -4,7 +4,7 @@ import { NgClass } from '@angular/common';
 import { UseThemeSvc } from '@/core/services/use_theme';
 import { InvoiceT } from '@/common/types/invoices';
 import { mockInvoices } from '@/mock/data';
-import { NoInvoicesMobile } from '@/common/components/mobile/no_invoices_mobile/no-invoices-mobile';
+import { NoInvoicesMobileTabletDesktop } from '@/common/components/mixed/no_invoices_mobile_tablet_desktop/no-invoices-mobile-tablet-desktop';
 import { HeaderHomeMobileTabletDesktop } from '@/common/components/mixed/header_home_mobile_tablet_desktop/header-home-mobile-tablet-desktop';
 
 @Component({
@@ -13,7 +13,7 @@ import { HeaderHomeMobileTabletDesktop } from '@/common/components/mixed/header_
     HeaderHomeMobileTabletDesktop,
     InvoicesHomeMobileTabletDesktop,
     NgClass,
-    NoInvoicesMobile,
+    NoInvoicesMobileTabletDesktop,
   ],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
