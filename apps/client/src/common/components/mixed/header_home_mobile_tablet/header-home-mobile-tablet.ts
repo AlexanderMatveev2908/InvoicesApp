@@ -3,10 +3,10 @@ import { UseThemeSvc } from '@/core/services/use_theme';
 import { mockInvoices } from '@/mock/data';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { AddInvoiceMobile } from '../mobile/add_invoice_mobile/add-invoice-mobile';
-import { AddInvoiceTablet } from '../tablet/add_invoice_tablet/add-invoice-tablet';
-import { FilterInvoicesMobile } from '../mobile/filter_invoices_mobile/filter-invoices-mobile';
-import { FilterInvoicesTablet } from '../tablet/filter_invoices_tablet/filter-invoices-tablet';
+import { AddInvoiceMobile } from '../../mobile/add_invoice_mobile/add-invoice-mobile';
+import { AddInvoiceTablet } from '../../tablet/add_invoice_tablet/add-invoice-tablet';
+import { FilterInvoicesMobile } from '../../mobile/filter_invoices_mobile/filter-invoices-mobile';
+import { FilterInvoicesTablet } from '../../tablet/filter_invoices_tablet/filter-invoices-tablet';
 
 @Component({
   selector: 'app-header-home-mobile-tablet',

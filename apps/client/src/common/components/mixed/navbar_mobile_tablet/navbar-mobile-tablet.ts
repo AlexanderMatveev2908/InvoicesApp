@@ -2,9 +2,9 @@ import { NgComponentOutlet, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, Signal } from '@angular/core';
 import { UseThemeSvc } from '@/core/services/use_theme';
 import { SvgT } from '@/common/types/general';
-import { SvgAdvLogoApp } from '../svgs/advanced/logo_app/logo-app';
-import { SvgFillSun } from '../svgs/fill/sun/sun';
-import { SvgFillMoon } from '../svgs/fill/moon/moon';
+import { SvgAdvLogoApp } from '../../svgs/advanced/logo_app/logo-app';
+import { SvgFillSun } from '../../svgs/fill/sun/sun';
+import { SvgFillMoon } from '../../svgs/fill/moon/moon';
 
 @Component({
   selector: 'app-navbar-mobile-tablet',

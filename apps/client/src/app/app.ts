@@ -6,8 +6,8 @@ import { ThemeSlice } from '@/features/theme/slice';
 import { UseStorageSvc } from '@/core/services/use_storage';
 import { UsePlatformSvc } from '@/core/services/use_platform';
 import { ThemeT } from '@/features/theme/reducer';
-import { NavbarMobileTablet } from '@/common/components/navbar_mobile_tablet/navbar-mobile-tablet';
 import { SidebarDesktop } from '@/common/components/desktop/sidebar_desktop/sidebar-desktop';
+import { NavbarMobileTablet } from '@/common/components/mixed/navbar_mobile_tablet/navbar-mobile-tablet';
 
 @Component({
   selector: 'app-root',

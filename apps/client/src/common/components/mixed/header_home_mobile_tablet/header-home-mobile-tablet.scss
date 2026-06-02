@@ -1,10 +1,5 @@
 .root {
-  display: none;
-
-  @media (max-width: 1440px) {
-    display: block;
-    position: static;
-  }
+  display: block;
 
   @apply w-full px-[24px];
 
