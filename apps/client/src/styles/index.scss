@@ -44,3 +44,7 @@ button:enabled:hover {
 button:disabled {
   @apply cursor-not-allowed opacity-50;
 }
+
+a {
+  @apply cursor-pointer;
+}

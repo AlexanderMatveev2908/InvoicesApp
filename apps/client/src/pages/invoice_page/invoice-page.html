@@ -1,0 +1,21 @@
+<div class="root" [ngClass]="useTheme.ifDark('bg-black_0', 'bg-white_0')">
+  <div class="root__go_back">
+    <a [routerLink]="'/'" class="go_back__link">
+      <div class="link__svg">
+        <ng-container *ngComponentOutlet="SvgArrow" />
+      </div>
+      <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-black_0')">Go Back</span>
+    </a>
+  </div>
+
+  <div class="root__header" [ngClass]="useTheme.ifDark('bg-blue_2', 'bg-white')">
+    <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_0', 'text-[#858BB2]')"> Status </span>
+
+    <div class="header__status">
+      <div class="status__bg" [style.background]="getBgByStatus(currInvoice()?.status!)"></div>
+      <span class="hd__s" [style.color]="getTxtClrByStatus(currInvoice()?.status!)">
+        •&nbsp;&nbsp;{{ currInvoice()?.status }}</span
+      >
+    </div>
+  </div>
+</div>

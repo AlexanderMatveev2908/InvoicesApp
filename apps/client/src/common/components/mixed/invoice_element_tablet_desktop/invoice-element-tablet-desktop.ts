@@ -1,11 +1,10 @@
 import { SvgT } from '@/common/types/general';
 import { InvoiceT } from '@/common/types/invoices';
 import { LibInvoices } from '@/core/lib/invoices';
-import { LibMetaStatusInvoice } from '@/core/lib/meta_status_invoice';
-import { UseThemeSvc } from '@/core/services/use_theme';
 import { NgClass, NgComponentOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, InputSignal } from '@angular/core';
 import { SvgAdvArrowRight } from '../../svgs/advanced/arrow_right/arrow-right';
+import { UseMetaStatusDir } from '@/core/directives/use_meta_status_dir';
 
 @Component({
   selector: 'app-invoice-element-tablet-desktop',
@@ -14,10 +13,8 @@ import { SvgAdvArrowRight } from '../../svgs/advanced/arrow_right/arrow-right';
   styleUrl: './invoice-element-tablet-desktop.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InvoiceElementTabletDesktop {
+export class InvoiceElementTabletDesktop extends UseMetaStatusDir {
   public readonly inv: InputSignal<InvoiceT> = input.required();
-
-  public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
 
   public readonly SvgArrow: SvgT = SvgAdvArrowRight;
 
@@ -32,9 +29,5 @@ export class InvoiceElementTabletDesktop {
       style: 'currency',
       currency: 'GBP',
     }).format(tot);
-  }
-
-  public getCssStatus(invoice: InvoiceT): string {
-    return LibMetaStatusInvoice.bgByStatus(invoice.status);
   }
 }

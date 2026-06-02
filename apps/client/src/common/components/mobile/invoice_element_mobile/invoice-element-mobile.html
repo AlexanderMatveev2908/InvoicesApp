@@ -26,19 +26,9 @@
     </div>
 
     <div class="body__right">
-      <div
-        class="right__bg"
-        [style.background]="
-          useTheme.isDarkMode() && inv().status === 'DRAFT' ? '#979797' : getCssStatus(inv())
-        "
-      ></div>
+      <div class="right__bg" [style.background]="getBgByStatus(inv().status)"></div>
 
-      <span
-        class="hd__s"
-        [style.color]="
-          useTheme.isDarkMode() && inv().status === 'DRAFT' ? '#DFE3FA' : getCssStatus(inv())
-        "
-      >
+      <span class="hd__s" [style.color]="getTxtClrByStatus(inv().status)">
         •&nbsp;&nbsp;{{ inv().status }}
       </span>
     </div>

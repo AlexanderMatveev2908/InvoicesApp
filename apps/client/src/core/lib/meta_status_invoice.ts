@@ -6,7 +6,7 @@ export class LibMetaStatusInvoice {
   public static pending: string = '#FF8F00';
   public static paid: string = '#33D69F';
 
-  public static bgByStatus(status: InvoiceStatusT): string {
+  private static clrByStatus(status: InvoiceStatusT): string {
     switch (status) {
       case 'DRAFT':
         return this.draft;
@@ -17,5 +17,13 @@ export class LibMetaStatusInvoice {
       default:
         throw new ErrApp('status invoice invalid');
     }
+  }
+
+  public static bgByStatusWithDark(status: InvoiceStatusT, isDark: boolean): string {
+    return isDark && status === 'DRAFT' ? '#979797' : this.clrByStatus(status);
+  }
+
+  public static txtByStatusWithDark(status: InvoiceStatusT, isDark: boolean): string {
+    return isDark && status === 'DRAFT' ? '#DFE3FA' : this.clrByStatus(status);
   }
 }
