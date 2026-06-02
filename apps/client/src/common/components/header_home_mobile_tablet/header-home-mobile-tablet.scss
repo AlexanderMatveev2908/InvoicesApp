@@ -1,7 +1,7 @@
 .root {
   display: none;
 
-  @media (max-width: 375px) {
+  @media (max-width: 1440px) {
     display: block;
     position: static;
   }
@@ -23,18 +23,6 @@
 
         .filter__svg {
           @apply w-[10px] h-[10px] text-blue_0;
-        }
-      }
-
-      .right__add {
-        @apply bg-blue_0 w-[90px] h-[45px] flex justify-center items-center gap-[8px] rounded-full;
-
-        .add__bg {
-          @apply w-fit bg-white p-[10px] rounded-full;
-
-          .bg__svg {
-            @apply text-blue_0 w-[10px] h-[10px];
-          }
         }
       }
     }

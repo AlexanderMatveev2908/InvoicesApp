@@ -1,0 +1,17 @@
+.root {
+  display: none;
+
+  @media (min-width: 768px) and (max-width: 1440px) {
+    display: flex;
+  }
+
+  @apply bg-blue_0 w-[150px] h-[50px] justify-center items-center gap-[8px] rounded-full;
+
+  .root__bg {
+    @apply w-fit bg-white p-[10px] rounded-full;
+
+    .bg__svg {
+      @apply text-blue_0 w-[10px] h-[10px];
+    }
+  }
+}
