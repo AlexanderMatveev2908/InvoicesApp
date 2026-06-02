@@ -1,6 +1,13 @@
 .root {
+  display: none;
+
+  @media (max-width: 375px) {
+    display: flex;
+    position: fixed;
+  }
+
   z-index: 100;
-  @apply fixed top-0 left-0 right-0 h-[72px] flex;
+  @apply top-0 left-0 right-0 h-[72px];
 
   .root__left {
     @apply flex w-full justify-between;

@@ -6,10 +6,11 @@ import { ThemeSlice } from '@/features/theme/slice';
 import { UseStorageSvc } from '@/core/services/use_storage';
 import { UsePlatformSvc } from '@/core/services/use_platform';
 import { ThemeT } from '@/features/theme/reducer';
+import { NavbarMobile } from '@/common/components/mobile/navbar_mobile/navbar-mobile';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Toast, WakeUp],
+  imports: [RouterOutlet, Toast, WakeUp, NavbarMobile],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
