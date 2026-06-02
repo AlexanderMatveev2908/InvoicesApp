@@ -17,14 +17,6 @@
 
     .header__right {
       @apply flex justify-center items-center gap-[16px];
-
-      .right__filter {
-        @apply flex justify-center items-center gap-[12px];
-
-        .filter__svg {
-          @apply w-[10px] h-[10px] text-blue_0;
-        }
-      }
     }
   }
 }

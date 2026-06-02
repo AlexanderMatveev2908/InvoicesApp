@@ -1,0 +1,6 @@
+<button class="root">
+  <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">Filter</span>
+  <div class="root__svg">
+    <ng-container *ngComponentOutlet="SvgArrowDown" />
+  </div>
+</button>
