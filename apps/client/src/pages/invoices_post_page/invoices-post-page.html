@@ -96,7 +96,11 @@
         useTheme.ifDark('text-gray_0', 'text-gray_1'),
       ]"
     >
-      <button type="button" [ngClass]="useTheme.ifDark('bg-blue_3', 'bg-[#F9FAFE]')">
+      <button
+        (click)="resetForm()"
+        type="button"
+        [ngClass]="useTheme.ifDark('bg-blue_3', 'bg-[#F9FAFE]')"
+      >
         <span>Discard</span>
       </button>
 

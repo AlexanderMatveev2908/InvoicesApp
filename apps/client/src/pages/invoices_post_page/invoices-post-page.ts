@@ -121,6 +121,10 @@ export class InvoicesPostPage extends UseInjCtxHk implements OnInit {
     });
   };
 
+  public resetForm(): void {
+    this.form.reset();
+  }
+
   ngOnInit(): void {
     this.useEffect(() => {
       LibRootForm.setupIssues({
