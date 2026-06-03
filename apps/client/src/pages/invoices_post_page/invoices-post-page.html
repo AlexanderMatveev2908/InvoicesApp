@@ -1,0 +1,17 @@
+<div class="root" [ngClass]="useTheme.ifDark('bg-black_0', 'bg-white_0')">
+  <app-go-back-mobile />
+
+  <div class="root__title">
+    <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">New Invoice</span>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="root__form">
+    <div class="form__bill_from">
+      <span class="hd__s text-blue_0">Bill From</span>
+    </div>
+
+    <input type="text" [formControl]="getCtrl('billFromStreet')" />
+
+    <button [type]="'submit'" class="bg-blue-600">click me</button>
+  </form>
+</div>
