@@ -65,4 +65,10 @@ export class InvoicesUiFct {
     name: 'paymentTerm',
     type: 'text',
   };
+
+  public static readonly itemName: TxtInputFormT = {
+    label: 'Item Name',
+    name: 'name',
+    type: 'text',
+  };
 }

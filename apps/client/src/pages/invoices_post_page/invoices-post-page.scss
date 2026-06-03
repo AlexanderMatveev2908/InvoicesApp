@@ -26,5 +26,9 @@
         @apply flex justify-between items-center gap-[23px];
       }
     }
+
+    .form__items_list {
+      @apply mt-[68px];
+    }
   }
 }

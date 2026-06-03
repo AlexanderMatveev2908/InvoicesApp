@@ -42,6 +42,17 @@
       <app-payment-term-input [ctrl]="getCtrl(paymentTerm.name)" />
     </div>
 
+    <div class="form__items_list">
+      <span class="hd__m text-[#777F98]"> Items List </span>
+
+      @for (item of itemsList(); track $index) {
+        <app-txt-form-field-array-input
+          [ctrl]="getItemCtrl($index, 'name')"
+          [txtInput]="itemName"
+        />
+      }
+    </div>
+
     <button [type]="'submit'" class="bg-blue-600">click me</button>
   </form>
 </div>

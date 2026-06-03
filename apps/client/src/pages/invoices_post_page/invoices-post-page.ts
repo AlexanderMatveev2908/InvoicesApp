@@ -4,13 +4,18 @@ import {
   computed,
   inject,
   OnInit,
+  Signal,
   WritableSignal,
 } from '@angular/core';
 import { GoBackMobile } from '@/common/components/mobile/go_back_mobile/go-back-mobile';
 import { UseThemeSvc } from '@/core/services/use_theme';
 import { NgClass } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
-import { InvoiceFormMng, InvoiceFormT } from '@/features/invoices/paperwork/InvoiceFormMng';
+import {
+  InvoiceFormItemT,
+  InvoiceFormMng,
+  InvoiceFormT,
+} from '@/features/invoices/paperwork/InvoiceFormMng';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LibLog } from '@/core/lib/log';
 import { TxtFormInput } from '@/common/components/forms/txt_form_input/txt-form-input';
@@ -22,6 +27,7 @@ import { UseInjCtxHk } from '@/core/hooks/use_inj_ctx';
 import { LibRootForm } from '@/core/lib/forms/root_form';
 import { InvoiceDateInput } from '@/common/components/forms/invoice_date_input/invoice-date-input';
 import { PaymentTermInput } from '@/common/components/forms/payment_term_input/payment-term-input';
+import { TxtFormFieldArrayInput } from '@/common/components/forms/txt_form_field_array_input/txt-form-field-array-input';
 
 @Component({
   selector: 'app-invoices-post-page',
@@ -32,6 +38,7 @@ import { PaymentTermInput } from '@/common/components/forms/payment_term_input/p
     TxtFormInput,
     InvoiceDateInput,
     PaymentTermInput,
+    TxtFormFieldArrayInput,
   ],
   templateUrl: './invoices-post-page.html',
   styleUrl: './invoices-post-page.scss',
@@ -46,6 +53,10 @@ export class InvoicesPostPage extends UseInjCtxHk implements OnInit {
     return this.form.get(name) as FormControl;
   }
 
+  public getItemCtrl(index: number, key: 'name' | 'qty' | 'price'): FormControl {
+    return this.form.get(`itemsList.${index}.${key}`) as FormControl;
+  }
+
   public readonly billFromStreet: TxtInputFormT = InvoicesUiFct.billFromStreet;
   public readonly billFromCity: TxtInputFormT = InvoicesUiFct.billFromCity;
   public readonly billFromZip: TxtInputFormT = InvoicesUiFct.billFromZip;
@@ -58,10 +69,15 @@ export class InvoicesPostPage extends UseInjCtxHk implements OnInit {
   public readonly billToCountry: TxtInputFormT = InvoicesUiFct.billToCountry;
   public readonly invoiceDate: TxtInputFormT = InvoicesUiFct.invoiceDate;
   public readonly paymentTerm: TxtInputFormT = InvoicesUiFct.paymentTerm;
+  public readonly itemName: TxtInputFormT = InvoicesUiFct.itemName;
 
   public readonly data = toSignal(this.form.valueChanges.pipe(startWith(this.form.getRawValue())), {
     initialValue: this.form.getRawValue(),
   });
+
+  public readonly itemsList: Signal<InvoiceFormItemT[]> = computed(
+    () => this.data().itemsList ?? [],
+  );
 
   public readonly submit = (): void => {
     LibRootForm.handleSubmit({
@@ -79,6 +95,8 @@ export class InvoicesPostPage extends UseInjCtxHk implements OnInit {
         form: this.form,
         schema: InvoiceFormMng.schema,
       });
+
+      // console.log(this.itemsList());
     });
   }
 }

@@ -1,0 +1,7 @@
+.root {
+  @apply flex flex-col gap-[10px];
+
+  .root__input {
+    @apply rounded-[5px] px-[20px] py-[15px] outline-none;
+  }
+}

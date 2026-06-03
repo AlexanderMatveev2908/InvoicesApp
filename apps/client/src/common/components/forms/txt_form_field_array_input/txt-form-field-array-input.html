@@ -1,0 +1,17 @@
+<div class="root">
+  <label>
+    <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')">{{
+      txtInput().label
+    }}</span>
+  </label>
+
+  <input
+    [formControl]="ctrl()"
+    [type]="txtInput().type"
+    placeholder="..."
+    class="root__input hd__s"
+    [ngClass]="useTheme.ifDark('bg-blue_2 text-white border-0', 'bg-white text-gray_3 border')"
+  />
+
+  <!-- <span class="bd__m text-red-600">{{ errMsg() }} </span> -->
+</div>
