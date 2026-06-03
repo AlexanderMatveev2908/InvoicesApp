@@ -13,6 +13,7 @@ export class InvoiceFormMng {
     billToCity: z.string().min(3),
     billToZip: z.string().min(3),
     billToCountry: z.string().min(3),
+    invoiceDate: z.string().min(3),
   });
 
   public static readonly form = new FormGroup({
@@ -44,6 +45,9 @@ export class InvoiceFormMng {
       nonNullable: true,
     }),
     billToCountry: new FormControl<string>('', {
+      nonNullable: true,
+    }),
+    invoiceDate: new FormControl<string>(new Date().toISOString().split('T')[0], {
       nonNullable: true,
     }),
   });

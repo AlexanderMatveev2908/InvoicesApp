@@ -55,4 +55,9 @@ export class InvoicesUiFct {
     name: 'billToCountry',
     type: 'text',
   };
+  public static readonly invoiceDate: TxtInputFormT = {
+    label: 'Invoice Date',
+    name: 'invoiceDate',
+    type: 'text',
+  };
 }
