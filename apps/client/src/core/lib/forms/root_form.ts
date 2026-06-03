@@ -2,7 +2,35 @@ import { FormGroup } from '@angular/forms';
 import z, { ZodSafeParseResult } from 'zod';
 
 export class LibRootForm {
-  public static applyIssues<T>({
+  public static setupIssues<T>({
+    data,
+    schema,
+    form,
+  }: {
+    data: T;
+    schema: z.ZodType<T>;
+    form: FormGroup;
+  }): void {
+    const res: ZodSafeParseResult<T> = schema.safeParse(data);
+
+    for (const ctrl of Object.values(form.controls)) {
+      ctrl.setErrors(null);
+    }
+
+    if (res.success) return;
+
+    for (const issue of res.error.issues) {
+      const ctrl = form.get(issue.path.join('.'));
+
+      if (ctrl?.touched || ctrl?.dirty) {
+        ctrl.setErrors({
+          zod: issue.message,
+        });
+      }
+    }
+  }
+
+  private static applyIssues<T>({
     data,
     schema,
     form,
@@ -33,34 +61,6 @@ export class LibRootForm {
     }
 
     return res.error.issues;
-  }
-
-  public static setupIssues<T>({
-    data,
-    schema,
-    form,
-  }: {
-    data: T;
-    schema: z.ZodType<T>;
-    form: FormGroup;
-  }): void {
-    const res: ZodSafeParseResult<T> = schema.safeParse(data);
-
-    for (const ctrl of Object.values(form.controls)) {
-      ctrl.setErrors(null);
-    }
-
-    if (res.success) return;
-
-    for (const issue of res.error.issues) {
-      const ctrl = form.get(issue.path.join('.'));
-
-      if (ctrl?.touched || ctrl?.dirty) {
-        ctrl.setErrors({
-          zod: issue.message,
-        });
-      }
-    }
   }
 
   public static handleSubmit<T>({
