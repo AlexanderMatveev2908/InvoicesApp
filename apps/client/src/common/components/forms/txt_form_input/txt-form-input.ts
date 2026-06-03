@@ -32,19 +32,30 @@ export class TxtFormInput extends UseInjCtxHk implements OnInit {
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
 
   public val: Nullable<Signal<Nullable<string>>> = null;
+  public touched: Nullable<Signal<boolean>> = null;
+
   public readonly errMsg: WritableSignal<Nullable<string>> = signal(null);
 
   ngOnInit(): void {
     this.usePlatform.inGlobalCtx(() => {
-      const ctrl: FormControl = this.ctrl();
+      const c: FormControl = this.ctrl();
 
-      this.val = toSignal(ctrl.valueChanges, {
-        initialValue: ctrl.value,
+      this.val = toSignal(c.valueChanges, {
+        initialValue: c.value,
       });
+
+      this.touched = toSignal(
+        c.statusChanges.pipe(map((_: FormControlStatus) => c.touched || c.dirty)),
+        {
+          initialValue: c.touched || c.dirty,
+        },
+      );
     });
 
     this.useEffect(() => {
       void this.val?.();
+      void this.touched?.();
+
       this.errMsg.set(this.ctrl().errors?.['zod']);
     });
   }
