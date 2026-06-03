@@ -1,0 +1,8 @@
+.root {
+  .root__link {
+    @apply flex justify-start items-center gap-[25px];
+    .link__svg {
+      @apply w-[15px] h-[15px];
+    }
+  }
+}
