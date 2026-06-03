@@ -1,0 +1,62 @@
+.root {
+  @apply w-full min-h-screen pt-[100px] px-[24px];
+
+  .root__go_back {
+    .go_back__link {
+      @apply flex justify-start items-center gap-[25px];
+      .link__svg {
+        @apply w-[15px] h-[15px];
+      }
+    }
+  }
+
+  .root__header {
+    @apply flex justify-between items-center py-[35px] px-[24px] rounded-[8px] mt-[30px];
+
+    .header__status {
+      @apply relative py-[14px] px-[20px] rounded-[8px] overflow-hidden;
+
+      .status__bg {
+        @apply absolute top-0 left-0 w-full h-full opacity-15;
+      }
+    }
+  }
+
+  .root__body {
+    @apply w-full flex flex-col rounded-[8px] mt-[15px] p-[24px];
+
+    .body__header {
+      .header__top {
+        .top__address {
+          @apply flex flex-col mt-[30px];
+        }
+      }
+    }
+
+    .body__content {
+      @apply grid grid-cols-2 mt-[30px] gap-[30px];
+
+      .content__invoice_date,
+      .content__bill_to,
+      .content__payment_due,
+      .content__bill_to_data,
+      .content__sent_to {
+        @apply flex flex-col self-end;
+      }
+    }
+
+    .body__footer {
+      @apply flex flex-col mt-[40px] rounded-[8px] overflow-hidden;
+
+      .footer__item {
+        @apply p-[25px] w-full flex justify-between items-center;
+        .item__left {
+        }
+      }
+
+      .footer__total {
+        @apply p-[25px] flex justify-between items-center;
+      }
+    }
+  }
+}

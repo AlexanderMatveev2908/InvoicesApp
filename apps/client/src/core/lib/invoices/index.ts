@@ -14,7 +14,7 @@ export class LibInvoices {
     }).format(dueDate);
   }
 
-  public static calcTotItems(invoice: InvoiceT): number {
+  public static calcTotItemsInvoice(invoice: InvoiceT): number {
     return invoice.items.reduce((acc, curr) => acc + curr.total, 0);
   }
 }

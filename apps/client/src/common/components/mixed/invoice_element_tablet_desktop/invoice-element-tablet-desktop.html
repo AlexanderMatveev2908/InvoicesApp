@@ -32,9 +32,9 @@
     >
   </div>
 
-  <div class="root__arrow">
+  <a [routerLink]="pathID()" class="root__arrow">
     <div class="arrow__svg">
       <ng-container *ngComponentOutlet="SvgArrow" />
     </div>
-  </div>
+  </a>
 </div>
