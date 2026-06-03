@@ -6,4 +6,10 @@ export class InvoicesUiFct {
     name: 'billFromStreet',
     type: 'text',
   };
+
+  public static readonly billFromCity: TxtInputFormT = {
+    label: 'City',
+    name: 'billFromCity',
+    type: 'text',
+  };
 }

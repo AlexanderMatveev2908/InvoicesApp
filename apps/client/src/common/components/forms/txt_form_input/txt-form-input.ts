@@ -32,6 +32,7 @@ export class TxtFormInput extends UseInjCtxHk implements OnInit {
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
 
   public val: Nullable<Signal<Nullable<string>>> = null;
+  public readonly errMsg: WritableSignal<Nullable<string>> = signal(null);
 
   ngOnInit(): void {
     this.usePlatform.inGlobalCtx(() => {
@@ -43,10 +44,8 @@ export class TxtFormInput extends UseInjCtxHk implements OnInit {
     });
 
     this.useEffect(() => {
-      const value = this.val?.();
-
-      console.log(value);
-      console.log(this.ctrl().errors);
+      void this.val?.();
+      this.errMsg.set(this.ctrl().errors?.['zod']);
     });
   }
 }

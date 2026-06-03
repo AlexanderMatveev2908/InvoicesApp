@@ -1,5 +1,5 @@
 import { FormGroup } from '@angular/forms';
-import z from 'zod';
+import z, { ZodSafeParseResult } from 'zod';
 
 export class LibRootForm {
   public static setupIssues<T>({
@@ -11,7 +11,7 @@ export class LibRootForm {
     schema: z.ZodType<T>;
     form: FormGroup;
   }): z.core.$ZodIssue[] {
-    const res = schema.safeParse(data);
+    const res: ZodSafeParseResult<T> = schema.safeParse(data);
 
     for (const ctrl of Object.values(form.controls)) {
       ctrl.setErrors(null);
@@ -44,7 +44,7 @@ export class LibRootForm {
     form: FormGroup;
     schema: z.ZodType<T>;
     onValid: (data: T) => void;
-    onInvalid?: (issues: z.core.$ZodIssue[]) => void;
+    onInvalid: (issues: z.core.$ZodIssue[]) => void;
   }): void {
     const data: T = form.getRawValue() as T;
 
@@ -55,7 +55,7 @@ export class LibRootForm {
     });
 
     if (issues.length > 0) {
-      onInvalid?.(issues);
+      onInvalid(issues);
       return;
     }
 

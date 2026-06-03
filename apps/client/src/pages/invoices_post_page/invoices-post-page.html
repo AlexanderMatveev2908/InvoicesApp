@@ -10,7 +10,8 @@
       <span class="hd__s text-blue_0">Bill From</span>
     </div>
 
-    <app-txt-form-input [txtInput]="billFromStreet" [ctrl]="getCtrl('billFromStreet')" />
+    <app-txt-form-input [txtInput]="billFromStreet" [ctrl]="getCtrl(billFromStreet.name)" />
+    <app-txt-form-input [txtInput]="billFromCity" [ctrl]="getCtrl(billFromCity.name)" />
 
     <button [type]="'submit'" class="bg-blue-600">click me</button>
   </form>
