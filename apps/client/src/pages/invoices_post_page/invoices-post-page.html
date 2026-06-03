@@ -45,12 +45,25 @@
     <div class="form__items_list">
       <span class="hd__m text-[#777F98]"> Items List </span>
 
-      @for (item of itemsList(); track $index) {
-        <app-txt-form-field-array-input
-          [ctrl]="getItemCtrl($index, 'name')"
-          [txtInput]="itemName"
-        />
-      }
+      <div class="items_list__list">
+        @for (item of itemsList(); track $index) {
+          <app-txt-form-input [ctrl]="getItemCtrl($index, 'name')" [txtInput]="itemName" />
+          <div class="list__row">
+            <app-txt-form-input [ctrl]="getItemCtrl($index, 'qty')" [txtInput]="itemQty" />
+            <app-txt-form-input [ctrl]="getItemCtrl($index, 'price')" [txtInput]="itemPrice" />
+
+            <div class="row__total">
+              <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')"
+                >Total</span
+              >
+
+              <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')">
+                {{ calcTot(item) }}
+              </span>
+            </div>
+          </div>
+        }
+      </div>
     </div>
 
     <button [type]="'submit'" class="bg-blue-600">click me</button>

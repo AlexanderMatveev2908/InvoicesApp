@@ -27,7 +27,7 @@ import { UseInjCtxHk } from '@/core/hooks/use_inj_ctx';
 import { LibRootForm } from '@/core/lib/forms/root_form';
 import { InvoiceDateInput } from '@/common/components/forms/invoice_date_input/invoice-date-input';
 import { PaymentTermInput } from '@/common/components/forms/payment_term_input/payment-term-input';
-import { TxtFormFieldArrayInput } from '@/common/components/forms/txt_form_field_array_input/txt-form-field-array-input';
+import { LibFormat } from '@/core/lib/data_structures/format';
 
 @Component({
   selector: 'app-invoices-post-page',
@@ -38,7 +38,6 @@ import { TxtFormFieldArrayInput } from '@/common/components/forms/txt_form_field
     TxtFormInput,
     InvoiceDateInput,
     PaymentTermInput,
-    TxtFormFieldArrayInput,
   ],
   templateUrl: './invoices-post-page.html',
   styleUrl: './invoices-post-page.scss',
@@ -69,7 +68,10 @@ export class InvoicesPostPage extends UseInjCtxHk implements OnInit {
   public readonly billToCountry: TxtInputFormT = InvoicesUiFct.billToCountry;
   public readonly invoiceDate: TxtInputFormT = InvoicesUiFct.invoiceDate;
   public readonly paymentTerm: TxtInputFormT = InvoicesUiFct.paymentTerm;
+
   public readonly itemName: TxtInputFormT = InvoicesUiFct.itemName;
+  public readonly itemQty: TxtInputFormT = InvoicesUiFct.itemQty;
+  public readonly itemPrice: TxtInputFormT = InvoicesUiFct.itemPrice;
 
   public readonly data = toSignal(this.form.valueChanges.pipe(startWith(this.form.getRawValue())), {
     initialValue: this.form.getRawValue(),
@@ -78,6 +80,12 @@ export class InvoicesPostPage extends UseInjCtxHk implements OnInit {
   public readonly itemsList: Signal<InvoiceFormItemT[]> = computed(
     () => this.data().itemsList ?? [],
   );
+
+  public calcTot(option: InvoiceFormItemT): string {
+    const tot: unknown = +option.price * +option.qty;
+
+    return Number.isFinite(tot) ? LibFormat.formatMoney(tot as number) : 'Unavailable';
+  }
 
   public readonly submit = (): void => {
     LibRootForm.handleSubmit({
@@ -95,8 +103,6 @@ export class InvoicesPostPage extends UseInjCtxHk implements OnInit {
         form: this.form,
         schema: InvoiceFormMng.schema,
       });
-
-      // console.log(this.itemsList());
     });
   }
 }

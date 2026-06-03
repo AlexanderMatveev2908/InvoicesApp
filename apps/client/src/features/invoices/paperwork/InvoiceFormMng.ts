@@ -4,7 +4,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 export type InvoiceFormItemT = {
   name: string;
   qty: number;
-  price: number;
+  price: string;
 };
 
 export class InvoiceFormMng {
@@ -29,8 +29,10 @@ export class InvoiceFormMng {
       .array(
         z.object({
           name: z.string().min(3),
-          qty: z.number().min(1),
-          price: z.number().positive(),
+          qty: z.string().regex(/^[1-9]\d*$/, 'Quantity must be a positive integer'),
+          price: z
+            .string()
+            .regex(/^(0|[1-9]\d*)(\.\d{1,2})?$/, 'Price must have at most 2 decimal places'),
         }),
       )
       .min(1, 'At least one item is required'),
@@ -79,11 +81,11 @@ export class InvoiceFormMng {
           nonNullable: true,
         }),
 
-        qty: new FormControl(1, {
+        qty: new FormControl('', {
           nonNullable: true,
         }),
 
-        price: new FormControl(0, {
+        price: new FormControl('', {
           nonNullable: true,
         }),
       }),

@@ -1,7 +1,11 @@
+:host {
+  @apply block min-w-0 w-full;
+}
+
 .root {
-  @apply flex flex-col gap-[10px];
+  @apply flex flex-col min-w-0 gap-[10px];
 
   .root__input {
-    @apply rounded-[5px] px-[20px] py-[15px] outline-none;
+    @apply rounded-[5px] px-[20px] py-[15px] outline-none min-w-0;
   }
 }

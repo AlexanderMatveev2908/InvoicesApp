@@ -29,6 +29,18 @@
 
     .form__items_list {
       @apply mt-[68px];
+
+      .items_list__list {
+        @apply mt-[22px];
+
+        .list__row {
+          @apply flex justify-between items-start gap-[16px];
+
+          .row__total {
+            @apply flex flex-col gap-[30px];
+          }
+        }
+      }
     }
   }
 }

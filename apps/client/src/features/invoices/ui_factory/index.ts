@@ -71,4 +71,14 @@ export class InvoicesUiFct {
     name: 'name',
     type: 'text',
   };
+  public static readonly itemQty: TxtInputFormT = {
+    label: 'Qty',
+    name: 'qty',
+    type: 'text',
+  };
+  public static readonly itemPrice: TxtInputFormT = {
+    label: 'Price',
+    name: 'price',
+    type: 'text',
+  };
 }
