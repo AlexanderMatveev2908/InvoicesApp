@@ -1,0 +1,43 @@
+<div class="root" [ngClass]="useTheme.ifDark('bg-black_0', 'bg-white_0')">
+  <app-go-back-mobile />
+
+  <div class="root__title">
+    <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">New Invoice</span>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="root__form">
+    <div class="form__bill_from">
+      <span class="hd__s text-blue_0">Bill From</span>
+
+      <div class="bill_from__street">
+        <app-txt-form-input [txtInput]="billFromStreet" [ctrl]="getCtrl(billFromStreet.name)" />
+      </div>
+
+      <div class="bill_from__city_code">
+        <app-txt-form-input [txtInput]="billFromCity" [ctrl]="getCtrl(billFromCity.name)" />
+        <app-txt-form-input [txtInput]="billFromZip" [ctrl]="getCtrl(billFromZip.name)" />
+      </div>
+
+      <app-txt-form-input [txtInput]="billFromCountry" [ctrl]="getCtrl(billFromCountry.name)" />
+    </div>
+
+    <div class="form__bill_to">
+      <span class="hd__s text-blue_0">Bill To</span>
+
+      <app-txt-form-input [txtInput]="billToClientName" [ctrl]="getCtrl(billToClientName.name)" />
+
+      <app-txt-form-input [txtInput]="billToClientMail" [ctrl]="getCtrl(billToClientMail.name)" />
+
+      <app-txt-form-input [txtInput]="billToStreet" [ctrl]="getCtrl(billToStreet.name)" />
+
+      <div class="bill_to__city_code">
+        <app-txt-form-input [txtInput]="billToCity" [ctrl]="getCtrl(billToCity.name)" />
+        <app-txt-form-input [txtInput]="billToZip" [ctrl]="getCtrl(billToZip.name)" />
+      </div>
+
+      <app-txt-form-input [txtInput]="billToCountry" [ctrl]="getCtrl(billToCountry.name)" />
+    </div>
+
+    <button [type]="'submit'" class="bg-blue-600">click me</button>
+  </form>
+</div>

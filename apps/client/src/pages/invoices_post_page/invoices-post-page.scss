@@ -1,0 +1,30 @@
+.root {
+  @apply w-full min-h-screen pt-[100px] px-[24px];
+
+  .root__title {
+    @apply mt-[26px];
+  }
+
+  .root__form {
+    @apply mt-[22px];
+
+    .form__bill_from {
+      @apply flex flex-col gap-[25px];
+
+      .bill_from__street {
+      }
+
+      .bill_from__city_code {
+        @apply flex justify-between items-center gap-[23px];
+      }
+    }
+
+    .form__bill_to {
+      @apply mt-[40px] flex flex-col gap-[25px];
+
+      .bill_to__city_code {
+        @apply flex justify-between items-center gap-[23px];
+      }
+    }
+  }
+}

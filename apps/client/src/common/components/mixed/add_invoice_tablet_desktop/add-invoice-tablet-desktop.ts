@@ -2,10 +2,11 @@ import { SvgT } from '@/common/types/general';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SvgFillPlus } from '../../svgs/fill/plus/plus';
 import { NgComponentOutlet } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-add-invoice-tablet-desktop',
-  imports: [NgComponentOutlet],
+  imports: [NgComponentOutlet, RouterLink],
   templateUrl: './add-invoice-tablet-desktop.html',
   styleUrl: './add-invoice-tablet-desktop.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
