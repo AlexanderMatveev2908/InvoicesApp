@@ -9,8 +9,8 @@ import {
 } from '@angular/core';
 import { GoBackMobile } from '@/common/components/mobile/go_back_mobile/go-back-mobile';
 import { UseThemeSvc } from '@/core/services/use_theme';
-import { NgClass } from '@angular/common';
-import { FormControl, FormGroup } from '@angular/forms';
+import { NgClass, NgComponentOutlet } from '@angular/common';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import {
   InvoiceFormItemT,
   InvoiceFormMng,
@@ -28,6 +28,8 @@ import { LibRootForm } from '@/core/lib/forms/root_form';
 import { InvoiceDateInput } from '@/common/components/forms/invoice_date_input/invoice-date-input';
 import { PaymentTermInput } from '@/common/components/forms/payment_term_input/payment-term-input';
 import { LibFormat } from '@/core/lib/data_structures/format';
+import { SvgT } from '@/common/types/general';
+import { SvgAdvTrash } from '@/common/components/svgs/advanced/trash/trash';
 
 @Component({
   selector: 'app-invoices-post-page',
@@ -38,6 +40,7 @@ import { LibFormat } from '@/core/lib/data_structures/format';
     TxtFormInput,
     InvoiceDateInput,
     PaymentTermInput,
+    NgComponentOutlet,
   ],
   templateUrl: './invoices-post-page.html',
   styleUrl: './invoices-post-page.scss',
@@ -55,6 +58,8 @@ export class InvoicesPostPage extends UseInjCtxHk implements OnInit {
   public getItemCtrl(index: number, key: 'name' | 'qty' | 'price'): FormControl {
     return this.form.get(`itemsList.${index}.${key}`) as FormControl;
   }
+
+  public readonly SvgTrash: SvgT = SvgAdvTrash;
 
   public readonly billFromStreet: TxtInputFormT = InvoicesUiFct.billFromStreet;
   public readonly billFromCity: TxtInputFormT = InvoicesUiFct.billFromCity;
@@ -85,6 +90,22 @@ export class InvoicesPostPage extends UseInjCtxHk implements OnInit {
     const tot: unknown = +option.price * +option.qty;
 
     return Number.isFinite(tot) ? LibFormat.formatMoney(tot as number) : 'Unavailable';
+  }
+
+  public addItemToList(): void {
+    (this.form.controls['itemsList'] as FormArray).push(
+      new FormGroup({
+        name: new FormControl('', {
+          nonNullable: true,
+        }),
+        qty: new FormControl(1, {
+          nonNullable: true,
+        }),
+        price: new FormControl('', {
+          nonNullable: true,
+        }),
+      }),
+    );
   }
 
   public readonly submit = (): void => {

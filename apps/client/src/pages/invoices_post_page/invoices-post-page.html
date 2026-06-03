@@ -49,21 +49,44 @@
         @for (item of itemsList(); track $index) {
           <app-txt-form-input [ctrl]="getItemCtrl($index, 'name')" [txtInput]="itemName" />
           <div class="list__row">
-            <app-txt-form-input [ctrl]="getItemCtrl($index, 'qty')" [txtInput]="itemQty" />
-            <app-txt-form-input [ctrl]="getItemCtrl($index, 'price')" [txtInput]="itemPrice" />
+            <div class="row__left">
+              <app-txt-form-input [ctrl]="getItemCtrl($index, 'qty')" [txtInput]="itemQty" />
+              <app-txt-form-input [ctrl]="getItemCtrl($index, 'price')" [txtInput]="itemPrice" />
 
-            <div class="row__total">
-              <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')"
-                >Total</span
-              >
+              <div class="left__total">
+                <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')"
+                  >Total</span
+                >
 
-              <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')">
-                {{ calcTot(item) }}
-              </span>
+                <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')">
+                  {{ calcTot(item) }}
+                </span>
+              </div>
             </div>
+
+            @if ($index) {
+              <button class="row__trash">
+                <div class="trash__svg">
+                  <ng-container *ngComponentOutlet="SvgTrash" />
+                </div>
+              </button>
+            }
           </div>
         }
       </div>
+    </div>
+
+    <div class="form__add_item">
+      <button
+        (click)="addItemToList()"
+        type="button"
+        class="add_item__btn"
+        [ngClass]="useTheme.ifDark('bg-blue_3', 'bg-[#F9FAFE]')"
+      >
+        <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')"
+          >+ Add New Item</span
+        >
+      </button>
     </div>
 
     <button [type]="'submit'" class="bg-blue-600">click me</button>
