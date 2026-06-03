@@ -6,26 +6,34 @@
   </label>
 
   <div class="root__input" [ngClass]="useTheme.ifDark('bg-blue_2 border-0', 'bg-white border')">
-    <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{
-      val?.()
-    }}</span>
+    <button (click)="toggle()" type="button" class="input__btn">
+      <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{
+        val?.()
+      }}</span>
 
-    <div class="input__svg">
-      <ng-container *ngComponentOutlet="SvgArrow" />
-    </div>
+      <div class="btn__svg" [style.rotate]="isVisible() ? '180deg' : '0deg'">
+        <ng-container *ngComponentOutlet="SvgArrow" />
+      </div>
+    </button>
 
-    <div class="input__options">
+    <div
+      class="input__options"
+      [style.display]="isVisible() ? 'flex' : 'none'"
+      [ngClass]="isVisible() ? ' pointer-events-auto' : 'pointer-events-none'"
+    >
       @for (opt of options; track opt.id) {
-        <span
-          class="hd__s last:border-b-0 border-b px-[24px] py-[15px]"
+        <button
+          (click)="handleChange(opt.val)"
+          type="button"
           [ngClass]="
             useTheme.ifDark(
               'text-white bg-blue_2 border-black_0',
               'text-gray_3 bg-white border-gray-300'
             )
           "
-          >{{ opt.val }}</span
         >
+          <span class="hd__s">{{ opt.val }}</span>
+        </button>
       }
     </div>
   </div>
