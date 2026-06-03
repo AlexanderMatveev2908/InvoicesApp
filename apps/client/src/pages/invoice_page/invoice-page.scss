@@ -21,4 +21,25 @@
       }
     }
   }
+
+  .root__body {
+    @apply w-full flex flex-col rounded-[8px] mt-[15px] p-[24px];
+
+    .body__header {
+      .header__top {
+        .top__address {
+          @apply flex flex-col mt-[30px];
+        }
+      }
+    }
+
+    .body__content {
+      @apply grid grid-cols-2 mt-[30px];
+
+      .content__invoice_date,
+      .content__bill_to {
+        @apply flex flex-col;
+      }
+    }
+  }
 }
