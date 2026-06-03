@@ -58,6 +58,37 @@
           currInvoice()?.billTo?.clientName
         }}</span>
       </div>
+
+      <div class="content__payment_due">
+        <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_0', 'text-gray_2')"
+          >Payment Due</span
+        >
+        <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{
+          paymentDue()
+        }}</span>
+      </div>
+
+      <div class="content__bill_to_data">
+        <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_0', 'text-gray_2')">{{
+          currInvoice()?.billTo?.street
+        }}</span>
+        <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_0', 'text-gray_2')">{{
+          currInvoice()?.billTo?.city
+        }}</span>
+        <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_0', 'text-gray_2')">{{
+          currInvoice()?.billTo?.zip
+        }}</span>
+        <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_0', 'text-gray_2')">{{
+          currInvoice()?.billTo?.country
+        }}</span>
+      </div>
+
+      <div class="content__sent_to">
+        <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_0', 'text-gray_2')">Sent To</span>
+        <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{
+          currInvoice()?.billTo?.clientMail
+        }}</span>
+      </div>
     </div>
   </div>
 </div>

@@ -3,6 +3,7 @@ import { Optional, SvgT } from '@/common/types/general';
 import { InvoiceT } from '@/common/types/invoices';
 import { UseMetaStatusDir } from '@/core/directives/use_meta_status_dir';
 import { LibFormat } from '@/core/lib/data_structures/format';
+import { LibInvoices } from '@/core/lib/invoices';
 import { LibLog } from '@/core/lib/log';
 import { UseNavSvc } from '@/core/services/use_nav';
 import { mockInvoices } from '@/mock/data';
@@ -35,6 +36,10 @@ export class InvoicePage extends UseMetaStatusDir implements OnInit {
 
   public formatDate(): string {
     return LibFormat.formatDate(this.currInvoice()?.date!);
+  }
+
+  public paymentDue(): string {
+    return LibInvoices.calcDuePayment(this.currInvoice()?.date!, this.currInvoice()?.paymentTerm!);
   }
 
   ngOnInit(): void {
