@@ -1,5 +1,11 @@
 import z from 'zod';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+
+export type InvoiceFormItemT = {
+  name: string;
+  qty: number;
+  price: string;
+};
 
 export class InvoiceFormMng {
   public static readonly schema = z.object({
@@ -14,7 +20,22 @@ export class InvoiceFormMng {
     billToZip: z.string().min(3),
     billToCountry: z.string().min(3),
     invoiceDate: z.string().min(3),
-    paymentTerm: z.string().min(3),
+    paymentTerm: z
+      .string()
+      .min(3)
+      .refine((val) => val !== 'Chose Term', 'Chose Payment method'),
+
+    itemsList: z
+      .array(
+        z.object({
+          name: z.string().min(3),
+          qty: z.string().regex(/^[1-9]\d*$/, 'Quantity must be a positive integer'),
+          price: z
+            .string()
+            .regex(/^(0|[1-9]\d*)(\.\d{1,2})?$/, 'Price must have at most 2 decimal places'),
+        }),
+      )
+      .min(1, 'At least one item is required'),
   });
 
   public static readonly form = new FormGroup({
@@ -54,6 +75,21 @@ export class InvoiceFormMng {
     paymentTerm: new FormControl<string>('Chose Term', {
       nonNullable: true,
     }),
+    itemsList: new FormArray([
+      new FormGroup({
+        name: new FormControl('', {
+          nonNullable: true,
+        }),
+
+        qty: new FormControl('', {
+          nonNullable: true,
+        }),
+
+        price: new FormControl('', {
+          nonNullable: true,
+        }),
+      }),
+    ]),
   });
 }
 
