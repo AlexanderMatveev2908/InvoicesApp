@@ -1,0 +1,34 @@
+<div class="root">
+  <label>
+    <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')">
+      Payment Term
+    </span>
+  </label>
+
+  <div class="root__input" [ngClass]="useTheme.ifDark('bg-blue_2 border-0', 'bg-white border')">
+    <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{
+      val?.()
+    }}</span>
+
+    <div class="input__svg">
+      <ng-container *ngComponentOutlet="SvgArrow" />
+    </div>
+
+    <div class="input__options">
+      @for (opt of options; track opt.id) {
+        <span
+          class="hd__s last:border-b-0 border-b px-[24px] py-[15px]"
+          [ngClass]="
+            useTheme.ifDark(
+              'text-white bg-blue_2 border-black_0',
+              'text-gray_3 bg-white border-gray-300'
+            )
+          "
+          >{{ opt.val }}</span
+        >
+      }
+    </div>
+  </div>
+
+  <span class="bd__m text-red-600">{{ errMsg() }} </span>
+</div>

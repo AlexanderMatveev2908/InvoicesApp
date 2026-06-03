@@ -1,0 +1,14 @@
+.root {
+  @apply flex flex-col gap-[10px];
+
+  .root__input {
+    @apply flex justify-between items-center rounded-[8px] py-[15px] px-[20px] relative;
+
+    .input__svg {
+      @apply w-[10px] h-[10px];
+    }
+    .input__options {
+      @apply absolute top-[125%] left-0 flex flex-col z-50 w-full h-full rounded-[8px];
+    }
+  }
+}

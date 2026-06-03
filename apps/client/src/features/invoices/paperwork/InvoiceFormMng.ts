@@ -14,6 +14,7 @@ export class InvoiceFormMng {
     billToZip: z.string().min(3),
     billToCountry: z.string().min(3),
     invoiceDate: z.string().min(3),
+    paymentTerm: z.string().min(3),
   });
 
   public static readonly form = new FormGroup({
@@ -48,6 +49,9 @@ export class InvoiceFormMng {
       nonNullable: true,
     }),
     invoiceDate: new FormControl<string>(new Date().toISOString().split('T')[0], {
+      nonNullable: true,
+    }),
+    paymentTerm: new FormControl<string>('Chose Term', {
       nonNullable: true,
     }),
   });

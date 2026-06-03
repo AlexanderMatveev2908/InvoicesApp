@@ -21,10 +21,18 @@ import { startWith } from 'rxjs';
 import { UseInjCtxHk } from '@/core/hooks/use_inj_ctx';
 import { LibRootForm } from '@/core/lib/forms/root_form';
 import { InvoiceDateInput } from '@/common/components/forms/invoice_date_input/invoice-date-input';
+import { PaymentTermInput } from '@/common/components/forms/payment_term_input/payment-term-input';
 
 @Component({
   selector: 'app-invoices-post-page',
-  imports: [GoBackMobile, NgClass, ReactiveFormsModule, TxtFormInput, InvoiceDateInput],
+  imports: [
+    GoBackMobile,
+    NgClass,
+    ReactiveFormsModule,
+    TxtFormInput,
+    InvoiceDateInput,
+    PaymentTermInput,
+  ],
   templateUrl: './invoices-post-page.html',
   styleUrl: './invoices-post-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -49,6 +57,7 @@ export class InvoicesPostPage extends UseInjCtxHk implements OnInit {
   public readonly billToZip: TxtInputFormT = InvoicesUiFct.billToZip;
   public readonly billToCountry: TxtInputFormT = InvoicesUiFct.billToCountry;
   public readonly invoiceDate: TxtInputFormT = InvoicesUiFct.invoiceDate;
+  public readonly paymentTerm: TxtInputFormT = InvoicesUiFct.paymentTerm;
 
   public readonly data = toSignal(this.form.valueChanges.pipe(startWith(this.form.getRawValue())), {
     initialValue: this.form.getRawValue(),

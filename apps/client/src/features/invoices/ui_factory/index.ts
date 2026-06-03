@@ -60,4 +60,9 @@ export class InvoicesUiFct {
     name: 'invoiceDate',
     type: 'text',
   };
+  public static readonly paymentTerm: TxtInputFormT = {
+    label: 'Payment Term',
+    name: 'paymentTerm',
+    type: 'text',
+  };
 }
