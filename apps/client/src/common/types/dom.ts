@@ -8,3 +8,9 @@ export type ElDomT = OrNone<HTMLElement>;
 export type RefDomT = Optional<ElementRef<HTMLElement>>;
 
 export type RefTemplateT = Optional<TemplateRef<unknown>>;
+
+export interface TxtInputFormT {
+  name: string;
+  label: string;
+  type: string;
+}
