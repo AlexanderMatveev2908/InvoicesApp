@@ -65,7 +65,7 @@
             </div>
 
             @if ($index) {
-              <button class="row__trash">
+              <button (click)="removeItemFromList($index)" type="button" class="row__trash">
                 <div class="trash__svg">
                   <ng-container *ngComponentOutlet="SvgTrash" />
                 </div>
@@ -89,6 +89,24 @@
       </button>
     </div>
 
-    <button [type]="'submit'" class="bg-blue-600">click me</button>
+    <div
+      class="form__footer hd__s"
+      [ngClass]="[
+        useTheme.ifDark('bg-blue_2', 'bg-white'),
+        useTheme.ifDark('text-gray_0', 'text-gray_1'),
+      ]"
+    >
+      <button type="button" [ngClass]="useTheme.ifDark('bg-blue_3', 'bg-[#F9FAFE]')">
+        <span>Discard</span>
+      </button>
+
+      <button type="button" [ngClass]="useTheme.ifDark('bg-blue__light', 'bg-blue__light')">
+        <span>Save As Draft</span>
+      </button>
+
+      <button type="submit" class="bg-blue_0 text-white">
+        <span>Save & Send</span>
+      </button>
+    </div>
   </form>
 </div>

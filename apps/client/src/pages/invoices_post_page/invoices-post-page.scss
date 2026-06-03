@@ -1,5 +1,5 @@
 .root {
-  @apply w-full h-full min-h-screen pt-[100px] pb-[400px] px-[24px];
+  @apply w-full h-full min-h-screen pt-[100px] px-[24px];
 
   .root__title {
     @apply mt-[26px];
@@ -60,6 +60,14 @@
 
       .add_item__btn {
         @apply rounded-full px-[100px] py-[15px] flex justify-center items-center;
+      }
+    }
+
+    .form__footer {
+      @apply px-[24px] py-[21px] mt-[88px] -ml-[24px] -mr-[24px] flex justify-center items-center gap-[10px];
+
+      button {
+        @apply py-[15px] px-[25px] rounded-full;
       }
     }
   }

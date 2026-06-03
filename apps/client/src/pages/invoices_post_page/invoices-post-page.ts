@@ -108,6 +108,10 @@ export class InvoicesPostPage extends UseInjCtxHk implements OnInit {
     );
   }
 
+  public removeItemFromList(index: number): void {
+    (this.form.controls['itemsList'] as FormArray).removeAt(index);
+  }
+
   public readonly submit = (): void => {
     LibRootForm.handleSubmit({
       form: this.form,
