@@ -39,6 +39,14 @@ export class InvoicesPostPage extends UseInjCtxHk implements OnInit {
 
   public readonly billFromStreet: TxtInputFormT = InvoicesUiFct.billFromStreet;
   public readonly billFromCity: TxtInputFormT = InvoicesUiFct.billFromCity;
+  public readonly billFromZip: TxtInputFormT = InvoicesUiFct.billFromZip;
+  public readonly billFromCountry: TxtInputFormT = InvoicesUiFct.billFromCountry;
+  public readonly billToClientName: TxtInputFormT = InvoicesUiFct.billToClientName;
+  public readonly billToClientMail: TxtInputFormT = InvoicesUiFct.billToClientMail;
+  public readonly billToStreet: TxtInputFormT = InvoicesUiFct.billToStreet;
+  public readonly billToCity: TxtInputFormT = InvoicesUiFct.billToCity;
+  public readonly billToZip: TxtInputFormT = InvoicesUiFct.billToZip;
+  public readonly billToCountry: TxtInputFormT = InvoicesUiFct.billToCountry;
 
   public readonly data = toSignal(this.form.valueChanges.pipe(startWith(this.form.getRawValue())), {
     initialValue: this.form.getRawValue(),
