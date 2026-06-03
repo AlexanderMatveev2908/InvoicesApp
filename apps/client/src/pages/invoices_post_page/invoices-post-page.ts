@@ -44,16 +44,12 @@ export class InvoicesPostPage extends UseInjCtxHk implements OnInit {
   });
 
   public readonly submit = (): void => {
-    const data = this.form.getRawValue();
-    const res = InvoiceFormMng.schema.safeParse(data);
-
-    if (!res.success) {
-      LibLog.main('form error', res.error.issues);
-      this.form.markAllAsTouched();
-      return;
-    }
-
-    LibLog.main('form ok', res.data);
+    LibRootForm.handleSubmit({
+      form: this.form,
+      schema: InvoiceFormMng.schema,
+      onValid: (data) => LibLog.main('success', data),
+      onInvalid: (issues) => LibLog.main('invalid', issues),
+    });
   };
 
   ngOnInit(): void {

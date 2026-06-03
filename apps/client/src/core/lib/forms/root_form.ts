@@ -10,30 +10,55 @@ export class LibRootForm {
     data: T;
     schema: z.ZodType<T>;
     form: FormGroup;
-  }): void {
+  }): z.core.$ZodIssue[] {
     const res = schema.safeParse(data);
 
     for (const ctrl of Object.values(form.controls)) {
       ctrl.setErrors(null);
     }
 
-    if (!res.success) {
-      for (const issue of res.error.issues) {
-        const ctrl = form.get(issue.path.join('.'));
+    if (res.success) return [];
 
-        ctrl?.setErrors({
-          zod: issue.message,
-        });
+    form.markAllAsTouched();
 
-        ctrl?.markAsDirty();
-        ctrl?.markAsTouched();
-      }
+    for (const issue of res.error.issues) {
+      const ctrl = form.get(issue.path.join('.'));
 
+      ctrl?.setErrors({
+        zod: issue.message,
+      });
+
+      ctrl?.markAsDirty();
+      ctrl?.markAsTouched();
+    }
+
+    return res.error.issues;
+  }
+
+  public static handleSubmit<T>({
+    form,
+    schema,
+    onValid,
+    onInvalid,
+  }: {
+    form: FormGroup;
+    schema: z.ZodType<T>;
+    onValid: (data: T) => void;
+    onInvalid?: (issues: z.core.$ZodIssue[]) => void;
+  }): void {
+    const data: T = form.getRawValue() as T;
+
+    const issues: z.core.$ZodIssue[] = this.setupIssues({
+      data,
+      schema,
+      form,
+    });
+
+    if (issues.length > 0) {
+      onInvalid?.(issues);
       return;
     }
 
-    for (const ctrl of Object.values(form.controls)) {
-      ctrl.setErrors(null);
-    }
+    onValid(data);
   }
 }
