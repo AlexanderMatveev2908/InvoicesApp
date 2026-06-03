@@ -1,0 +1,8 @@
+<div class="root">
+  <a [routerLink]="'/'" class="root__link">
+    <div class="link__svg">
+      <ng-container *ngComponentOutlet="SvgArrow" />
+    </div>
+    <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-black_0')">Go Back</span>
+  </a>
+</div>

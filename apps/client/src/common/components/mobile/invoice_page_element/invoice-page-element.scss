@@ -1,15 +1,6 @@
 .root {
   @apply w-full min-h-screen pt-[100px] px-[24px];
 
-  .root__go_back {
-    .go_back__link {
-      @apply flex justify-start items-center gap-[25px];
-      .link__svg {
-        @apply w-[15px] h-[15px];
-      }
-    }
-  }
-
   .root__header {
     @apply flex justify-between items-center py-[35px] px-[24px] rounded-[8px] mt-[30px];
 

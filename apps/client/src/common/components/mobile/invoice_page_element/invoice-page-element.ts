@@ -1,33 +1,20 @@
-import { UseNavSvc } from '@/core/services/use_nav';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  inject,
-  input,
-  InputSignal,
-  Signal,
-} from '@angular/core';
-import { SvgAdvArrowLeft } from '../../svgs/advanced/arrow_left/arrow-left';
-import { Optional, SvgT } from '@/common/types/general';
+import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
+import { Optional } from '@/common/types/general';
 import { InvoiceT } from '@/common/types/invoices';
 import { LibFormat } from '@/core/lib/data_structures/format';
 import { LibInvoices } from '@/core/lib/invoices';
-import { UseThemeSvc } from '@/core/services/use_theme';
-import { NgClass, NgComponentOutlet } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { NgClass } from '@angular/common';
 import { UseMetaStatusDir } from '@/core/directives/use_meta_status_dir';
+import { GoBackMobile } from '../go_back_mobile/go-back-mobile';
 
 @Component({
   selector: 'app-invoice-page-element',
-  imports: [NgComponentOutlet, NgClass, RouterLink],
+  imports: [NgClass, GoBackMobile],
   templateUrl: './invoice-page-element.html',
   styleUrl: './invoice-page-element.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InvoicePageElement extends UseMetaStatusDir {
-  public readonly SvgArrow: SvgT = SvgAdvArrowLeft;
-
   public readonly currInvoice: InputSignal<Optional<InvoiceT>> = input.required();
 
   public formatDate(): string {
