@@ -24,6 +24,7 @@ export class InvoiceFormMng {
       .string()
       .min(3)
       .refine((val) => val !== 'Chose Term', 'Chose Payment method'),
+    description: z.string().min(3),
 
     itemsList: z
       .array(
@@ -74,6 +75,9 @@ export class InvoiceFormMng {
         nonNullable: true,
       }),
       paymentTerm: new FormControl<string>('Chose Term', {
+        nonNullable: true,
+      }),
+      description: new FormControl<string>('', {
         nonNullable: true,
       }),
       itemsList: new FormArray([

@@ -17,8 +17,6 @@ export class UseInvoicesApiSvc {
       status: 'PENDING',
     };
 
-    return this.useAoi.post(
-      LibApiArgs.withURL('/invoices').body(bodyData).toastOnFulfilled().pushOnErr(),
-    );
+    return this.useAoi.post(LibApiArgs.withURL('/invoices').body(bodyData).toastOnFulfilled());
   }
 }

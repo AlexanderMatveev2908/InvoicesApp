@@ -76,6 +76,7 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
   public readonly billToCountry: TxtInputFormT = InvoicesUiFct.billToCountry;
   public readonly invoiceDate: TxtInputFormT = InvoicesUiFct.invoiceDate;
   public readonly paymentTerm: TxtInputFormT = InvoicesUiFct.paymentTerm;
+  public readonly description: TxtInputFormT = InvoicesUiFct.description;
 
   public readonly itemName: TxtInputFormT = InvoicesUiFct.itemName;
   public readonly itemQty: TxtInputFormT = InvoicesUiFct.itemQty;
