@@ -1,7 +1,6 @@
 import { Optional } from '@/common/types/general';
 import { InvoiceT } from '@/common/types/invoices';
 import { UseNavSvc } from '@/core/services/use_nav';
-import { mockInvoices } from '@/mock/data';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -13,6 +12,7 @@ import {
 } from '@angular/core';
 import { InvoicePageElementMobile } from '@/common/components/mobile/invoice_page_element_mobile/invoice-page-element-mobile';
 import { Popup } from '@/common/components/popup/popup';
+import { InvoicesSlice } from '@/features/invoices/slice';
 
 @Component({
   selector: 'app-invoice-page',
@@ -23,6 +23,7 @@ import { Popup } from '@/common/components/popup/popup';
 })
 export class InvoicePage {
   private readonly useNav: UseNavSvc = inject(UseNavSvc);
+  public readonly invoicesSLice: InvoicesSlice = inject(InvoicesSlice);
 
   public readonly isPop: WritableSignal<boolean> = signal(false);
 
@@ -32,7 +33,7 @@ export class InvoicePage {
 
   public readonly descriptionDelete: Signal<string> = computed(
     () =>
-      `Are you sure you want to delete invoice #${this.currInvoice()?.clientID}? This action cannot be undone.`,
+      `Are you sure you want to delete invoice #${this.currInvoice()?.clientId}? This action cannot be undone.`,
   );
 
   public readonly deleteCb = (): void => {
@@ -40,6 +41,8 @@ export class InvoicePage {
   };
 
   public readonly currInvoice: Signal<Optional<InvoiceT>> = computed(() =>
-    mockInvoices.find((el: InvoiceT) => el.id === this.useNav.pathVariables()?.['invoiceID']),
+    this.invoicesSLice
+      .invoices()
+      .find((el: InvoiceT) => el.id === this.useNav.pathVariables()?.['invoiceID']),
   );
 }

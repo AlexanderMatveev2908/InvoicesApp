@@ -137,19 +137,19 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
     const inv: InvoiceT = this.currInvoice() as InvoiceT;
 
     this.form.patchValue({
-      billFromStreet: inv.billFrom.street,
-      billFromCity: inv.billFrom.city,
-      billFromZip: inv.billFrom.zip,
-      billFromCountry: inv.billFrom.country,
+      billFromStreet: inv.billFromStreet,
+      billFromCity: inv.billFromCity,
+      billFromZip: inv.billFromZip,
+      billFromCountry: inv.billFromCountry,
 
-      billToClientName: inv.billTo.clientName,
-      billToClientMail: inv.billTo.clientMail,
-      billToStreet: inv.billTo.street,
-      billToCity: inv.billTo.city,
-      billToZip: inv.billTo.zip,
-      billToCountry: inv.billTo.country,
+      billToClientName: inv.billToClientName,
+      billToClientMail: inv.billToClientMail,
+      billToStreet: inv.billToStreet,
+      billToCity: inv.billToCity,
+      billToZip: inv.billToZip,
+      billToCountry: inv.billToCountry,
 
-      invoiceDate: inv.date,
+      invoiceDate: inv.invoiceDate,
       paymentTerm: inv.paymentTerm,
     });
 

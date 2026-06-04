@@ -11,9 +11,9 @@ import { NgClass } from '@angular/common';
 import { InvoicesFormMobile } from '@/features/invoices/forms/invoices_form_mobile/invoices-form-mobile';
 import { UseThemeSvc } from '@/core/services/use_theme';
 import { UseNavSvc } from '@/core/services/use_nav';
-import { mockInvoices } from '@/mock/data';
 import { InvoiceT } from '@/common/types/invoices';
 import { Optional } from '@/common/types/general';
+import { InvoicesSlice } from '@/features/invoices/slice';
 
 @Component({
   selector: 'app-invoices-put-page',
@@ -25,8 +25,11 @@ import { Optional } from '@/common/types/general';
 export class InvoicesPutPage {
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
   public readonly useNav: UseNavSvc = inject(UseNavSvc);
+  public readonly invoicesSlice: InvoicesSlice = inject(InvoicesSlice);
 
   public readonly currInvoice: Signal<Optional<InvoiceT>> = computed(() =>
-    mockInvoices.find((el: InvoiceT) => el.id === this.useNav.pathVariables()?.['invoiceID']),
+    this.invoicesSlice
+      .invoices()
+      .find((el: InvoiceT) => el.id === this.useNav.pathVariables()?.['invoiceID']),
   );
 }

@@ -3,13 +3,13 @@
     <div class="header__left">
       <span class="hd__s text-gray_2">#</span>
       <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{
-        inv().clientID
+        inv().clientId
       }}</span>
     </div>
 
     <div class="header__right">
       <span class="bd__m" [ngClass]="useTheme.ifDark('text-white', 'text-[#858BB2]')">
-        {{ inv().billTo.clientName }}
+        {{ inv().billToClientName }}
       </span>
     </div>
   </div>

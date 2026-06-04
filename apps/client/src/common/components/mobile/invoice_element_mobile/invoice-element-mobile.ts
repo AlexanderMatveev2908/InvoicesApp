@@ -24,7 +24,7 @@ export class InvoiceElementMobile extends UseMetaStatusDir {
   public readonly inv: InputSignal<InvoiceT> = input.required();
 
   public calcDueDate(invoice: InvoiceT): string {
-    return `Due ${LibInvoices.calcDuePayment(invoice.date, invoice.paymentTerm)}`;
+    return `Due ${LibInvoices.calcDuePayment(invoice.invoiceDate, invoice.paymentTerm)}`;
   }
 
   public calcTotItems(invoice: InvoiceT): string {
