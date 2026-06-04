@@ -51,7 +51,7 @@ interface BaseResT {
   status: number;
 }
 
-export type ResApiT<T> = T extends void ? BaseResT : BaseResT & T;
+export type ResApiT<T> = T extends void ? BaseResT : BaseResT & { data: T };
 
 export interface ErrApiT<T> extends HttpErrorResponse {
   error: ResApiT<T>;
@@ -60,3 +60,7 @@ export interface ErrApiT<T> extends HttpErrorResponse {
 export type ObsResT<T> = Observable<ResApiT<T>>;
 
 export type ObsOnOkT<T> = Observable<ResApiT<T> | never>;
+
+export enum SsrKeyT {
+  INVOICES = 'INVOICES',
+}

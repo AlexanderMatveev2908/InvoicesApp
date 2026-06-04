@@ -18,4 +18,10 @@ export class InvoicesSlice extends UseKitSliceSvc {
   public refreshKey(): void {
     this.store.dispatch(InvoicesActT.REFRESH_KEY());
   }
+
+  public getRefetchKey: Signal<number> = computed(() => this.invoicesState().refreshKey);
+
+  public setInvoices(invoices: InvoiceT[]): void {
+    this.store.dispatch(InvoicesActT.SET_INVOICES({ invoices }));
+  }
 }

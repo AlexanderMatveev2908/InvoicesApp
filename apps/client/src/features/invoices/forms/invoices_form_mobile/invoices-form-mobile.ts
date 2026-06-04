@@ -164,13 +164,14 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
       billToZip: inv.billToZip,
       billToCountry: inv.billToCountry,
 
+      description: inv.description,
       invoiceDate: inv.invoiceDate,
       paymentTerm: inv.paymentTerm,
     });
 
     (this.form.controls['itemsList'] as FormArray).clear();
 
-    for (const item of inv.items) {
+    for (const item of inv.itemsList) {
       (this.form.controls['itemsList'] as FormArray).push(
         new FormGroup({
           name: new FormControl(item.name, { nonNullable: true }),

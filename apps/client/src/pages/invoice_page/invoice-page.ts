@@ -6,6 +6,7 @@ import {
   Component,
   computed,
   inject,
+  OnInit,
   signal,
   Signal,
   WritableSignal,
@@ -13,15 +14,16 @@ import {
 import { InvoicePageElementMobile } from '@/common/components/mobile/invoice_page_element_mobile/invoice-page-element-mobile';
 import { Popup } from '@/common/components/popup/popup';
 import { InvoicesSlice } from '@/features/invoices/slice';
+import { PageWrapper } from '@/common/components/hoc/page_wrapper/page-wrapper';
 
 @Component({
   selector: 'app-invoice-page',
-  imports: [InvoicePageElementMobile, Popup],
+  imports: [InvoicePageElementMobile, Popup, PageWrapper],
   templateUrl: './invoice-page.html',
   styleUrl: './invoice-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InvoicePage {
+export class InvoicePage implements OnInit {
   private readonly useNav: UseNavSvc = inject(UseNavSvc);
   public readonly invoicesSLice: InvoicesSlice = inject(InvoicesSlice);
 
@@ -43,6 +45,8 @@ export class InvoicePage {
   public readonly currInvoice: Signal<Optional<InvoiceT>> = computed(() =>
     this.invoicesSLice
       .invoices()
-      .find((el: InvoiceT) => el.id === this.useNav.pathVariables()?.['invoiceID']),
+      .find((el: InvoiceT) => el.id === +this.useNav.pathVariables()?.['invoiceID']),
   );
+
+  ngOnInit(): void {}
 }

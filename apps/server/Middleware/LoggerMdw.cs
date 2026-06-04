@@ -70,22 +70,27 @@ public static class LoggerMdw
 
   private static async Task<List<object>> ReadExistingLogs(string logFilePath)
   {
-    List<object> logs = [];
+    if (!File.Exists(logFilePath))
+      return [];
 
-    if (File.Exists(logFilePath))
+    string existingJson = await File.ReadAllTextAsync(logFilePath);
+
+    if (string.IsNullOrWhiteSpace(existingJson))
+      return [];
+
+    try
     {
-      string existingJson =
-          await File.ReadAllTextAsync(logFilePath);
-
-      if (!string.IsNullOrWhiteSpace(existingJson))
-      {
-        logs = JsonParserLib.Parse<List<object>>(existingJson) ?? [];
-      }
+      return JsonParserLib.Parse<List<object>>(existingJson) ?? [];
     }
+    catch
+    {
+      string backupPath = $"{logFilePath}.broken-{DateTime.UtcNow:yyyyMMddHHmmss}";
 
-    return logs;
+      File.Move(logFilePath, backupPath);
+
+      return [];
+    }
   }
-
   private static async Task Log(object logObj)
   {
     string cwd = Directory.GetCurrentDirectory();

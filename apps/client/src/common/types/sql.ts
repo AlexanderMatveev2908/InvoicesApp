@@ -1,4 +1,4 @@
 export type SqlTable<T> = T & {
-  id: string;
+  id: number;
   createdAt: string;
 };

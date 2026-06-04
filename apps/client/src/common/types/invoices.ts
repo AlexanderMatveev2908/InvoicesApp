@@ -31,5 +31,5 @@ export type InvoiceT = SqlTable<{
   description: string;
   status: InvoiceStatusT;
 
-  items: ItemInvoiceT[];
+  itemsList: ItemInvoiceT[];
 }>;

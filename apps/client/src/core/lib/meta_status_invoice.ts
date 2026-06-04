@@ -15,7 +15,7 @@ export class LibMetaStatusInvoice {
       case 'PAID':
         return this.paid;
       default:
-        throw new ErrApp('status invoice invalid');
+        throw new ErrApp(`status invoice invalid => ${status}`);
     }
   }
 

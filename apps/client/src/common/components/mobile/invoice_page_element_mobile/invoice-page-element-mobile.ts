@@ -7,7 +7,7 @@ import {
   Signal,
 } from '@angular/core';
 import { Optional } from '@/common/types/general';
-import { InvoiceT } from '@/common/types/invoices';
+import { InvoiceT, ItemInvoiceT } from '@/common/types/invoices';
 import { LibFormat } from '@/core/lib/data_structures/format';
 import { LibInvoices } from '@/core/lib/invoices';
 import { NgClass } from '@angular/common';
@@ -49,5 +49,9 @@ export class InvoicePageElementMobile extends UseMetaStatusDir {
 
   public calcTotInvoice(): string {
     return this.formatMoney(LibInvoices.calcTotItemsInvoice(this.currInvoice()!));
+  }
+
+  public calcTotItem(item: ItemInvoiceT): string {
+    return this.formatMoney(item.price * item.qty);
   }
 }

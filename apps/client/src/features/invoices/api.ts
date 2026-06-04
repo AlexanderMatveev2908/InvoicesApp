@@ -28,4 +28,12 @@ export class UseInvoicesApiSvc {
 
     return this.useAoi.post(LibApiArgs.withURL('/invoices').body(bodyData).toastOnFulfilled());
   }
+
+  public getInvoicesSsr(): ObsOnOkT<{ invoices: InvoiceT[] }> {
+    return this.useAoi.get(LibApiArgs.withURL('/invoices').noToast());
+  }
+
+  public getInvoicesCsr(): ObsOnOkT<{ invoices: InvoiceT[] }> {
+    return this.useAoi.get(LibApiArgs.withURL('/invoices').toastOnErr().pushOnErr());
+  }
 }
