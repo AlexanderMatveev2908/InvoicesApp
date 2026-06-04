@@ -146,4 +146,36 @@ public static class InvoicesCtrl
     );
 
   }
+
+
+  public static async Task<IResult> PatchInvoice(SqlDbCtx db, int invoiceId)
+  {
+    Invoices? invoice =
+       await db.Invoices
+         .FirstOrDefaultAsync(
+           x => x.Id == invoiceId
+         );
+
+    if (invoice is null)
+    {
+      return Res.Json(
+        404,
+        "Invoice not found"
+      );
+    }
+
+    invoice.Status = "PAID";
+    await db.SaveChangesAsync();
+
+
+    return Res.Json(
+     200,
+     "Invoice updated",
+     new
+     {
+       invoice.Id,
+       invoice.Status
+     }
+   );
+  }
 }
