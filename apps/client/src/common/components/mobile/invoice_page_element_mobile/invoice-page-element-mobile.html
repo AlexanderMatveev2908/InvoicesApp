@@ -85,7 +85,7 @@
     </div>
 
     <div class="body__footer" [ngClass]="useTheme.ifDark('bg-blue_3', 'bg-[#F9FAFE]')">
-      @for (el of currInvoice()?.items; track el.id) {
+      @for (el of currInvoice()?.itemsList; track el.id) {
         <div class="footer__item">
           <div class="item__left">
             <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">

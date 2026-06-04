@@ -15,6 +15,6 @@ export class LibInvoices {
   }
 
   public static calcTotItemsInvoice(invoice: InvoiceT): number {
-    return invoice.items.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
+    return invoice.itemsList.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
   }
 }

@@ -170,7 +170,7 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
 
     (this.form.controls['itemsList'] as FormArray).clear();
 
-    for (const item of inv.items) {
+    for (const item of inv.itemsList) {
       (this.form.controls['itemsList'] as FormArray).push(
         new FormGroup({
           name: new FormControl(item.name, { nonNullable: true }),
