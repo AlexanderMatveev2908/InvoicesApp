@@ -1,0 +1,66 @@
+.root {
+  @apply mt-[22px];
+
+  .root__bill_from {
+    @apply flex flex-col gap-[25px];
+
+    .bill_from__street {
+    }
+
+    .bill_from__city_code {
+      @apply flex justify-between items-center gap-[23px];
+    }
+  }
+
+  .root__bill_to {
+    @apply mt-[40px] flex flex-col gap-[25px];
+
+    .bill_to__city_code {
+      @apply flex justify-between items-center gap-[23px];
+    }
+  }
+
+  .root__items_list {
+    @apply mt-[68px];
+
+    .items_list__list {
+      @apply mt-[22px];
+
+      .list__row {
+        @apply flex justify-between items-center min-w-0;
+
+        .row__left {
+          @apply flex justify-between items-start gap-[16px] min-w-0;
+
+          .left__total {
+            @apply flex flex-col gap-[30px] mb-[17px];
+          }
+        }
+
+        .row__trash {
+          @apply flex justify-center items-center;
+
+          .trash__svg {
+            @apply w-[15px] h-[15px];
+          }
+        }
+      }
+    }
+  }
+
+  .root__add_item {
+    @apply mt-[50px] flex justify-center;
+
+    .add_item__btn {
+      @apply rounded-full px-[100px] py-[15px] flex justify-center items-center;
+    }
+  }
+
+  .root__footer {
+    @apply px-[24px] py-[21px] mt-[88px] -ml-[24px] -mr-[24px] flex justify-center items-center gap-[10px];
+
+    button {
+      @apply py-[15px] px-[25px] rounded-full;
+    }
+  }
+}
