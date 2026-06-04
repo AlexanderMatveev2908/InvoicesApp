@@ -84,8 +84,6 @@ public static class RootCheck
 
           isValid &= TryValidateRecursive(item, errors);
         }
-
-        continue;
       }
 
       if (!prop.PropertyType.IsValueType)
