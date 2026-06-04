@@ -1,0 +1,23 @@
+<app-bg-black [isBlack]="isPop()" />
+
+<div
+  class="root"
+  [style.display]="isPop() ? 'flex' : 'none'"
+  [ngClass]="useTheme.ifDark('bg-blue_2', 'bg-white')"
+>
+  <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{ title() }}</span>
+
+  <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_0', 'text-gray_1')">
+    {{ description() }}
+  </span>
+
+  <div class="root__buttons hd__s">
+    <button (click)="toggle()()" [ngClass]="useTheme.ifDark('bg-blue_3', 'bg-[#F9FAFE]')">
+      <span [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')">Cancel</span>
+    </button>
+
+    <button (click)="cb()()" class="bg-red_1 text-white">
+      <span>{{ action() }} </span>
+    </button>
+  </div>
+</div>
