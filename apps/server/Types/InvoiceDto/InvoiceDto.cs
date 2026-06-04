@@ -45,11 +45,12 @@ public sealed class InvoiceDto
   public string BillToCountry { get; set; } = null!;
 
   [Required]
-  public DateTime InvoiceDate { get; set; }
+  public DateTime? InvoiceDate { get; set; }
 
   [Required]
   [PaymentTermAttribute]
   public string PaymentTerm { get; set; } = null!;
+
 
   [Required]
   [MinLength(3)]

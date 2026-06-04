@@ -2,6 +2,7 @@ public class Invoices
 {
   public int Id { get; set; }
 
+  public string ClientId { get; set; } = null!;
   public string BillFromStreet { get; set; } = null!;
   public string BillFromCity { get; set; } = null!;
   public string BillFromZip { get; set; } = null!;

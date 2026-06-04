@@ -20,5 +20,8 @@ public class SqlDbCtx : DbContext
         .HasIndex(u => u.Email)
         .IsUnique();
 
+    modelBuilder.Entity<Invoices>()
+        .HasIndex(i => i.ClientId)
+        .IsUnique();
   }
 }

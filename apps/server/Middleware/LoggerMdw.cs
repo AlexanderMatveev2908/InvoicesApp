@@ -48,7 +48,7 @@ public static class LoggerMdw
         h => h.Key,
         h => h.Value.ToString()),
       RouteParams = ctx.Request.RouteValues,
-      Body = body,
+      Body = JsonParserLib.Parse<object>(body),
     };
 
     return logObj;
