@@ -6,9 +6,13 @@
     &nbsp;
     <span class="hd__m" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_1')">#</span>
     <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{
-      currInvoice()?.clientID
+      currInvoice()?.clientId
     }}</span>
   </div>
 
-  <app-invoices-form-mobile [currInvoice]="currInvoice()" />
+  <app-invoices-form-mobile
+    [currInvoice]="currInvoice()"
+    [isPendingSave]="saveTracker.isPending()"
+    [cbSave]="submitSave"
+  />
 </div>

@@ -28,7 +28,7 @@ export class InvoiceElementTabletDesktop extends UseMetaStatusDir {
   public readonly SvgArrow: SvgT = SvgAdvArrowRight;
 
   public calcDueDate(invoice: InvoiceT): string {
-    return `Due ${LibInvoices.calcDuePayment(invoice.date, invoice.paymentTerm)}`;
+    return `Due ${LibInvoices.calcDuePayment(invoice.invoiceDate, invoice.paymentTerm)}`;
   }
 
   public calcTotItems(invoice: InvoiceT): string {

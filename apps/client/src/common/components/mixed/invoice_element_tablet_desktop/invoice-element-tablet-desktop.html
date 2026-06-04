@@ -2,7 +2,7 @@
   <div class="root__client_id">
     <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')">#</span>
     <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{
-      inv().clientID
+      inv().clientId
     }}</span>
   </div>
 
@@ -14,7 +14,7 @@
 
   <div class="root__client">
     <span class="bd__m" [ngClass]="useTheme.ifDark('text-white', 'text-[#858BB2]')">
-      {{ inv().billTo.clientName }}
+      {{ inv().billToClientName }}
     </span>
   </div>
 

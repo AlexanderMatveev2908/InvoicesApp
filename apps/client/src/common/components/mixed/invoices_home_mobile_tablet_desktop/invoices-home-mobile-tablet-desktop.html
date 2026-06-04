@@ -1,5 +1,7 @@
 <div class="root">
-  @for (inv of appMockInvoices; track inv.id) {
+  @let invoices = invoicesSlice.invoices();
+
+  @for (inv of invoices; track inv.id) {
     <app-invoice-element-mobile [inv]="inv" />
     <app-invoice-element-tablet-desktop [inv]="inv" />
   }

@@ -6,11 +6,14 @@
         [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')"
         >Invoices</span
       >
+
+      @let invoices = invoicesSlice.invoices();
+
       <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_0', 'text-gray_1')">
-        @if (appMockInvoices.length === 1) {
+        @if (invoices.length === 1) {
           1 Invoice
-        } @else if (appMockInvoices.length > 1) {
-          {{ appMockInvoices.length }} Invoices
+        } @else if (invoices.length > 1) {
+          {{ invoices.length }} Invoices
         } @else {
           No invoices
         }

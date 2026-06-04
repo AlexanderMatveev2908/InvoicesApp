@@ -4,7 +4,7 @@ export type ItemInvoiceT = SqlTable<{
   name: string;
   qty: number;
   price: number;
-  total: number;
+  invoiceId: number;
 }>;
 
 export type PaymentTermT = 'Net 1 Day' | 'Net 7 Days' | 'Net 14 Days' | 'Net 30 Days';
@@ -12,28 +12,24 @@ export type PaymentTermT = 'Net 1 Day' | 'Net 7 Days' | 'Net 14 Days' | 'Net 30 
 export type InvoiceStatusT = 'DRAFT' | 'PENDING' | 'PAID';
 
 export type InvoiceT = SqlTable<{
-  clientID: string;
+  clientId: string;
 
-  billFrom: {
-    street: string;
-    city: string;
-    zip: string;
-    country: string;
-  };
-  billTo: {
-    clientName: string;
-    clientMail: string;
-    street: string;
-    city: string;
-    zip: string;
-    country: string;
-  };
+  billFromStreet: string;
+  billFromCity: string;
+  billFromZip: string;
+  billFromCountry: string;
 
-  date: string;
+  billToClientName: string;
+  billToClientMail: string;
+  billToStreet: string;
+  billToCity: string;
+  billToZip: string;
+  billToCountry: string;
+
+  invoiceDate: string;
   paymentTerm: PaymentTermT;
   description: string;
+  status: InvoiceStatusT;
 
   items: ItemInvoiceT[];
-
-  status: InvoiceStatusT;
 }>;

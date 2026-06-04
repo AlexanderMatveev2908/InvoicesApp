@@ -33,6 +33,8 @@
     <app-invoice-date-input [ctrl]="getCtrl(invoiceDate.name)" />
 
     <app-payment-term-input [ctrl]="getCtrl(paymentTerm.name)" />
+
+    <app-txt-form-input [txtInput]="description" [ctrl]="getCtrl(description.name)" />
   </div>
 
   <div class="root__items_list">
@@ -85,6 +87,6 @@
   @if (currInvoice()) {
     <app-footer-put-invoice-mobile [resetFormDefault]="resetFormDefault" />
   } @else {
-    <app-footer-post-invoice-mobile [resetForm]="resetForm" />
+    <app-footer-post-invoice-mobile [resetForm]="resetForm" [isPendingSave]="isPendingSave()" />
   }
 </form>

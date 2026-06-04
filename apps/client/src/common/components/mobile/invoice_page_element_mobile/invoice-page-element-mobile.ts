@@ -33,11 +33,14 @@ export class InvoicePageElementMobile extends UseMetaStatusDir {
   );
 
   public formatDate(): string {
-    return LibFormat.formatDate(this.currInvoice()?.date!);
+    return LibFormat.formatDate(this.currInvoice()?.invoiceDate!);
   }
 
   public paymentDue(): string {
-    return LibInvoices.calcDuePayment(this.currInvoice()?.date!, this.currInvoice()?.paymentTerm!);
+    return LibInvoices.calcDuePayment(
+      this.currInvoice()?.invoiceDate!,
+      this.currInvoice()?.paymentTerm!,
+    );
   }
 
   public formatMoney(price: number): string {

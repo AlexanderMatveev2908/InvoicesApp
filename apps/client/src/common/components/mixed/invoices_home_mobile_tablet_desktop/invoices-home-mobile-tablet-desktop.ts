@@ -1,8 +1,8 @@
 import { InvoiceT } from '@/common/types/invoices';
-import { mockInvoices } from '@/mock/data';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { InvoiceElementTabletDesktop } from '../invoice_element_tablet_desktop/invoice-element-tablet-desktop';
 import { InvoiceElementMobile } from '../../mobile/invoice_element_mobile/invoice-element-mobile';
+import { InvoicesSlice } from '@/features/invoices/slice';
 
 @Component({
   selector: 'app-invoices-home-mobile-tablet-desktop',
@@ -12,5 +12,5 @@ import { InvoiceElementMobile } from '../../mobile/invoice_element_mobile/invoic
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InvoicesHomeMobileTabletDesktop {
-  public readonly appMockInvoices: InvoiceT[] = mockInvoices;
+  public readonly invoicesSlice: InvoicesSlice = inject(InvoicesSlice);
 }

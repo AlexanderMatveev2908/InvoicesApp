@@ -4,6 +4,7 @@ using InvoicesApp.MiddlewareNS;
 using InvoicesApp.ConfigNS.SqlNS;
 using Npgsql;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace InvoicesApp.ConfigNS;
 
@@ -40,6 +41,12 @@ public static class SettingsConf
   public static void ConfigureBuilder(WebApplicationBuilder builder)
   {
     builder.Services.AddOpenApi();
+
+    builder.Services.ConfigureHttpJsonOptions(options =>
+{
+  options.SerializerOptions.PropertyNamingPolicy =
+      JsonNamingPolicy.CamelCase;
+});
 
     builder.Services.AddCors(options =>
     {

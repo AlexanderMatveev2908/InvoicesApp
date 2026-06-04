@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InvoicesApp.Migrations
 {
     [DbContext(typeof(SqlDbCtx))]
-    [Migration("20260604140257_init_schemas")]
+    [Migration("20260604165545_init_schemas")]
     partial class init_schemas
     {
         /// <inheritdoc />
