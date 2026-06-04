@@ -10,6 +10,8 @@ public class SqlDbCtx : DbContext
   }
 
   public DbSet<Users> Users => Set<Users>();
+  public DbSet<Invoices> Invoices => Set<Invoices>();
+  public DbSet<ItemsList> ItemsList => Set<ItemsList>();
   protected override void OnModelCreating(
      ModelBuilder modelBuilder
  )
@@ -17,5 +19,6 @@ public class SqlDbCtx : DbContext
     modelBuilder.Entity<Users>()
         .HasIndex(u => u.Email)
         .IsUnique();
+
   }
 }
