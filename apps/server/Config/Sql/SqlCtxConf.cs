@@ -23,5 +23,11 @@ public class SqlDbCtx : DbContext
     modelBuilder.Entity<Invoices>()
         .HasIndex(i => i.ClientId)
         .IsUnique();
+
+    modelBuilder.Entity<ItemsList>()
+    .HasOne(item => item.Invoice)
+    .WithMany(invoice => invoice.Items)
+    .HasForeignKey(item => item.InvoiceId)
+    .OnDelete(DeleteBehavior.Cascade);
   }
 }

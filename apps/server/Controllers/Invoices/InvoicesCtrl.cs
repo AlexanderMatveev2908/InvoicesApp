@@ -115,4 +115,35 @@ public static class InvoicesCtrl
       invoices
     });
   }
+
+  public static async Task<IResult> DeleteInvoice(SqlDbCtx db, int invoiceId)
+  {
+    Invoices? invoice =
+  await db.Invoices
+    .FirstOrDefaultAsync(
+      x => x.Id == invoiceId
+    );
+
+
+    if (invoice is null)
+    {
+      return Res.Json(
+        404,
+        "Invoice not found"
+      );
+    }
+
+    db.Invoices.Remove(invoice);
+    await db.SaveChangesAsync();
+
+    return Res.Json(
+      200,
+      "Invoice deleted",
+      new
+      {
+        deleted = invoiceId
+      }
+    );
+
+  }
 }
