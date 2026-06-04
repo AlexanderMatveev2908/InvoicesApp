@@ -18,6 +18,6 @@
   </button>
 
   <button type="submit" class="bg-blue_0 text-white">
-    <span>Save & Send</span>
+    <span>{{ isPendingSave() ? 'Pending...' : 'Save & Send' }}</span>
   </button>
 </div>

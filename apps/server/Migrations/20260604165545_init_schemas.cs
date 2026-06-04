@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InvoicesApp.Migrations
 {
     /// <inheritdoc />
-    public partial class added_invoices_app_tables : Migration
+    public partial class init_schemas : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,6 +18,7 @@ namespace InvoicesApp.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ClientId = table.Column<string>(type: "text", nullable: false),
                     BillFromStreet = table.Column<string>(type: "text", nullable: false),
                     BillFromCity = table.Column<string>(type: "text", nullable: false),
                     BillFromZip = table.Column<string>(type: "text", nullable: false),
@@ -29,11 +30,29 @@ namespace InvoicesApp.Migrations
                     BillToZip = table.Column<string>(type: "text", nullable: false),
                     BillToCountry = table.Column<string>(type: "text", nullable: false),
                     InvoiceDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    PaymentTerm = table.Column<string>(type: "text", nullable: false)
+                    PaymentTerm = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    Status = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Invoices", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    FirstName = table.Column<string>(type: "text", nullable: false),
+                    LastName = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
+                    Password = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,9 +78,21 @@ namespace InvoicesApp.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Invoices_ClientId",
+                table: "Invoices",
+                column: "ClientId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ItemsList_InvoiceId",
                 table: "ItemsList",
                 column: "InvoiceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -69,6 +100,9 @@ namespace InvoicesApp.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ItemsList");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Invoices");

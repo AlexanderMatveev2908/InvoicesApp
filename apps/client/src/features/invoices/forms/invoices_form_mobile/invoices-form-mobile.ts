@@ -12,7 +12,7 @@ import { TxtFormInput } from '@/common/components/forms/txt_form_input/txt-form-
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TxtInputFormT } from '@/common/types/dom';
 import { InvoicesUiFct } from '../../ui_factory';
-import { InvoiceFormItemT, InvoiceFormMng } from '../../paperwork/InvoiceFormMng';
+import { InvoiceFormItemT, InvoiceFormMng, InvoiceFormT } from '../../paperwork/InvoiceFormMng';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { startWith } from 'rxjs';
 import { InvoiceDateInput } from '@/common/components/forms/invoice_date_input/invoice-date-input';
@@ -49,6 +49,8 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
 
   public readonly currInvoice: InputSignal<Optional<InvoiceT>> = input();
+  public readonly isPendingSave: InputSignal<boolean> = input.required();
+  public readonly cbSave: InputSignal<(data: InvoiceFormT) => void> = input.required();
 
   public readonly SvgTrash: SvgT = SvgAdvTrash;
 
@@ -117,7 +119,7 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
     LibRootForm.handleSubmit({
       form: this.form,
       schema: InvoiceFormMng.schema,
-      onValid: (data) => LibLog.main('success', data),
+      onValid: (data) => this.cbSave()(data),
       onInvalid: (issues) => LibLog.main('invalid', issues),
     });
   };

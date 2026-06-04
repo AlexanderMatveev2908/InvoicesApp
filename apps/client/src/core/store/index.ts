@@ -1,3 +1,4 @@
+import { invoicesReducer, InvoicesStateT } from '@/features/invoices/reducer';
 import { noticeReducer, NoticeStateT } from '@/features/notice/reducer';
 import { themeReducer, ThemeStateT } from '@/features/theme/reducer';
 import { toastReducer, ToastStateT } from '@/features/toast/reducer';
@@ -9,6 +10,7 @@ export interface StoreStateT {
   notice: NoticeStateT;
   wakeUp: WakeUpStateT;
   theme: ThemeStateT;
+  invoices: InvoicesStateT;
 }
 
 export const rootReducer: ActionReducerMap<StoreStateT> = {
@@ -16,4 +18,5 @@ export const rootReducer: ActionReducerMap<StoreStateT> = {
   notice: noticeReducer,
   wakeUp: wakeUpReducer,
   theme: themeReducer,
+  invoices: invoicesReducer,
 };
