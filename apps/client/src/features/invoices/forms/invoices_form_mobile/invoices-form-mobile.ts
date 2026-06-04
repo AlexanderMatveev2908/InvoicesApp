@@ -26,6 +26,8 @@ import { LibFormat } from '@/core/lib/data_structures/format';
 import { Optional, SvgT } from '@/common/types/general';
 import { SvgAdvTrash } from '@/common/components/svgs/advanced/trash/trash';
 import { InvoiceT } from '@/common/types/invoices';
+import { FooterPostInvoiceMobile } from './components/footer_post_invoice_mobile/footer-post-invoice-mobile';
+import { FooterPutInvoiceMobile } from './components/footer_put_invoice_mobile/footer-put-invoice-mobile';
 
 @Component({
   selector: 'app-invoices-form-mobile',
@@ -36,6 +38,8 @@ import { InvoiceT } from '@/common/types/invoices';
     InvoiceDateInput,
     PaymentTermInput,
     NgComponentOutlet,
+    FooterPostInvoiceMobile,
+    FooterPutInvoiceMobile,
   ],
   templateUrl: './invoices-form-mobile.html',
   styleUrl: './invoices-form-mobile.scss',
@@ -48,7 +52,7 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
 
   public readonly SvgTrash: SvgT = SvgAdvTrash;
 
-  public readonly form: FormGroup = InvoiceFormMng.form;
+  public readonly form: FormGroup = InvoiceFormMng.form();
 
   public getCtrl(name: string): FormControl {
     return this.form.get(name) as FormControl;
@@ -118,23 +122,15 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
     });
   };
 
-  public resetForm(): void {
+  public readonly resetForm = (): void => {
     this.form.reset();
-  }
+  };
 
-  ngOnInit(): void {
-    this.useEffect(() => {
-      LibRootForm.setupIssues({
-        data: this.data(),
-        form: this.form,
-        schema: InvoiceFormMng.schema,
-      });
-    });
+  public readonly resetFormDefault = (): void => {
+    this.applyCurrInvoiceData();
+  };
 
-    if (!this.currInvoice()) return;
-
-    console.log(this.currInvoice());
-
+  public readonly applyCurrInvoiceData = (): void => {
     this.form.markAllAsDirty();
     this.form.markAllAsTouched();
 
@@ -168,5 +164,19 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
         }),
       );
     }
+  };
+
+  ngOnInit(): void {
+    this.useEffect(() => {
+      LibRootForm.setupIssues({
+        data: this.data(),
+        form: this.form,
+        schema: InvoiceFormMng.schema,
+      });
+    });
+
+    if (!this.currInvoice()) return;
+
+    this.applyCurrInvoiceData();
   }
 }

@@ -1,0 +1,7 @@
+.root {
+  @apply px-[24px] py-[21px] mt-[88px] -ml-[24px] -mr-[24px] flex justify-center items-center gap-[10px];
+
+  button {
+    @apply py-[15px] px-[25px] rounded-full;
+  }
+}

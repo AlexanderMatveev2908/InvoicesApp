@@ -2,7 +2,12 @@
   <app-go-back-mobile />
 
   <div class="root__title">
-    <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">New Invoice</span>
+    <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">Edit</span>
+    &nbsp;
+    <span class="hd__m" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_1')">#</span>
+    <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{
+      currInvoice()?.clientID
+    }}</span>
   </div>
 
   <app-invoices-form-mobile [currInvoice]="currInvoice()" />

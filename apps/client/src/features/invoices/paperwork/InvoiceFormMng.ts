@@ -38,59 +38,60 @@ export class InvoiceFormMng {
       .min(1, 'At least one item is required'),
   });
 
-  public static readonly form = new FormGroup({
-    billFromStreet: new FormControl<string>('', {
-      nonNullable: true,
-    }),
-    billFromCity: new FormControl<string>('', {
-      nonNullable: true,
-    }),
-    billFromZip: new FormControl<string>('', {
-      nonNullable: true,
-    }),
-    billFromCountry: new FormControl<string>('', {
-      nonNullable: true,
-    }),
-    billToClientName: new FormControl<string>('', {
-      nonNullable: true,
-    }),
-    billToClientMail: new FormControl<string>('', {
-      nonNullable: true,
-    }),
-    billToStreet: new FormControl<string>('', {
-      nonNullable: true,
-    }),
-    billToCity: new FormControl<string>('', {
-      nonNullable: true,
-    }),
-    billToZip: new FormControl<string>('', {
-      nonNullable: true,
-    }),
-    billToCountry: new FormControl<string>('', {
-      nonNullable: true,
-    }),
-    invoiceDate: new FormControl<string>(new Date().toISOString().split('T')[0], {
-      nonNullable: true,
-    }),
-    paymentTerm: new FormControl<string>('Chose Term', {
-      nonNullable: true,
-    }),
-    itemsList: new FormArray([
-      new FormGroup({
-        name: new FormControl('', {
-          nonNullable: true,
-        }),
-
-        qty: new FormControl('', {
-          nonNullable: true,
-        }),
-
-        price: new FormControl('', {
-          nonNullable: true,
-        }),
+  public static readonly form = () =>
+    new FormGroup({
+      billFromStreet: new FormControl<string>('', {
+        nonNullable: true,
       }),
-    ]),
-  });
+      billFromCity: new FormControl<string>('', {
+        nonNullable: true,
+      }),
+      billFromZip: new FormControl<string>('', {
+        nonNullable: true,
+      }),
+      billFromCountry: new FormControl<string>('', {
+        nonNullable: true,
+      }),
+      billToClientName: new FormControl<string>('', {
+        nonNullable: true,
+      }),
+      billToClientMail: new FormControl<string>('', {
+        nonNullable: true,
+      }),
+      billToStreet: new FormControl<string>('', {
+        nonNullable: true,
+      }),
+      billToCity: new FormControl<string>('', {
+        nonNullable: true,
+      }),
+      billToZip: new FormControl<string>('', {
+        nonNullable: true,
+      }),
+      billToCountry: new FormControl<string>('', {
+        nonNullable: true,
+      }),
+      invoiceDate: new FormControl<string>(new Date().toISOString().split('T')[0], {
+        nonNullable: true,
+      }),
+      paymentTerm: new FormControl<string>('Chose Term', {
+        nonNullable: true,
+      }),
+      itemsList: new FormArray([
+        new FormGroup({
+          name: new FormControl('', {
+            nonNullable: true,
+          }),
+
+          qty: new FormControl('', {
+            nonNullable: true,
+          }),
+
+          price: new FormControl('', {
+            nonNullable: true,
+          }),
+        }),
+      ]),
+    });
 }
 
 export type InvoiceFormT = z.infer<typeof InvoiceFormMng.schema>;
