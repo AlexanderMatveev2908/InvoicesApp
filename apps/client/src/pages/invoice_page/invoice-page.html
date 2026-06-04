@@ -1,1 +1,14 @@
-<app-invoice-page-element-mobile [currInvoice]="currInvoice()" />
+<app-invoice-page-element-mobile
+  [currInvoice]="currInvoice()"
+  [isPop]="isPop()"
+  [toggle]="toggle"
+/>
+
+<app-popup
+  [isPop]="isPop()"
+  [title]="'Confirm Deletion'"
+  [description]="descriptionDelete()"
+  [cb]="deleteCb"
+  [action]="'Delete'"
+  [toggle]="toggle"
+/>

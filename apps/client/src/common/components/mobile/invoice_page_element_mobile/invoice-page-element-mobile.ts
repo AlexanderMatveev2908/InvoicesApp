@@ -23,6 +23,9 @@ import { RouterLink } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InvoicePageElementMobile extends UseMetaStatusDir {
+  public readonly isPop: InputSignal<boolean> = input.required();
+  public readonly toggle: InputSignal<() => void> = input.required();
+
   public readonly currInvoice: InputSignal<Optional<InvoiceT>> = input.required();
 
   public readonly editLink: Signal<string> = computed(

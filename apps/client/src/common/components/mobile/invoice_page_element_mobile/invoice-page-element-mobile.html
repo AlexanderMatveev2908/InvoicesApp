@@ -131,7 +131,7 @@
       <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_2')">Edit</span>
     </a>
 
-    <button class="footer__delete">
+    <button (click)="toggle()()" class="footer__delete">
       <span class="hd__s text-white">Delete</span>
     </button>
 
