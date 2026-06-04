@@ -6,7 +6,9 @@ import {
   input,
   InputSignal,
   OnInit,
+  signal,
   Signal,
+  WritableSignal,
 } from '@angular/core';
 import { TxtFormInput } from '@/common/components/forms/txt_form_input/txt-form-input';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -50,7 +52,10 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
 
   public readonly currInvoice: InputSignal<Optional<InvoiceT>> = input();
   public readonly isPendingSave: InputSignal<boolean> = input.required();
+  public readonly isPendingDraft: InputSignal<Optional<boolean>> = input();
   public readonly cbSave: InputSignal<(data: InvoiceFormT) => void> = input.required();
+  public readonly cbDraft: InputSignal<Optional<(data: InvoiceFormT) => void>> =
+    input<(data: InvoiceFormT) => void>();
 
   public readonly SvgTrash: SvgT = SvgAdvTrash;
 
@@ -63,6 +68,12 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
   public getItemCtrl(index: number, key: 'name' | 'qty' | 'price'): FormControl {
     return this.form.get(`itemsList.${index}.${key}`) as FormControl;
   }
+
+  public readonly action: WritableSignal<string> = signal('draft');
+
+  public readonly setAction = (status: string) => {
+    this.action.set(status);
+  };
 
   public readonly billFromStreet: TxtInputFormT = InvoicesUiFct.billFromStreet;
   public readonly billFromCity: TxtInputFormT = InvoicesUiFct.billFromCity;
@@ -120,7 +131,8 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
     LibRootForm.handleSubmit({
       form: this.form,
       schema: InvoiceFormMng.schema,
-      onValid: (data) => this.cbSave()(data),
+      onValid: (data) =>
+        this.action() === 'pending' ? this.cbSave()(data) : this.cbDraft()?.(data),
       onInvalid: (issues) => LibLog.main('invalid', issues),
     });
   };

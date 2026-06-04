@@ -13,11 +13,15 @@
     <span>Discard</span>
   </button>
 
-  <button type="submit" [ngClass]="useTheme.ifDark('bg-blue__light', 'bg-blue__light')">
-    <span>Save As Draft</span>
+  <button
+    (click)="setAction()('draft')"
+    type="submit"
+    [ngClass]="useTheme.ifDark('bg-blue__light', 'bg-blue__light')"
+  >
+    <span>{{ isPendingDraft() ? 'Pending...' : 'Save As Draft' }}</span>
   </button>
 
-  <button type="submit" class="bg-blue_0 text-white">
+  <button (click)="setAction()('pending')" type="submit" class="bg-blue_0 text-white">
     <span>{{ isPendingSave() ? 'Pending...' : 'Save & Send' }}</span>
   </button>
 </div>

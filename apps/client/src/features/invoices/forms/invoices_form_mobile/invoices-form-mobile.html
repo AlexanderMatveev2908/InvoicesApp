@@ -87,6 +87,11 @@
   @if (currInvoice()) {
     <app-footer-put-invoice-mobile [resetFormDefault]="resetFormDefault" />
   } @else {
-    <app-footer-post-invoice-mobile [resetForm]="resetForm" [isPendingSave]="isPendingSave()" />
+    <app-footer-post-invoice-mobile
+      [resetForm]="resetForm"
+      [isPendingSave]="isPendingSave()"
+      [setAction]="setAction"
+      [isPendingDraft]="isPendingDraft()"
+    />
   }
 </form>

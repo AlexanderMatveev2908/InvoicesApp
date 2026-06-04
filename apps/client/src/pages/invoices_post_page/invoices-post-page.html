@@ -5,5 +5,10 @@
     <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">New Invoice</span>
   </div>
 
-  <app-invoices-form-mobile [isPendingSave]="saveTracker.isPending()" [cbSave]="submitSave" />
+  <app-invoices-form-mobile
+    [isPendingSave]="saveTracker.isPending()"
+    [cbDraft]="submitDraft"
+    [cbSave]="submitSave"
+    [isPendingDraft]="draftTracker.isPending()"
+  />
 </div>

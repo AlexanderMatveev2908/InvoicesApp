@@ -34,4 +34,8 @@ export class InvoicesPostPage {
   public readonly submitSave = (data: InvoiceFormT): void => {
     this.saveTracker.track(this.useInvoicesApi.savePendingInvoice(data)).subscribe();
   };
+
+  public readonly submitDraft = (data: InvoiceFormT): void => {
+    this.draftTracker.track(this.useInvoicesApi.saveDraftInvoice(data)).subscribe();
+  };
 }
