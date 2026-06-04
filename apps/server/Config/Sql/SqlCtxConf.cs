@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using UserAccountsApi.ModelsNS;
+using InvoicesApp.ModelsNS;
 
-namespace UserAccountsApi.ConfigNS.SqlNS;
+namespace InvoicesApp.ConfigNS.SqlNS;
 
 public class SqlDbCtx : DbContext
 {
@@ -10,6 +10,8 @@ public class SqlDbCtx : DbContext
   }
 
   public DbSet<Users> Users => Set<Users>();
+  public DbSet<Invoices> Invoices => Set<Invoices>();
+  public DbSet<ItemsList> ItemsList => Set<ItemsList>();
   protected override void OnModelCreating(
      ModelBuilder modelBuilder
  )
@@ -17,5 +19,15 @@ public class SqlDbCtx : DbContext
     modelBuilder.Entity<Users>()
         .HasIndex(u => u.Email)
         .IsUnique();
+
+    modelBuilder.Entity<Invoices>()
+        .HasIndex(i => i.ClientId)
+        .IsUnique();
+
+    modelBuilder.Entity<ItemsList>()
+    .HasOne(item => item.Invoice)
+    .WithMany(invoice => invoice.Items)
+    .HasForeignKey(item => item.InvoiceId)
+    .OnDelete(DeleteBehavior.Cascade);
   }
 }

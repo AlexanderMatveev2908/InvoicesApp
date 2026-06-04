@@ -1,10 +1,10 @@
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
-using UserAccountsApi.ConfigNS.CloudNS;
-using UserAccountsApi.LibNS;
-using UserAccountsApi.TypesNS;
+using InvoicesApp.ConfigNS.CloudNS;
+using InvoicesApp.LibNS;
+using InvoicesApp.TypesNS;
 
-namespace UserAccountsApi.ServicesNS.CLoudNS;
+namespace InvoicesApp.ServicesNS.CLoudNS;
 
 
 

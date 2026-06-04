@@ -1,6 +1,6 @@
-using UserAccountsApi.ControllersNS.WakeUpNS;
+using InvoicesApp.ControllersNS.WakeUpNS;
 
-namespace UserAccountsApi.RoutesNS.WakeUpNS;
+namespace InvoicesApp.RoutesNS.WakeUpNS;
 
 public static class WakeUpRouter
 {

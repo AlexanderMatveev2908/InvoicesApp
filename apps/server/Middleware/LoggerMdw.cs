@@ -1,7 +1,7 @@
 using System.Text;
-using UserAccountsApi.Lib;
+using InvoicesApp.Lib;
 
-namespace UserAccountsApi.MiddlewareNS;
+namespace InvoicesApp.MiddlewareNS;
 
 public static class LoggerMdw
 {
@@ -35,6 +35,20 @@ public static class LoggerMdw
 
     var body = await ReadBody(req);
 
+    object? bodyObj = null;
+
+    if (!string.IsNullOrWhiteSpace(body))
+    {
+      try
+      {
+        bodyObj = JsonParserLib.Parse<object>(body);
+      }
+      catch
+      {
+        bodyObj = body;
+      }
+    }
+
     var logObj = new
     {
       Timestamp = DateTime.UtcNow.ToString("HH:mm:ss"),
@@ -48,7 +62,7 @@ public static class LoggerMdw
         h => h.Key,
         h => h.Value.ToString()),
       RouteParams = ctx.Request.RouteValues,
-      Body = body,
+      Body = bodyObj,
     };
 
     return logObj;

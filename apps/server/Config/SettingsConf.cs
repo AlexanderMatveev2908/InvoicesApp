@@ -1,11 +1,11 @@
-using UserAccountsApi.LibNS;
-using UserAccountsApi.RoutesNS;
-using UserAccountsApi.MiddlewareNS;
-using UserAccountsApi.ConfigNS.SqlNS;
+using InvoicesApp.LibNS;
+using InvoicesApp.RoutesNS;
+using InvoicesApp.MiddlewareNS;
+using InvoicesApp.ConfigNS.SqlNS;
 using Npgsql;
 using Microsoft.EntityFrameworkCore;
 
-namespace UserAccountsApi.ConfigNS;
+namespace InvoicesApp.ConfigNS;
 
 public static class SettingsConf
 {

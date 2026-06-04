@@ -1,7 +1,7 @@
-using UserAccountsApi.ExtensionsNS.RateLimitNS;
-using UserAccountsApi.LibNS;
+using InvoicesApp.ExtensionsNS.RateLimitNS;
+using InvoicesApp.LibNS;
 
-namespace UserAccountsApi.RoutesNS;
+namespace InvoicesApp.RoutesNS;
 
 public static class TestRouter
 {

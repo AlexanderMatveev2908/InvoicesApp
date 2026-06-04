@@ -5,24 +5,25 @@
 namespace InvoicesApp.Migrations
 {
     /// <inheritdoc />
-    public partial class marked_email_unique : Migration
+    public partial class added_status_invoice : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_Email",
-                table: "Users",
-                column: "Email",
-                unique: true);
+            migrationBuilder.AddColumn<string>(
+                name: "Status",
+                table: "Invoices",
+                type: "text",
+                nullable: false,
+                defaultValue: "");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropIndex(
-                name: "IX_Users_Email",
-                table: "Users");
+            migrationBuilder.DropColumn(
+                name: "Status",
+                table: "Invoices");
         }
     }
 }

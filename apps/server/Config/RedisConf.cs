@@ -1,7 +1,7 @@
 using StackExchange.Redis;
-using UserAccountsApi.LibNS;
+using InvoicesApp.LibNS;
 
-namespace UserAccountsApi.ConfigNS.RedisNS;
+namespace InvoicesApp.ConfigNS.RedisNS;
 
 public static class RedisConf
 {

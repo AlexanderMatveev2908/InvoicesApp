@@ -1,8 +1,8 @@
 
 using StackExchange.Redis;
-using UserAccountsApi.ConfigNS.RedisNS;
+using InvoicesApp.ConfigNS.RedisNS;
 
-namespace UserAccountsApi.ServicesNS.RedisNS;
+namespace InvoicesApp.ServicesNS.RedisNS;
 
 public static class RateLimitSvc
 {

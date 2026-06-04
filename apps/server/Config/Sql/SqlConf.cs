@@ -1,6 +1,6 @@
-using UserAccountsApi.LibNS;
+using InvoicesApp.LibNS;
 
-namespace UserAccountsApi.ConfigNS.SqlNS;
+namespace InvoicesApp.ConfigNS.SqlNS;
 
 public static class SqlDb
 {

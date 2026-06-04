@@ -1,6 +1,6 @@
-using UserAccountsApi.ControllersNS.CloudNS;
+using InvoicesApp.ControllersNS.CloudNS;
 
-namespace UserAccountsApi.RoutesNS;
+namespace InvoicesApp.RoutesNS;
 
 public static class CloudRouter
 {

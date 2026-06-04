@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace UserAccountsApi.TypesNS;
+namespace InvoicesApp.TypesNS;
 
 public sealed class UsersDto
 {

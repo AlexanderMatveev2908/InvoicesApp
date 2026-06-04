@@ -1,6 +1,6 @@
-using UserAccountsApi.LibNS;
+using InvoicesApp.LibNS;
 
-namespace UserAccountsApi.ControllersNS.WakeUpNS;
+namespace InvoicesApp.ControllersNS.WakeUpNS;
 
 public static class WakeUpCtrl
 {

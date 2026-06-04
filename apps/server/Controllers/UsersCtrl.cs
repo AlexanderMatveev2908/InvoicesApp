@@ -1,14 +1,14 @@
 using Dapper;
 using Npgsql;
 using Microsoft.EntityFrameworkCore;
-using UserAccountsApi.ConfigNS.SqlNS;
-using UserAccountsApi.ModelsNS;
-using UserAccountsApi.TypesNS;
+using InvoicesApp.ConfigNS.SqlNS;
+using InvoicesApp.ModelsNS;
+using InvoicesApp.TypesNS;
 using Superpower.Model;
-using UserAccountsApi.ServicesNS.SqlTrxNS;
-using UserAccountsApi.LibNS;
+using InvoicesApp.ServicesNS.SqlTrxNS;
+using InvoicesApp.LibNS;
 
-namespace UserAccountsApi.ControllersNS.UsersNS;
+namespace InvoicesApp.ControllersNS.UsersNS;
 
 public static class UsersCtrl
 {

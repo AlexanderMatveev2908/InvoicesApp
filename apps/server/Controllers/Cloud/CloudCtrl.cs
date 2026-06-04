@@ -1,7 +1,7 @@
-using UserAccountsApi.LibNS;
-using UserAccountsApi.ServicesNS.CLoudNS;
+using InvoicesApp.LibNS;
+using InvoicesApp.ServicesNS.CLoudNS;
 
-namespace UserAccountsApi.ControllersNS.CloudNS;
+namespace InvoicesApp.ControllersNS.CloudNS;
 
 
 public static class CloudCtrl

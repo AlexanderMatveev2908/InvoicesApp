@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using UserAccountsApi.ConfigNS.SqlNS;
+using InvoicesApp.ConfigNS.SqlNS;
 
 #nullable disable
 
-namespace UserAccountsApi.Migrations
+namespace InvoicesApp.Migrations
 {
     [DbContext(typeof(SqlDbCtx))]
     [Migration("20260529093821_marked_email_unique")]
@@ -24,7 +24,7 @@ namespace UserAccountsApi.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("UserAccountsApi.ModelsNS.Users", b =>
+            modelBuilder.Entity("InvoicesApp.ModelsNS.Users", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

@@ -1,7 +1,7 @@
 using System.Text.Json;
-using UserAccountsApi.LibNS;
+using InvoicesApp.LibNS;
 
-namespace UserAccountsApi.Lib;
+namespace InvoicesApp.Lib;
 
 public static class JsonParserLib
 {

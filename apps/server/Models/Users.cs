@@ -1,4 +1,4 @@
-namespace UserAccountsApi.ModelsNS;
+namespace InvoicesApp.ModelsNS;
 
 
 public class Users

@@ -1,4 +1,4 @@
-namespace UserAccountsApi.MiddlewareNS;
+namespace InvoicesApp.MiddlewareNS;
 
 public static class MainMdw
 {
