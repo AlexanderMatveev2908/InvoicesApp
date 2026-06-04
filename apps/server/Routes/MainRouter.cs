@@ -1,3 +1,4 @@
+using InvoicesApp.RoutesNS.InvoicesNS;
 using InvoicesApp.RoutesNS.UserNS;
 using InvoicesApp.RoutesNS.WakeUpNS;
 
@@ -14,5 +15,6 @@ public static class MainRouter
     CloudRouter.MapAPi(api);
     UsersRouter.MapApi(api);
     WakeUpRouter.MapApi(api);
+    InvoicesRouter.MapApi(api);
   }
 }
