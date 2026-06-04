@@ -1,1 +1,7 @@
-.root{}
+.root {
+  @apply w-full h-full min-h-screen pt-[100px] px-[24px];
+
+  .root__title {
+    @apply mt-[26px];
+  }
+}

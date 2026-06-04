@@ -3,6 +3,8 @@ import {
   Component,
   computed,
   inject,
+  input,
+  InputSignal,
   OnInit,
   Signal,
 } from '@angular/core';
@@ -21,8 +23,9 @@ import { LibRootForm } from '@/core/lib/forms/root_form';
 import { LibLog } from '@/core/lib/log';
 import { UseInjCtxHk } from '@/core/hooks/use_inj_ctx';
 import { LibFormat } from '@/core/lib/data_structures/format';
-import { SvgT } from '@/common/types/general';
+import { Optional, SvgT } from '@/common/types/general';
 import { SvgAdvTrash } from '@/common/components/svgs/advanced/trash/trash';
+import { InvoiceT } from '@/common/types/invoices';
 
 @Component({
   selector: 'app-invoices-form-mobile',
@@ -40,6 +43,8 @@ import { SvgAdvTrash } from '@/common/components/svgs/advanced/trash/trash';
 })
 export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
+
+  public readonly currInvoice: InputSignal<Optional<InvoiceT>> = input();
 
   public readonly SvgTrash: SvgT = SvgAdvTrash;
 
@@ -125,5 +130,43 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
         schema: InvoiceFormMng.schema,
       });
     });
+
+    if (!this.currInvoice()) return;
+
+    console.log(this.currInvoice());
+
+    this.form.markAllAsDirty();
+    this.form.markAllAsTouched();
+
+    const inv: InvoiceT = this.currInvoice() as InvoiceT;
+
+    this.form.patchValue({
+      billFromStreet: inv.billFrom.street,
+      billFromCity: inv.billFrom.city,
+      billFromZip: inv.billFrom.zip,
+      billFromCountry: inv.billFrom.country,
+
+      billToClientName: inv.billTo.clientName,
+      billToClientMail: inv.billTo.clientMail,
+      billToStreet: inv.billTo.street,
+      billToCity: inv.billTo.city,
+      billToZip: inv.billTo.zip,
+      billToCountry: inv.billTo.country,
+
+      invoiceDate: inv.date,
+      paymentTerm: inv.paymentTerm,
+    });
+
+    (this.form.controls['itemsList'] as FormArray).clear();
+
+    for (const item of inv.items) {
+      (this.form.controls['itemsList'] as FormArray).push(
+        new FormGroup({
+          name: new FormControl(item.name, { nonNullable: true }),
+          qty: new FormControl(item.qty + '', { nonNullable: true }),
+          price: new FormControl(item.price + '', { nonNullable: true }),
+        }),
+      );
+    }
   }
 }

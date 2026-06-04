@@ -1,3 +1,9 @@
-<div class="root">
-  <p>InvoicesPutPage generated 🎉</p>
+<div class="root" [ngClass]="useTheme.ifDark('bg-black_0', 'bg-white_0')">
+  <app-go-back-mobile />
+
+  <div class="root__title">
+    <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">New Invoice</span>
+  </div>
+
+  <app-invoices-form-mobile [currInvoice]="currInvoice()" />
 </div>
