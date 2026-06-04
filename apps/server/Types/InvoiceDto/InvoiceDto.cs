@@ -48,8 +48,12 @@ public sealed class InvoiceDto
   public DateTime InvoiceDate { get; set; }
 
   [Required]
-  [MinLength(3)]
+  [PaymentTermAttribute]
   public string PaymentTerm { get; set; } = null!;
+
+  [Required]
+  [MinLength(3)]
+  public string Description { get; set; } = null!;
 
   [Required]
   [MinLength(1)]
@@ -59,12 +63,14 @@ public sealed class InvoiceDto
 public sealed class ItemDto
 {
   [Required]
-  [StringLength(100, MinimumLength = 1)]
+  [StringLength(100, MinimumLength = 3)]
   public string Name { get; set; } = null!;
 
+  [Required]
   [Range(1, int.MaxValue)]
   public int Qty { get; set; }
 
+  [Required]
   [Range(typeof(decimal), "0.01", "999999")]
   public decimal Price { get; set; }
 }

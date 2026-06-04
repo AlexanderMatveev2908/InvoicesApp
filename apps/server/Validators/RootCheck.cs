@@ -2,8 +2,8 @@ using InvoicesApp.LibNS;
 
 namespace InvoicesApp.ValidatorsNS.RootNS;
 
+using System.Collections;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 public static class RootCheck
 {
@@ -27,14 +27,8 @@ public static class RootCheck
       return Res.Json(400, "Request body is required");
 
     List<ValidationResult> errors = [];
-    ValidationContext validationCtx = new(dto);
 
-    bool isValid = Validator.TryValidateObject(
-      dto,
-      validationCtx,
-      errors,
-      validateAllProperties: true
-    );
+    bool isValid = TryValidateRecursive(dto, errors);
 
     if (!isValid)
     {
@@ -53,5 +47,53 @@ public static class RootCheck
     ctx.Items["dto"] = dto;
 
     return null;
+  }
+
+  private static bool TryValidateRecursive(
+    object dto,
+    List<ValidationResult> errors
+  )
+  {
+    bool isValid = true;
+
+    ValidationContext ctx = new(dto);
+
+    isValid &= Validator.TryValidateObject(
+      dto,
+      ctx,
+      errors,
+      validateAllProperties: true
+    );
+
+    foreach (var prop in dto.GetType().GetProperties())
+    {
+      object? val = prop.GetValue(dto);
+
+      if (val is null)
+        continue;
+
+      if (val is string)
+        continue;
+
+      if (val is IEnumerable list)
+      {
+        foreach (object? item in list)
+        {
+          if (item is null)
+            continue;
+
+          isValid &= TryValidateRecursive(item, errors);
+        }
+
+        continue;
+      }
+
+      if (!prop.PropertyType.IsValueType)
+      {
+        isValid &= TryValidateRecursive(val, errors);
+      }
+    }
+
+    return isValid;
   }
 }
