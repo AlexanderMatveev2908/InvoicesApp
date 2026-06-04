@@ -56,6 +56,10 @@ public sealed class InvoiceDto
   public string Description { get; set; } = null!;
 
   [Required]
+  [StatusInvoiceAttribute]
+  public string Status { get; set; } = null!;
+
+  [Required]
   [MinLength(1)]
   public List<ItemDto> ItemsList { get; set; } = [];
 }

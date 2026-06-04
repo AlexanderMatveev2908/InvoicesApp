@@ -15,6 +15,7 @@ public class Invoices
   public DateTime InvoiceDate { get; set; }
   public string PaymentTerm { get; set; } = null!;
   public string Description { get; set; } = null!;
+  public string Status { get; set; } = null!;
 
   public List<ItemsList> Items { get; set; } = [];
 }

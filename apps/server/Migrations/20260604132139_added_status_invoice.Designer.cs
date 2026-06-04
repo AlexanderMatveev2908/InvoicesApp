@@ -3,6 +3,7 @@ using System;
 using InvoicesApp.ConfigNS.SqlNS;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InvoicesApp.Migrations
 {
     [DbContext(typeof(SqlDbCtx))]
-    partial class SqlDbCtxModelSnapshot : ModelSnapshot
+    [Migration("20260604132139_added_status_invoice")]
+    partial class added_status_invoice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
