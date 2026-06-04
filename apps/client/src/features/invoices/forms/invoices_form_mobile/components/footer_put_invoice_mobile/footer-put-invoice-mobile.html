@@ -1,9 +1,19 @@
-<div class="root hd__s">
+<div
+  class="root hd__s"
+  [ngClass]="[
+    useTheme.ifDark('bg-blue_2', 'bg-white'),
+    useTheme.ifDark('text-gray_0', 'text-gray_1'),
+  ]"
+>
   <button
     (click)="resetFormDefault()()"
     type="button"
     [ngClass]="useTheme.ifDark('bg-blue_3', 'bg-[#F9FAFE]')"
   >
     <span>Cancel</span>
+  </button>
+
+  <button type="submit" class="bg-blue_0 text-white">
+    <span>Save Changes</span>
   </button>
 </div>
