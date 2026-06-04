@@ -1,4 +1,6 @@
+import { Optional } from '@/common/types/general';
 import { UseThemeSvc } from '@/core/services/use_theme';
+import { InvoiceFormT } from '@/features/invoices/paperwork/InvoiceFormMng';
 import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, InputSignal } from '@angular/core';
 
@@ -12,7 +14,10 @@ import { ChangeDetectionStrategy, Component, inject, input, InputSignal } from '
 export class FooterPostInvoiceMobile {
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
 
+  public readonly setAction: InputSignal<(status: string) => void> = input.required();
+
   public readonly isPendingSave: InputSignal<boolean> = input.required();
+  public readonly isPendingDraft: InputSignal<Optional<boolean>> = input();
 
   public readonly resetForm: InputSignal<() => void> = input.required();
 }

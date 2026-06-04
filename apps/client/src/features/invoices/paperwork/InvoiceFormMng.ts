@@ -41,34 +41,34 @@ export class InvoiceFormMng {
 
   public static readonly form = () =>
     new FormGroup({
-      billFromStreet: new FormControl<string>('', {
+      billFromStreet: new FormControl<string>('aaa', {
         nonNullable: true,
       }),
-      billFromCity: new FormControl<string>('', {
+      billFromCity: new FormControl<string>('bbb', {
         nonNullable: true,
       }),
-      billFromZip: new FormControl<string>('', {
+      billFromZip: new FormControl<string>('ccc', {
         nonNullable: true,
       }),
-      billFromCountry: new FormControl<string>('', {
+      billFromCountry: new FormControl<string>('ddd', {
         nonNullable: true,
       }),
-      billToClientName: new FormControl<string>('', {
+      billToClientName: new FormControl<string>('eee', {
         nonNullable: true,
       }),
-      billToClientMail: new FormControl<string>('', {
+      billToClientMail: new FormControl<string>('matveevalexander470@gmail.com', {
         nonNullable: true,
       }),
-      billToStreet: new FormControl<string>('', {
+      billToStreet: new FormControl<string>('fff', {
         nonNullable: true,
       }),
-      billToCity: new FormControl<string>('', {
+      billToCity: new FormControl<string>('ggg', {
         nonNullable: true,
       }),
-      billToZip: new FormControl<string>('', {
+      billToZip: new FormControl<string>('hhhh', {
         nonNullable: true,
       }),
-      billToCountry: new FormControl<string>('', {
+      billToCountry: new FormControl<string>('iii', {
         nonNullable: true,
       }),
       invoiceDate: new FormControl<string>(new Date().toISOString().split('T')[0], {
@@ -77,20 +77,20 @@ export class InvoiceFormMng {
       paymentTerm: new FormControl<string>('Chose Term', {
         nonNullable: true,
       }),
-      description: new FormControl<string>('', {
+      description: new FormControl<string>('lll', {
         nonNullable: true,
       }),
       itemsList: new FormArray([
         new FormGroup({
-          name: new FormControl('', {
+          name: new FormControl('mmm', {
             nonNullable: true,
           }),
 
-          qty: new FormControl('', {
+          qty: new FormControl('4', {
             nonNullable: true,
           }),
 
-          price: new FormControl('', {
+          price: new FormControl('5', {
             nonNullable: true,
           }),
         }),

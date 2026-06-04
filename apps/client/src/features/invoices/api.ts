@@ -19,4 +19,13 @@ export class UseInvoicesApiSvc {
 
     return this.useAoi.post(LibApiArgs.withURL('/invoices').body(bodyData).toastOnFulfilled());
   }
+
+  public saveDraftInvoice(invoice: InvoiceFormT): ObsOnOkT<{ invoice: InvoiceT }> {
+    const bodyData = {
+      ...invoice,
+      status: 'DRAFT',
+    };
+
+    return this.useAoi.post(LibApiArgs.withURL('/invoices').body(bodyData).toastOnFulfilled());
+  }
 }
