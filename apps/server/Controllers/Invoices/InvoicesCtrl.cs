@@ -2,6 +2,7 @@ using InvoicesApp.ConfigNS.SqlNS;
 using InvoicesApp.LibNs;
 using InvoicesApp.LibNS;
 using InvoicesApp.TypesNS;
+using Microsoft.EntityFrameworkCore;
 
 namespace InvoicesApp.ControllersNS.InvoicesNS;
 
@@ -71,5 +72,47 @@ public static class InvoicesCtrl
       return Res.Json(500, "Internal Server Error");
     }
 
+  }
+
+  public static async Task<IResult> GetInvoices(SqlDbCtx db)
+  {
+    var invoices = await db.Invoices
+      .Include(invoice => invoice.Items)
+      .AsNoTracking()
+      .Select(invoice => new
+      {
+        invoice.Id,
+        invoice.ClientId,
+        invoice.BillFromStreet,
+        invoice.BillFromCity,
+        invoice.BillFromZip,
+        invoice.BillFromCountry,
+
+        invoice.BillToClientName,
+        invoice.BillToClientMail,
+        invoice.BillToStreet,
+        invoice.BillToCity,
+        invoice.BillToZip,
+        invoice.BillToCountry,
+
+        invoice.InvoiceDate,
+        invoice.PaymentTerm,
+        invoice.Description,
+        invoice.Status,
+
+        ItemsList = invoice.Items.Select(item => new
+        {
+          item.Id,
+          item.Name,
+          item.Qty,
+          item.Price
+        })
+      })
+      .ToListAsync();
+
+    return Res.Json(200, "Here u are", new
+    {
+      invoices
+    });
   }
 }
