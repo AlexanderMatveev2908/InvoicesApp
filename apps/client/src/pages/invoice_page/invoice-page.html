@@ -1,14 +1,18 @@
-<app-invoice-page-element-mobile
-  [currInvoice]="currInvoice()"
-  [isPop]="isPop()"
-  [toggle]="toggle"
-/>
+<app-page-wrapper [waitClient]="true" [isPending]="!currInvoice()">
+  <ng-template #contentRef>
+    <app-invoice-page-element-mobile
+      [currInvoice]="currInvoice()"
+      [isPop]="isPop()"
+      [toggle]="toggle"
+    />
 
-<app-popup
-  [isPop]="isPop()"
-  [title]="'Confirm Deletion'"
-  [description]="descriptionDelete()"
-  [cb]="deleteCb"
-  [action]="'Delete'"
-  [toggle]="toggle"
-/>
+    <app-popup
+      [isPop]="isPop()"
+      [title]="'Confirm Deletion'"
+      [description]="descriptionDelete()"
+      [cb]="deleteCb"
+      [action]="'Delete'"
+      [toggle]="toggle"
+    />
+  </ng-template>
+</app-page-wrapper>

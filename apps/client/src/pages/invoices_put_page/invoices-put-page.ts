@@ -17,10 +17,11 @@ import { InvoicesSlice } from '@/features/invoices/slice';
 import { UseApiTrackerHk } from '@/core/hooks/use_api_tracker';
 import { InvoiceFormT } from '@/features/invoices/paperwork/InvoiceFormMng';
 import { UseInvoicesApiSvc } from '@/features/invoices/api';
+import { PageWrapper } from '@/common/components/hoc/page_wrapper/page-wrapper';
 
 @Component({
   selector: 'app-invoices-put-page',
-  imports: [GoBackMobile, NgClass, InvoicesFormMobile],
+  imports: [GoBackMobile, NgClass, InvoicesFormMobile, PageWrapper],
   templateUrl: './invoices-put-page.html',
   styleUrl: './invoices-put-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,6 +43,6 @@ export class InvoicesPutPage {
   public readonly currInvoice: Signal<Optional<InvoiceT>> = computed(() =>
     this.invoicesSlice
       .invoices()
-      .find((el: InvoiceT) => el.id === this.useNav.pathVariables()?.['invoiceID']),
+      .find((el: InvoiceT) => el.id === +this.useNav.pathVariables()?.['invoiceID']),
   );
 }

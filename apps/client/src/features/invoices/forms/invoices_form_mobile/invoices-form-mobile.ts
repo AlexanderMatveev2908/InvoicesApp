@@ -164,6 +164,7 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
       billToZip: inv.billToZip,
       billToCountry: inv.billToCountry,
 
+      description: inv.description,
       invoiceDate: inv.invoiceDate,
       paymentTerm: inv.paymentTerm,
     });
