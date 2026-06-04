@@ -1,6 +1,6 @@
-using UserAccountsApi.ValidatorsNS;
+using InvoicesApp.ValidatorsNS;
 
-namespace UserAccountsApi.FiltersNS.UsersNS;
+namespace InvoicesApp.FiltersNS.UsersNS;
 
 
 public class UsersFilter : IEndpointFilter

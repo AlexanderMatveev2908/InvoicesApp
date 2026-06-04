@@ -1,7 +1,7 @@
 using System.Text;
-using UserAccountsApi.Lib;
+using InvoicesApp.Lib;
 
-namespace UserAccountsApi.MiddlewareNS;
+namespace InvoicesApp.MiddlewareNS;
 
 public static class LoggerMdw
 {

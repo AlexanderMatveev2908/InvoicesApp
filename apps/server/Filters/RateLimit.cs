@@ -1,7 +1,7 @@
-using UserAccountsApi.LibNS;
-using UserAccountsApi.ServicesNS.RedisNS;
+using InvoicesApp.LibNS;
+using InvoicesApp.ServicesNS.RedisNS;
 
-namespace UserAccountsApi.FilterNS.RateLimitNS;
+namespace InvoicesApp.FilterNS.RateLimitNS;
 
 
 public sealed class RateLimitFilter : IEndpointFilter

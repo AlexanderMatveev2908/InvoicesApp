@@ -1,8 +1,8 @@
 using Npgsql;
-using UserAccountsApi.ConfigNS.SqlNS;
+using InvoicesApp.ConfigNS.SqlNS;
 using Microsoft.EntityFrameworkCore;
 
-namespace UserAccountsApi.ServicesNS.SqlTrxNS;
+namespace InvoicesApp.ServicesNS.SqlTrxNS;
 
 
 public static class SqlTrxSvc

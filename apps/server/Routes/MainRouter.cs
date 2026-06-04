@@ -1,7 +1,7 @@
-using UserAccountsApi.RoutesNS.UserNS;
-using UserAccountsApi.RoutesNS.WakeUpNS;
+using InvoicesApp.RoutesNS.UserNS;
+using InvoicesApp.RoutesNS.WakeUpNS;
 
-namespace UserAccountsApi.RoutesNS;
+namespace InvoicesApp.RoutesNS;
 
 public static class MainRouter
 {

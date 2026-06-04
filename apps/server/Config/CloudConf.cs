@@ -1,7 +1,7 @@
 using CloudinaryDotNet;
-using UserAccountsApi.LibNS;
+using InvoicesApp.LibNS;
 
-namespace UserAccountsApi.ConfigNS.CloudNS;
+namespace InvoicesApp.ConfigNS.CloudNS;
 
 
 public static class CloudConf

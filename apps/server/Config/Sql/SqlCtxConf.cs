@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using UserAccountsApi.ModelsNS;
+using InvoicesApp.ModelsNS;
 
-namespace UserAccountsApi.ConfigNS.SqlNS;
+namespace InvoicesApp.ConfigNS.SqlNS;
 
 public class SqlDbCtx : DbContext
 {

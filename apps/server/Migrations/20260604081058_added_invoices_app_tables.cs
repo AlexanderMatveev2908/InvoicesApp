@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace UserAccountsApi.Migrations
+namespace InvoicesApp.Migrations
 {
     /// <inheritdoc />
     public partial class added_invoices_app_tables : Migration

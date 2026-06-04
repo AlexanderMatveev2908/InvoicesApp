@@ -1,8 +1,8 @@
 using DotNetEnv;
-using UserAccountsApi.LibNS;
-using UserAccountsApi.ConfigNS.RedisNS;
-using UserAccountsApi.ConfigNS;
-using UserAccountsApi.ConfigNS.CloudNS;
+using InvoicesApp.LibNS;
+using InvoicesApp.ConfigNS.RedisNS;
+using InvoicesApp.ConfigNS;
+using InvoicesApp.ConfigNS.CloudNS;
 
 
 Env.Load();

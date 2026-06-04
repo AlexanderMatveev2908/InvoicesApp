@@ -1,8 +1,8 @@
-using UserAccountsApi.ConfigNS.SqlNS;
-using UserAccountsApi.ControllersNS.UsersNS;
-using UserAccountsApi.FiltersNS.UsersNS;
+using InvoicesApp.ConfigNS.SqlNS;
+using InvoicesApp.ControllersNS.UsersNS;
+using InvoicesApp.FiltersNS.UsersNS;
 
-namespace UserAccountsApi.RoutesNS.UserNS;
+namespace InvoicesApp.RoutesNS.UserNS;
 
 public static class UsersRouter
 {

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace UserAccountsApi.Migrations
+namespace InvoicesApp.Migrations
 {
     /// <inheritdoc />
     public partial class marked_email_unique : Migration

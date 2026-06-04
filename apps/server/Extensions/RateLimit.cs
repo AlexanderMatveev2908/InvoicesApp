@@ -1,6 +1,6 @@
-using UserAccountsApi.FilterNS.RateLimitNS;
+using InvoicesApp.FilterNS.RateLimitNS;
 
-namespace UserAccountsApi.ExtensionsNS.RateLimitNS;
+namespace InvoicesApp.ExtensionsNS.RateLimitNS;
 
 
 public static class RateLimitExt

@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using UserAccountsApi.LibNS;
-using UserAccountsApi.TypesNS;
+using InvoicesApp.LibNS;
+using InvoicesApp.TypesNS;
 
-namespace UserAccountsApi.ValidatorsNS;
+namespace InvoicesApp.ValidatorsNS;
 
 public static class UsersCheck
 {
