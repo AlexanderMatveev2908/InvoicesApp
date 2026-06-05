@@ -165,7 +165,7 @@ export class InvoicesFormMobile extends UseInjCtxHk implements OnInit {
       billToCountry: inv.billToCountry,
 
       description: inv.description,
-      invoiceDate: inv.invoiceDate,
+      invoiceDate: new Date(inv.invoiceDate).toISOString().split('T')[0],
       paymentTerm: inv.paymentTerm,
     });
 
