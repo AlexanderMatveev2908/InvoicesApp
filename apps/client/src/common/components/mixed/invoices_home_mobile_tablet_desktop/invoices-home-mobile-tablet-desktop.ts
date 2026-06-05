@@ -1,5 +1,5 @@
 import { InvoiceT } from '@/common/types/invoices';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, InputSignal } from '@angular/core';
 import { InvoiceElementTabletDesktop } from '../invoice_element_tablet_desktop/invoice-element-tablet-desktop';
 import { InvoiceElementMobile } from '../../mobile/invoice_element_mobile/invoice-element-mobile';
 import { InvoicesSlice } from '@/features/invoices/slice';
@@ -12,5 +12,5 @@ import { InvoicesSlice } from '@/features/invoices/slice';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InvoicesHomeMobileTabletDesktop {
-  public readonly invoicesSlice: InvoicesSlice = inject(InvoicesSlice);
+  public readonly filtered: InputSignal<InvoiceT[]> = input.required();
 }

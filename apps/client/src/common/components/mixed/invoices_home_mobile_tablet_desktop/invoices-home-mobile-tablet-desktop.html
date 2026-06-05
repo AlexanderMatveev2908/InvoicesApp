@@ -1,5 +1,5 @@
 <div class="root">
-  @let invoices = invoicesSlice.invoices();
+  @let invoices = filtered();
 
   @for (inv of invoices; track inv.id) {
     <app-invoice-element-mobile [inv]="inv" />
