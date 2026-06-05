@@ -178,4 +178,47 @@ public static class InvoicesCtrl
      }
    );
   }
+
+  public static async Task<IResult> PutInvoice(HttpContext ctx, SqlDbCtx db, int invoiceId)
+  {
+    Invoices? invoice =
+     await db.Invoices
+       .Include(x => x.Items)
+       .FirstOrDefaultAsync(x => x.Id == invoiceId);
+
+    if (invoice is null)
+    {
+      return Res.Json(
+        404,
+        "Invoice not found"
+      );
+    }
+
+    InvoiceDto dto = (InvoiceDto)ctx.Items["dto"]!;
+    invoice.BillFromStreet = dto.BillFromStreet;
+    invoice.BillFromCity = dto.BillFromCity;
+    invoice.BillFromZip = dto.BillFromZip;
+    invoice.BillFromCountry = dto.BillFromCountry;
+
+    invoice.BillToClientName = dto.BillToClientName;
+    invoice.BillToClientMail = dto.BillToClientMail;
+    invoice.BillToStreet = dto.BillToStreet;
+    invoice.BillToCity = dto.BillToCity;
+    invoice.BillToZip = dto.BillToZip;
+    invoice.BillToCountry = dto.BillToCountry;
+
+    invoice.PaymentTerm = dto.PaymentTerm;
+    invoice.Description = dto.Description;
+    invoice.Items = dto.ItemsList.Select(item => new ItemsList
+    {
+      Name = item.Name,
+      Qty = item.Qty,
+      Price = item.Price
+    }).ToList();
+
+    await db.SaveChangesAsync();
+
+
+    return Res.Json(200, "Updated");
+  }
 }
