@@ -1,4 +1,4 @@
-<div class="root">
+<div class="root" [ngClass]="isDisabled() ? 'opacity-50' : 'opacity-100'">
   <label>
     <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')"
       >Invoice Date</span
@@ -10,6 +10,7 @@
     [type]="'date'"
     placeholder="..."
     class="root__input hd__s"
+    [disabled]="isDisabled()"
     [ngClass]="useTheme.ifDark('bg-blue_2 text-white border-0', 'bg-white text-gray_3 border')"
   />
 

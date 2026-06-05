@@ -30,7 +30,7 @@
 
     <app-txt-form-input [txtInput]="billToCountry" [ctrl]="getCtrl(billToCountry.name)" />
 
-    <app-invoice-date-input [ctrl]="getCtrl(invoiceDate.name)" />
+    <app-invoice-date-input [isDisabled]="!!currInvoice()" [ctrl]="getCtrl(invoiceDate.name)" />
 
     <app-payment-term-input [ctrl]="getCtrl(paymentTerm.name)" />
 
@@ -85,7 +85,11 @@
   </div>
 
   @if (currInvoice()) {
-    <app-footer-put-invoice-mobile [resetFormDefault]="resetFormDefault" />
+    <app-footer-put-invoice-mobile
+      [resetFormDefault]="resetFormDefault"
+      [setAction]="setAction"
+      [isPendingSave]="isPendingSave()"
+    />
   } @else {
     <app-footer-post-invoice-mobile
       [resetForm]="resetForm"

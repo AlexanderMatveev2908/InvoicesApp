@@ -21,6 +21,8 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 export class InvoiceDateInput extends UseFormFieldDir implements OnInit {
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
 
+  public readonly isDisabled: InputSignal<boolean> = input(false);
+
   ngOnInit(): void {
     this.setupField();
   }
