@@ -17,7 +17,7 @@
     </button>
 
     <button (click)="cb()()" class="bg-red_1 text-white">
-      <span>{{ action() }} </span>
+      <span>{{ isPending() ? 'Pending...' : action() }} </span>
     </button>
   </div>
 </div>

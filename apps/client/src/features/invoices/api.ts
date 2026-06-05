@@ -40,4 +40,8 @@ export class UseInvoicesApiSvc {
   public markAsPaid(invoiceId: number): ObsOnOkT<void> {
     return this.useAoi.patch(LibApiArgs.withURL(`/invoices/${invoiceId}`).toastOnFulfilled());
   }
+
+  public deleteInvoice(invoiceId: number): ObsOnOkT<void> {
+    return this.useAoi.delete(LibApiArgs.withURL(`/invoices/${invoiceId}`).toastOnFulfilled());
+  }
 }
