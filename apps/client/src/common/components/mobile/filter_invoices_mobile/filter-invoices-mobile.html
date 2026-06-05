@@ -1,8 +1,19 @@
 <div class="root">
-  <button class="root__btn">
+  <button (click)="toggleDrop()" class="root__btn">
     <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">Filter</span>
-    <div class="btn__svg">
+    <div class="btn__svg" [style.rotate]="isDrop() ? '180deg' : '0deg'">
       <ng-container *ngComponentOutlet="SvgArrowDown" />
     </div>
   </button>
+
+  @if (isDrop()) {
+    <div class="root__drop" [ngClass]="useTheme.ifDark('bg-blue_3', 'bg-white')">
+      @for (opt of options; track $index) {
+        <div (click)="useFilters.toggleStatus(opt)" class="drop__opt">
+          <input type="checkbox" name="status" [checked]="useFilters.currFilters().includes(opt)" />
+          <label [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">{{ opt }}</label>
+        </div>
+      }
+    </div>
+  }
 </div>

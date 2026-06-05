@@ -1,10 +1,10 @@
 <div class="root" [ngClass]="useTheme.ifDark('bg-black_0', 'bg-[#F8F8FB]')">
   <app-header-home-mobile-tablet-desktop />
 
-  @let invoices = invoicesSlice.invoices();
+  @let invoices = filtered();
 
   @if (invoices.length) {
-    <app-invoices-home-mobile-tablet-desktop />
+    <app-invoices-home-mobile-tablet-desktop [filtered]="invoices" />
   } @else {
     <app-no-invoices-mobile-tablet-desktop />
   }
