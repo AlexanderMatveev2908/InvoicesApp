@@ -5,7 +5,7 @@
     <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">New Invoice</span>
   </div>
 
-  <form class="root__form" [formGroup]="form">
+  <form class="root__form" (ngSubmit)="submit()" [formGroup]="form">
     <div class="form__bill_from">
       <span class="hd__s text-blue_0">Bill From</span>
 
@@ -76,6 +76,65 @@
     <app-txt-form-input
       [txtInput]="InvoicesUiFct.description"
       [ctrl]="getCtrl(InvoicesUiFct.description.name)"
+    />
+
+    <div class="form__items">
+      <span class="hd__m text-[#777F98]"> Items List </span>
+
+      <div class="items__list">
+        @for (item of itemsList(); track $index) {
+          <div class="list__el">
+            <app-txt-form-input
+              [ctrl]="getItemCtrl($index, 'name')"
+              [txtInput]="InvoicesUiFct.itemName"
+            />
+            <app-txt-form-input
+              [ctrl]="getItemCtrl($index, 'qty')"
+              [txtInput]="InvoicesUiFct.itemQty"
+            />
+            <app-txt-form-input
+              [ctrl]="getItemCtrl($index, 'price')"
+              [txtInput]="InvoicesUiFct.itemPrice"
+            />
+
+            <div class="list__total">
+              <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')"
+                >Total</span
+              >
+              <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')">
+                {{ calcTot(item) }}
+              </span>
+            </div>
+
+            @if ($index) {
+              <button (click)="removeItemFromList($index)" type="button" class="el__btn">
+                <div class="btn__svg">
+                  <ng-container *ngComponentOutlet="SvgTrash" />
+                </div>
+              </button>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="root__add_item">
+      <button
+        (click)="addItemToList()"
+        type="button"
+        class="add_item__btn"
+        [ngClass]="useTheme.ifDark('bg-blue_2', 'bg-[#F9FAFE]')"
+      >
+        <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')"
+          >+ Add New Item</span
+        >
+      </button>
+    </div>
+
+    <app-footer-post-invoice-mobile
+      [setAction]="setAction"
+      [isPendingSave]="isPendingSave()"
+      [resetForm]="resetForm"
     />
   </form>
 </div>

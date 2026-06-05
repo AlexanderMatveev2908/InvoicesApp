@@ -46,7 +46,6 @@ export class InvoicesPostPage {
           tap((res: ResApiT<{ invoice: InvoiceT }>) => {
             this.invoicesSlice.refreshKey();
             this.useNav.replace(`/invoices/${res.data.invoice.id}`, { from: null });
-            console.log(res);
           }),
         ),
       )

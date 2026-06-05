@@ -25,5 +25,27 @@
     .form__payment_row {
       @apply flex justify-between items-center gap-[24px];
     }
+
+    .form__items {
+      @apply mt-[25px] flex flex-col justify-center items-center w-full max-w-full;
+
+      .list__el {
+        @apply flex justify-between items-center gap-[15px];
+
+        .el__btn {
+          .btn__svg {
+            @apply w-[15px] h-[15px];
+          }
+        }
+      }
+    }
+  }
+
+  .root__add_item {
+    @apply mt-[50px] flex justify-center;
+
+    .add_item__btn {
+      @apply rounded-full px-[100px] py-[15px] flex justify-center items-center;
+    }
   }
 }

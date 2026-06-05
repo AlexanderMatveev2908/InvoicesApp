@@ -16,6 +16,7 @@ import { UseFiltersInvoicesSvc } from '@/core/services/use_filters_invoices';
 import { InvoiceT } from '@/common/types/invoices';
 import { UseInjCtxHk } from '@/core/hooks/use_inj_ctx';
 import { InvoicesFormTabletDesktop } from '@/features/invoices/forms/invoices_form_tablet_desktop/invoices-form-tablet-desktop';
+import { InvoiceFormT } from '@/features/invoices/paperwork/InvoiceFormMng';
 
 @Component({
   selector: 'app-home-page',
@@ -41,4 +42,8 @@ export class HomePage {
       .invoices()
       .filter((inv) => this.useFilters.currFilters().includes(inv.status)),
   );
+
+  public readonly cbSave = (data: InvoiceFormT): void => {
+    console.log(data);
+  };
 }
