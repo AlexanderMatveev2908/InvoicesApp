@@ -20,14 +20,7 @@ import { InvoicesFormTabletDesktop } from '@/features/invoices/forms/invoices_fo
 
 @Component({
   selector: 'app-root',
-  imports: [
-    RouterOutlet,
-    Toast,
-    WakeUp,
-    NavbarMobileTablet,
-    SidebarDesktop,
-    InvoicesFormTabletDesktop,
-  ],
+  imports: [RouterOutlet, Toast, WakeUp, NavbarMobileTablet, SidebarDesktop],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

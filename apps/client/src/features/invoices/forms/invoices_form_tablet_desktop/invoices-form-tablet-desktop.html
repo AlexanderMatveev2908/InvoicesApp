@@ -29,5 +29,53 @@
         />
       </div>
     </div>
+
+    <div class="form__bill_to">
+      <span class="hd__s text-blue_0">Bill To</span>
+
+      <app-txt-form-input
+        [txtInput]="InvoicesUiFct.billToClientName"
+        [ctrl]="getCtrl(InvoicesUiFct.billToClientName.name)"
+      />
+
+      <app-txt-form-input
+        [txtInput]="InvoicesUiFct.billToClientMail"
+        [ctrl]="getCtrl(InvoicesUiFct.billToClientMail.name)"
+      />
+
+      <app-txt-form-input
+        [txtInput]="InvoicesUiFct.billToStreet"
+        [ctrl]="getCtrl(InvoicesUiFct.billToStreet.name)"
+      />
+
+      <div class="bill_to__row">
+        <app-txt-form-input
+          [txtInput]="InvoicesUiFct.billToCity"
+          [ctrl]="getCtrl(InvoicesUiFct.billToCity.name)"
+        />
+        <app-txt-form-input
+          [txtInput]="InvoicesUiFct.billToZip"
+          [ctrl]="getCtrl(InvoicesUiFct.billToZip.name)"
+        />
+        <app-txt-form-input
+          [txtInput]="InvoicesUiFct.billToCountry"
+          [ctrl]="getCtrl(InvoicesUiFct.billToCountry.name)"
+        />
+      </div>
+    </div>
+
+    <div class="form__payment_row">
+      <app-invoice-date-input
+        [isDisabled]="!!currInvoice()"
+        [ctrl]="getCtrl(InvoicesUiFct.invoiceDate.name)"
+      />
+
+      <app-payment-term-input [ctrl]="getCtrl(InvoicesUiFct.paymentTerm.name)" />
+    </div>
+
+    <app-txt-form-input
+      [txtInput]="InvoicesUiFct.description"
+      [ctrl]="getCtrl(InvoicesUiFct.description.name)"
+    />
   </form>
 </div>

@@ -1,17 +1,28 @@
 .root {
   z-index: 200;
 
-  @apply w-[616px] h-full fixed top-[70px] left-0 rounded-tr-[20px] p-[56px];
+  @apply w-[616px] h-full fixed top-[70px] left-0 rounded-tr-[20px] p-[56px] pb-[200px] overflow-y-auto;
 
   .root__title {
   }
 
   .root__form {
-    .form__bill_from {
+    .form__bill_from,
+    .form__bill_to {
       @apply mt-[40px] flex flex-col gap-[24px];
     }
 
     .bill_form__row {
+      @apply flex justify-between items-center gap-[24px];
+    }
+
+    .form__bill_to {
+      .bill_to__row {
+        @apply flex justify-between items-center gap-[24px];
+      }
+    }
+
+    .form__payment_row {
       @apply flex justify-between items-center gap-[24px];
     }
   }
