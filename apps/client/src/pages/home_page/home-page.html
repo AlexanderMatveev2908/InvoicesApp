@@ -9,3 +9,10 @@
     <app-no-invoices-mobile-tablet-desktop />
   }
 </div>
+
+<app-invoices-form-tablet-desktop
+  [cbSave]="submitSave"
+  [isPendingSave]="saveTracker.isPending()"
+  [cbDraft]="submitDraft"
+  [isPendingDraft]="draftTracker.isPending()"
+/>

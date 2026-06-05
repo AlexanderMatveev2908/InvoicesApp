@@ -21,7 +21,7 @@ import { UseInjCtxHk } from '@/core/hooks/use_inj_ctx';
   styleUrl: './filter-invoices-tablet-desktop.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FilterInvoicesTabletDesktop extends UseInjCtxHk implements OnInit {
+export class FilterInvoicesTabletDesktop extends UseInjCtxHk {
   public readonly SvgArrowDown: SvgT = SvgAdvArrowDown;
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
 
@@ -33,11 +33,5 @@ export class FilterInvoicesTabletDesktop extends UseInjCtxHk implements OnInit {
 
   public toggleDrop(): void {
     this.isDrop.set(!this.isDrop());
-  }
-
-  ngOnInit(): void {
-    this.useEffect(() => {
-      console.log(this.isDrop());
-    });
   }
 }

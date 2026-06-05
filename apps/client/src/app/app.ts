@@ -16,6 +16,7 @@ import { UseSsrSvc } from '@/core/services/use_ssr';
 import { InvoicesSlice } from '@/features/invoices/slice';
 import { Nullable } from '@/common/types/general';
 import { UseScrollSvc } from '@/core/services/use_scroll';
+import { InvoicesFormTabletDesktop } from '@/features/invoices/forms/invoices_form_tablet_desktop/invoices-form-tablet-desktop';
 
 @Component({
   selector: 'app-root',

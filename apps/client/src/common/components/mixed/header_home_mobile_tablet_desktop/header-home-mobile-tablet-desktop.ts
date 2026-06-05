@@ -7,6 +7,8 @@ import { FilterInvoicesMobile } from '../../mobile/filter_invoices_mobile/filter
 import { FilterInvoicesTabletDesktop } from '../filter_invoices_tablet_desktop/filter-invoices-tablet-desktop';
 import { AddInvoiceTabletDesktop } from '../add_invoice_tablet_desktop/add-invoice-tablet-desktop';
 import { InvoicesSlice } from '@/features/invoices/slice';
+import { UseNavSvc } from '@/core/services/use_nav';
+import { Breakpoints } from '@/core/constants/break';
 
 @Component({
   selector: 'app-header-home-mobile-tablet-desktop',
@@ -25,4 +27,11 @@ export class HeaderHomeMobileTabletDesktop {
   public readonly invoicesSlice: InvoicesSlice = inject(InvoicesSlice);
 
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
+
+  public readonly useNav: UseNavSvc = inject(UseNavSvc);
+
+  public readonly toggleInvoiceBar = (): void => {
+    if (Breakpoints.isTablet() || Breakpoints.isDesktop()) this.invoicesSlice.toggleInvoiceBar();
+    else this.useNav.replace('/invoices-post', { from: null });
+  };
 }

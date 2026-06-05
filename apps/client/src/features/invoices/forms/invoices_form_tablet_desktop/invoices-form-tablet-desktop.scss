@@ -1,0 +1,51 @@
+.root {
+  z-index: 200;
+
+  @apply w-[616px] h-full fixed top-[70px] left-0 rounded-tr-[20px] p-[56px] pb-[200px] overflow-y-auto;
+
+  .root__title {
+  }
+
+  .root__form {
+    .form__bill_from,
+    .form__bill_to {
+      @apply mt-[40px] flex flex-col gap-[24px];
+    }
+
+    .bill_form__row {
+      @apply flex justify-between items-center gap-[24px];
+    }
+
+    .form__bill_to {
+      .bill_to__row {
+        @apply flex justify-between items-center gap-[24px];
+      }
+    }
+
+    .form__payment_row {
+      @apply flex justify-between items-center gap-[24px];
+    }
+
+    .form__items {
+      @apply mt-[25px] flex flex-col justify-center items-center w-full max-w-full;
+
+      .list__el {
+        @apply flex justify-between items-center gap-[15px];
+
+        .el__btn {
+          .btn__svg {
+            @apply w-[15px] h-[15px];
+          }
+        }
+      }
+    }
+  }
+
+  .root__add_item {
+    @apply mt-[50px] flex justify-center;
+
+    .add_item__btn {
+      @apply rounded-full px-[100px] py-[15px] flex justify-center items-center;
+    }
+  }
+}

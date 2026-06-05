@@ -4,14 +4,26 @@ export class Breakpoints {
   public static desktop: number = 1440;
 
   public static isMobile(): boolean {
-    return window.innerWidth < this.mobile;
+    try {
+      return window.innerWidth < this.tablet;
+    } catch (error) {
+      return true;
+    }
   }
 
   public static isTablet(): boolean {
-    return window.innerWidth >= this.mobile && window.innerWidth < this.desktop;
+    try {
+      return window.innerWidth >= this.tablet && window.innerWidth < this.desktop;
+    } catch (error) {
+      return false;
+    }
   }
 
   public static isDesktop(): boolean {
-    return window.innerWidth >= this.desktop;
+    try {
+      return window.innerWidth >= this.desktop;
+    } catch (error) {
+      return false;
+    }
   }
 }

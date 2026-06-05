@@ -15,6 +15,13 @@ import { InvoicesSlice } from '@/features/invoices/slice';
 import { UseFiltersInvoicesSvc } from '@/core/services/use_filters_invoices';
 import { InvoiceT } from '@/common/types/invoices';
 import { UseInjCtxHk } from '@/core/hooks/use_inj_ctx';
+import { InvoicesFormTabletDesktop } from '@/features/invoices/forms/invoices_form_tablet_desktop/invoices-form-tablet-desktop';
+import { InvoiceFormT } from '@/features/invoices/paperwork/InvoiceFormMng';
+import { UseApiTrackerHk } from '@/core/hooks/use_api_tracker';
+import { UseNavSvc } from '@/core/services/use_nav';
+import { UseInvoicesApiSvc } from '@/features/invoices/api';
+import { tap } from 'rxjs';
+import { ResApiT } from '@/common/types/api';
 
 @Component({
   selector: 'app-home-page',
@@ -23,6 +30,7 @@ import { UseInjCtxHk } from '@/core/hooks/use_inj_ctx';
     InvoicesHomeMobileTabletDesktop,
     NgClass,
     NoInvoicesMobileTabletDesktop,
+    InvoicesFormTabletDesktop,
   ],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
@@ -31,6 +39,7 @@ import { UseInjCtxHk } from '@/core/hooks/use_inj_ctx';
 export class HomePage {
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
   public readonly invoicesSlice: InvoicesSlice = inject(InvoicesSlice);
+  public readonly useInvoicesApi: UseInvoicesApiSvc = inject(UseInvoicesApiSvc);
 
   public readonly useFilters: UseFiltersInvoicesSvc = inject(UseFiltersInvoicesSvc);
 
@@ -39,4 +48,37 @@ export class HomePage {
       .invoices()
       .filter((inv) => this.useFilters.currFilters().includes(inv.status)),
   );
+
+  private readonly useNav: UseNavSvc = inject(UseNavSvc);
+
+  public readonly saveTracker = new UseApiTrackerHk();
+  public readonly draftTracker = new UseApiTrackerHk();
+
+  public readonly submitSave = (data: InvoiceFormT): void => {
+    this.saveTracker
+      .track(
+        this.useInvoicesApi.savePendingInvoice(data).pipe(
+          tap((res: ResApiT<{ invoice: InvoiceT }>) => {
+            this.invoicesSlice.refreshKey();
+            this.useNav.replace(`/invoices/${res.data.invoice.id}`, { from: null });
+            this.invoicesSlice.toggleInvoiceBar();
+          }),
+        ),
+      )
+      .subscribe();
+  };
+
+  public readonly submitDraft = (data: InvoiceFormT): void => {
+    this.draftTracker
+      .track(
+        this.useInvoicesApi.saveDraftInvoice(data).pipe(
+          tap((res: ResApiT<{ invoice: InvoiceT }>) => {
+            this.invoicesSlice.refreshKey();
+            this.useNav.replace(`/invoices/${res.data.invoice.id}`, { from: null });
+            this.invoicesSlice.toggleInvoiceBar();
+          }),
+        ),
+      )
+      .subscribe();
+  };
 }

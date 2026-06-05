@@ -24,4 +24,8 @@ export class InvoicesSlice extends UseKitSliceSvc {
   public setInvoices(invoices: InvoiceT[]): void {
     this.store.dispatch(InvoicesActT.SET_INVOICES({ invoices }));
   }
+
+  public toggleInvoiceBar(): void {
+    this.store.dispatch(InvoicesActT.SET_INVOICE_BAR({ val: !this.invoicesState().invoiceBar }));
+  }
 }

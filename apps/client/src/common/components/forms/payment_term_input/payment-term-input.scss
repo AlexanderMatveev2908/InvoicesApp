@@ -1,5 +1,9 @@
+:host {
+  @apply block w-full;
+}
+
 .root {
-  @apply flex flex-col gap-[10px];
+  @apply w-full min-w-full flex flex-col gap-[10px];
 
   .root__input {
     @apply rounded-[8px] py-[15px] px-[20px] relative;
