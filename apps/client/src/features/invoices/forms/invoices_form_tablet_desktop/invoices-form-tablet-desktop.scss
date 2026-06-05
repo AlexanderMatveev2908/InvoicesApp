@@ -1,7 +1,7 @@
 .root {
   z-index: 200;
 
-  @apply w-[616px] h-full fixed top-[70px] left-0 rounded-tr-[20px] p-[56px] pb-[200px] overflow-y-auto;
+  @apply desktop:left-[100px] w-[616px] h-full fixed top-[70px] desktop:top-0 left-0 rounded-tr-[20px] p-[56px] pb-[200px] overflow-y-auto;
 
   .root__title {
   }

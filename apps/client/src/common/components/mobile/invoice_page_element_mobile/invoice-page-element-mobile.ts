@@ -20,10 +20,11 @@ import { UseInvoicesApiSvc } from '@/features/invoices/api';
 import { UseApiTrackerHk } from '@/core/hooks/use_api_tracker';
 import { finalize, tap } from 'rxjs';
 import { UseNavSvc } from '@/core/services/use_nav';
+import { Breakpoints } from '@/core/constants/break';
 
 @Component({
   selector: 'app-invoice-page-element-mobile',
-  imports: [NgClass, GoBackMobile, RouterLink],
+  imports: [NgClass, GoBackMobile],
   templateUrl: './invoice-page-element-mobile.html',
   styleUrl: './invoice-page-element-mobile.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -57,6 +58,11 @@ export class InvoicePageElementMobile extends UseMetaStatusDir {
   public readonly editLink: Signal<string> = computed(
     () => `/invoices-put/${this.currInvoice()?.id}`,
   );
+
+  public toggleEdit(): void {
+    if (Breakpoints.isTablet() || Breakpoints.isDesktop()) this.invoicesSlice.toggleInvoiceBar();
+    else this.useNav.replace(this.editLink(), { from: null });
+  }
 
   public formatDate(): string {
     return LibFormat.formatDate(this.currInvoice()?.invoiceDate!);

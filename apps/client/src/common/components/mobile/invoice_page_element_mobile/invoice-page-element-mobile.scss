@@ -57,7 +57,7 @@
     .footer__edit,
     .footer__delete,
     .footer__mark {
-      @apply py-[15px] px-[30px] rounded-[24px];
+      @apply cursor-pointer py-[15px] px-[30px] rounded-[24px];
     }
 
     .footer__delete {

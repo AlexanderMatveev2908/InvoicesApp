@@ -33,6 +33,7 @@ import { LibLog } from '@/core/lib/log';
 import { UseInjCtxHk } from '@/core/hooks/use_inj_ctx';
 import { SvgAdvTrash } from '@/common/components/svgs/advanced/trash/trash';
 import { FooterPostInvoiceMobile } from '../invoices_form_mobile/components/footer_post_invoice_mobile/footer-post-invoice-mobile';
+import { FooterPutInvoiceMobile } from '../invoices_form_mobile/components/footer_put_invoice_mobile/footer-put-invoice-mobile';
 
 @Component({
   selector: 'app-invoices-form-tablet-desktop',
@@ -45,6 +46,7 @@ import { FooterPostInvoiceMobile } from '../invoices_form_mobile/components/foot
     InvoiceDateInput,
     NgComponentOutlet,
     FooterPostInvoiceMobile,
+    FooterPutInvoiceMobile,
   ],
   templateUrl: './invoices-form-tablet-desktop.html',
   styleUrl: './invoices-form-tablet-desktop.scss',
@@ -131,6 +133,10 @@ export class InvoicesFormTabletDesktop extends UseInjCtxHk implements OnInit {
 
   public readonly resetForm = (): void => {
     this.form.reset();
+  };
+
+  public readonly resetFormDefault = (): void => {
+    this.applyCurrInvoiceData();
   };
 
   public readonly applyCurrInvoiceData = (): void => {

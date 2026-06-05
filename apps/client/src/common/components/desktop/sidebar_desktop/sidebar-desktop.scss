@@ -1,5 +1,6 @@
 .root {
   display: none;
+  z-index: 200;
 
   @media (min-width: 1440px) {
     display: flex;

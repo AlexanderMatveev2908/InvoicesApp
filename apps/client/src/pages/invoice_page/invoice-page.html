@@ -17,3 +17,9 @@
     />
   </ng-template>
 </app-page-wrapper>
+
+<app-invoices-form-tablet-desktop
+  [cbSave]="submitSave"
+  [isPendingSave]="saveTracker.isPending()"
+  [currInvoice]="currInvoice()"
+/>

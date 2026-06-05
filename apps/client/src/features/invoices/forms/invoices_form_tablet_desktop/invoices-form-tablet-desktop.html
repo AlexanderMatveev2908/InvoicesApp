@@ -134,12 +134,20 @@
         </button>
       </div>
 
-      <app-footer-post-invoice-mobile
-        [setAction]="setAction"
-        [isPendingSave]="isPendingSave()"
-        [resetForm]="resetForm"
-        [isPendingDraft]="isPendingDraft()"
-      />
+      @if (currInvoice()) {
+        <app-footer-put-invoice-mobile
+          [resetFormDefault]="resetFormDefault"
+          [setAction]="setAction"
+          [isPendingSave]="isPendingSave()"
+        />
+      } @else {
+        <app-footer-post-invoice-mobile
+          [resetForm]="resetForm"
+          [isPendingSave]="isPendingSave()"
+          [setAction]="setAction"
+          [isPendingDraft]="isPendingDraft()"
+        />
+      }
     </form>
   </div>
 }

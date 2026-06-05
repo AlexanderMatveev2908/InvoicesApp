@@ -123,13 +123,13 @@
   </div>
 
   <div class="root__footer" [ngClass]="useTheme.ifDark('bg-[#1E2139]', 'bg-white')">
-    <a
-      [routerLink]="editLink()"
+    <div
+      (click)="toggleEdit()"
       class="footer__edit"
       [ngClass]="useTheme.ifDark('bg-blue_3', 'bg-[#F9FAFE]')"
     >
       <span class="hd__s" [ngClass]="useTheme.ifDark('text-white', 'text-gray_2')">Edit</span>
-    </a>
+    </div>
 
     <button (click)="toggle()()" class="footer__delete">
       <span class="hd__s text-white">Delete</span>
