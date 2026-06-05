@@ -59,9 +59,9 @@ public static class InvoicesCtrl
 
       return Res.Json(201, "Invoice created", new
       {
-        Invoice = LibShape.Merge<InvoiceDto>(dto, new
+        Invoice = LibShape.Merge(dto, new
         {
-          Id = newInvoice.Id
+          id = newInvoice.Id
         })
       });
     }

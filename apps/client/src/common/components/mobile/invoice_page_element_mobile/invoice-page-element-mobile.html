@@ -135,8 +135,12 @@
       <span class="hd__s text-white">Delete</span>
     </button>
 
-    <button class="footer__mark bg-blue_0">
-      <span class="hd__s text-white">Mark As Paid</span>
-    </button>
+    @if (currInvoice()?.status !== 'PAID') {
+      <button (click)="markAsPaid()" class="footer__mark bg-blue_0">
+        <span class="hd__s text-white">{{
+          markingTracker.isPending() ? 'Pending...' : 'Mark As Paid'
+        }}</span>
+      </button>
+    }
   </div>
 </div>
