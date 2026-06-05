@@ -1,140 +1,145 @@
 <app-bg-black [isBlack]="isBlack()" />
 
-<div class="root" [ngClass]="useTheme.ifDark('bg-blue_3', 'bg-white')">
-  <div class="root__title">
-    <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">New Invoice</span>
-  </div>
-
-  <form class="root__form" (ngSubmit)="submit()" [formGroup]="form">
-    <div class="form__bill_from">
-      <span class="hd__s text-blue_0">Bill From</span>
-
-      <app-txt-form-input
-        [txtInput]="InvoicesUiFct.billFromStreet"
-        [ctrl]="getCtrl(InvoicesUiFct.billFromStreet.name)"
-      />
-
-      <div class="bill_form__row">
-        <app-txt-form-input
-          [txtInput]="InvoicesUiFct.billFromCity"
-          [ctrl]="getCtrl(InvoicesUiFct.billFromCity.name)"
-        />
-        <app-txt-form-input
-          [txtInput]="InvoicesUiFct.billFromZip"
-          [ctrl]="getCtrl(InvoicesUiFct.billFromZip.name)"
-        />
-        <app-txt-form-input
-          [txtInput]="InvoicesUiFct.billFromCountry"
-          [ctrl]="getCtrl(InvoicesUiFct.billFromCountry.name)"
-        />
-      </div>
-    </div>
-
-    <div class="form__bill_to">
-      <span class="hd__s text-blue_0">Bill To</span>
-
-      <app-txt-form-input
-        [txtInput]="InvoicesUiFct.billToClientName"
-        [ctrl]="getCtrl(InvoicesUiFct.billToClientName.name)"
-      />
-
-      <app-txt-form-input
-        [txtInput]="InvoicesUiFct.billToClientMail"
-        [ctrl]="getCtrl(InvoicesUiFct.billToClientMail.name)"
-      />
-
-      <app-txt-form-input
-        [txtInput]="InvoicesUiFct.billToStreet"
-        [ctrl]="getCtrl(InvoicesUiFct.billToStreet.name)"
-      />
-
-      <div class="bill_to__row">
-        <app-txt-form-input
-          [txtInput]="InvoicesUiFct.billToCity"
-          [ctrl]="getCtrl(InvoicesUiFct.billToCity.name)"
-        />
-        <app-txt-form-input
-          [txtInput]="InvoicesUiFct.billToZip"
-          [ctrl]="getCtrl(InvoicesUiFct.billToZip.name)"
-        />
-        <app-txt-form-input
-          [txtInput]="InvoicesUiFct.billToCountry"
-          [ctrl]="getCtrl(InvoicesUiFct.billToCountry.name)"
-        />
-      </div>
-    </div>
-
-    <div class="form__payment_row">
-      <app-invoice-date-input
-        [isDisabled]="!!currInvoice()"
-        [ctrl]="getCtrl(InvoicesUiFct.invoiceDate.name)"
-      />
-
-      <app-payment-term-input [ctrl]="getCtrl(InvoicesUiFct.paymentTerm.name)" />
-    </div>
-
-    <app-txt-form-input
-      [txtInput]="InvoicesUiFct.description"
-      [ctrl]="getCtrl(InvoicesUiFct.description.name)"
-    />
-
-    <div class="form__items">
-      <span class="hd__m text-[#777F98]"> Items List </span>
-
-      <div class="items__list">
-        @for (item of itemsList(); track $index) {
-          <div class="list__el">
-            <app-txt-form-input
-              [ctrl]="getItemCtrl($index, 'name')"
-              [txtInput]="InvoicesUiFct.itemName"
-            />
-            <app-txt-form-input
-              [ctrl]="getItemCtrl($index, 'qty')"
-              [txtInput]="InvoicesUiFct.itemQty"
-            />
-            <app-txt-form-input
-              [ctrl]="getItemCtrl($index, 'price')"
-              [txtInput]="InvoicesUiFct.itemPrice"
-            />
-
-            <div class="list__total">
-              <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')"
-                >Total</span
-              >
-              <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')">
-                {{ calcTot(item) }}
-              </span>
-            </div>
-
-            @if ($index) {
-              <button (click)="removeItemFromList($index)" type="button" class="el__btn">
-                <div class="btn__svg">
-                  <ng-container *ngComponentOutlet="SvgTrash" />
-                </div>
-              </button>
-            }
-          </div>
-        }
-      </div>
-    </div>
-
-    <div class="root__add_item">
-      <button
-        (click)="addItemToList()"
-        type="button"
-        class="add_item__btn"
-        [ngClass]="useTheme.ifDark('bg-blue_2', 'bg-[#F9FAFE]')"
+@if (isBlack()) {
+  <div #rootRef class="root" [ngClass]="useTheme.ifDark('bg-blue_3', 'bg-white')">
+    <div class="root__title">
+      <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')"
+        >New Invoice</span
       >
-        <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')"
-          >+ Add New Item</span
-        >
-      </button>
     </div>
 
-    <app-footer-post-invoice-mobile
-      [setAction]="setAction"
-      [isPendingSave]="isPendingSave()"
-      [resetForm]="resetForm"
-    />
-  </form>
-</div>
+    <form class="root__form" (ngSubmit)="submit()" [formGroup]="form">
+      <div class="form__bill_from">
+        <span class="hd__s text-blue_0">Bill From</span>
+
+        <app-txt-form-input
+          [txtInput]="InvoicesUiFct.billFromStreet"
+          [ctrl]="getCtrl(InvoicesUiFct.billFromStreet.name)"
+        />
+
+        <div class="bill_form__row">
+          <app-txt-form-input
+            [txtInput]="InvoicesUiFct.billFromCity"
+            [ctrl]="getCtrl(InvoicesUiFct.billFromCity.name)"
+          />
+          <app-txt-form-input
+            [txtInput]="InvoicesUiFct.billFromZip"
+            [ctrl]="getCtrl(InvoicesUiFct.billFromZip.name)"
+          />
+          <app-txt-form-input
+            [txtInput]="InvoicesUiFct.billFromCountry"
+            [ctrl]="getCtrl(InvoicesUiFct.billFromCountry.name)"
+          />
+        </div>
+      </div>
+
+      <div class="form__bill_to">
+        <span class="hd__s text-blue_0">Bill To</span>
+
+        <app-txt-form-input
+          [txtInput]="InvoicesUiFct.billToClientName"
+          [ctrl]="getCtrl(InvoicesUiFct.billToClientName.name)"
+        />
+
+        <app-txt-form-input
+          [txtInput]="InvoicesUiFct.billToClientMail"
+          [ctrl]="getCtrl(InvoicesUiFct.billToClientMail.name)"
+        />
+
+        <app-txt-form-input
+          [txtInput]="InvoicesUiFct.billToStreet"
+          [ctrl]="getCtrl(InvoicesUiFct.billToStreet.name)"
+        />
+
+        <div class="bill_to__row">
+          <app-txt-form-input
+            [txtInput]="InvoicesUiFct.billToCity"
+            [ctrl]="getCtrl(InvoicesUiFct.billToCity.name)"
+          />
+          <app-txt-form-input
+            [txtInput]="InvoicesUiFct.billToZip"
+            [ctrl]="getCtrl(InvoicesUiFct.billToZip.name)"
+          />
+          <app-txt-form-input
+            [txtInput]="InvoicesUiFct.billToCountry"
+            [ctrl]="getCtrl(InvoicesUiFct.billToCountry.name)"
+          />
+        </div>
+      </div>
+
+      <div class="form__payment_row">
+        <app-invoice-date-input
+          [isDisabled]="!!currInvoice()"
+          [ctrl]="getCtrl(InvoicesUiFct.invoiceDate.name)"
+        />
+
+        <app-payment-term-input [ctrl]="getCtrl(InvoicesUiFct.paymentTerm.name)" />
+      </div>
+
+      <app-txt-form-input
+        [txtInput]="InvoicesUiFct.description"
+        [ctrl]="getCtrl(InvoicesUiFct.description.name)"
+      />
+
+      <div class="form__items">
+        <span class="hd__m text-[#777F98]"> Items List </span>
+
+        <div class="items__list">
+          @for (item of itemsList(); track $index) {
+            <div class="list__el">
+              <app-txt-form-input
+                [ctrl]="getItemCtrl($index, 'name')"
+                [txtInput]="InvoicesUiFct.itemName"
+              />
+              <app-txt-form-input
+                [ctrl]="getItemCtrl($index, 'qty')"
+                [txtInput]="InvoicesUiFct.itemQty"
+              />
+              <app-txt-form-input
+                [ctrl]="getItemCtrl($index, 'price')"
+                [txtInput]="InvoicesUiFct.itemPrice"
+              />
+
+              <div class="list__total">
+                <span class="bd__m" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')"
+                  >Total</span
+                >
+                <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')">
+                  {{ calcTot(item) }}
+                </span>
+              </div>
+
+              @if ($index) {
+                <button (click)="removeItemFromList($index)" type="button" class="el__btn">
+                  <div class="btn__svg">
+                    <ng-container *ngComponentOutlet="SvgTrash" />
+                  </div>
+                </button>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="root__add_item">
+        <button
+          (click)="addItemToList()"
+          type="button"
+          class="add_item__btn"
+          [ngClass]="useTheme.ifDark('bg-blue_2', 'bg-[#F9FAFE]')"
+        >
+          <span class="hd__s" [ngClass]="useTheme.ifDark('text-gray_1', 'text-gray_2')"
+            >+ Add New Item</span
+          >
+        </button>
+      </div>
+
+      <app-footer-post-invoice-mobile
+        [setAction]="setAction"
+        [isPendingSave]="isPendingSave()"
+        [resetForm]="resetForm"
+        [isPendingDraft]="isPendingDraft()"
+      />
+    </form>
+  </div>
+}

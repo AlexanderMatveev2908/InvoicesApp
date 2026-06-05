@@ -2,12 +2,15 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  ElementRef,
+  HostListener,
   inject,
   input,
   InputSignal,
   OnInit,
   signal,
   Signal,
+  ViewChild,
   WritableSignal,
 } from '@angular/core';
 import { BgBlack } from '@/layout/bg_black/bg-black';
@@ -179,5 +182,21 @@ export class InvoicesFormTabletDesktop extends UseInjCtxHk implements OnInit {
     if (!this.currInvoice()) return;
 
     this.applyCurrInvoiceData();
+  }
+
+  @ViewChild('rootRef')
+  public rootRef?: ElementRef<HTMLElement>;
+
+  @HostListener('document:click', ['$event'])
+  public onDocumentClick(event: MouseEvent): void {
+    const el = this.rootRef?.nativeElement;
+
+    if (!el) return;
+
+    const target = event.target as Node;
+
+    if (!el.contains(target)) {
+      this.invoicesSlice.toggleInvoiceBar();
+    }
   }
 }
