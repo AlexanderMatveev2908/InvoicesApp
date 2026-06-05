@@ -17,6 +17,8 @@ import { InvoiceFormT } from '@/features/invoices/paperwork/InvoiceFormMng';
 import { InvoicesSlice } from '@/features/invoices/slice';
 import { UseNavSvc } from '@/core/services/use_nav';
 import { switchMap, tap } from 'rxjs';
+import { ResApiT } from '@/common/types/api';
+import { InvoiceT } from '@/common/types/invoices';
 
 @Component({
   selector: 'app-invoices-post-page',
@@ -41,9 +43,10 @@ export class InvoicesPostPage {
     this.saveTracker
       .track(
         this.useInvoicesApi.savePendingInvoice(data).pipe(
-          tap(() => {
+          tap((res: ResApiT<{ invoice: InvoiceT }>) => {
             this.invoicesSlice.refreshKey();
-            this.useNav.replace('/', { from: null });
+            this.useNav.replace(`/invoices/${res.data.invoice.id}`, { from: null });
+            console.log(res);
           }),
         ),
       )
@@ -54,9 +57,9 @@ export class InvoicesPostPage {
     this.draftTracker
       .track(
         this.useInvoicesApi.saveDraftInvoice(data).pipe(
-          tap(() => {
+          tap((res: ResApiT<{ invoice: InvoiceT }>) => {
             this.invoicesSlice.refreshKey();
-            this.useNav.replace('/', { from: null });
+            this.useNav.replace(`/invoices/${res.data.invoice.id}`, { from: null });
           }),
         ),
       )

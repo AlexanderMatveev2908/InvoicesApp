@@ -15,6 +15,7 @@ import { ResApiT } from '@/common/types/api';
 import { UseSsrSvc } from '@/core/services/use_ssr';
 import { InvoicesSlice } from '@/features/invoices/slice';
 import { Nullable } from '@/common/types/general';
+import { UseScrollSvc } from '@/core/services/use_scroll';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ export class App extends UseInjCtxHk implements OnInit, AfterViewInit {
   private readonly useInvoicesApi: UseInvoicesApiSvc = inject(UseInvoicesApiSvc);
   private readonly useSsr: UseSsrSvc = inject(UseSsrSvc);
   private readonly invoicesSlice: InvoicesSlice = inject(InvoicesSlice);
+  private readonly useScroll: UseScrollSvc = inject(UseScrollSvc);
 
   private getInvoicesSsr(): void {
     this.usePlatform.onServer(() => {
@@ -69,6 +71,8 @@ export class App extends UseInjCtxHk implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.useScroll.main();
+
     this.getInvoicesSsr();
     this.setExistingOrFetch();
     this.refetchOnTrigger();

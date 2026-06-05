@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  inject,
   input,
   InputSignal,
   Signal,
@@ -14,6 +15,11 @@ import { NgClass } from '@angular/common';
 import { UseMetaStatusDir } from '@/core/directives/use_meta_status_dir';
 import { GoBackMobile } from '../go_back_mobile/go-back-mobile';
 import { RouterLink } from '@angular/router';
+import { InvoicesSlice } from '@/features/invoices/slice';
+import { UseInvoicesApiSvc } from '@/features/invoices/api';
+import { UseApiTrackerHk } from '@/core/hooks/use_api_tracker';
+import { tap } from 'rxjs';
+import { UseNavSvc } from '@/core/services/use_nav';
 
 @Component({
   selector: 'app-invoice-page-element-mobile',
@@ -25,6 +31,26 @@ import { RouterLink } from '@angular/router';
 export class InvoicePageElementMobile extends UseMetaStatusDir {
   public readonly isPop: InputSignal<boolean> = input.required();
   public readonly toggle: InputSignal<() => void> = input.required();
+
+  public readonly markingTracker = new UseApiTrackerHk();
+  private readonly invoicesSlice: InvoicesSlice = inject(InvoicesSlice);
+  private readonly useInvoicesAPi: UseInvoicesApiSvc = inject(UseInvoicesApiSvc);
+  private readonly useNav: UseNavSvc = inject(UseNavSvc);
+
+  public markAsPaid(): void {
+    const id: number = Number(this.currInvoice()?.id ?? 0);
+
+    this.markingTracker
+      .track(
+        this.useInvoicesAPi.markAsPaid(id).pipe(
+          tap(() => {
+            this.invoicesSlice.refreshKey();
+            this.useNav.replace(`/invoices/${this.currInvoice()?.id}`, { from: null });
+          }),
+        ),
+      )
+      .subscribe();
+  }
 
   public readonly currInvoice: InputSignal<Optional<InvoiceT>> = input.required();
 

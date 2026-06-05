@@ -25,7 +25,8 @@ public static class JsonParserLib
       return JsonSerializer.Serialize(obj,
        new JsonSerializerOptions
        {
-         WriteIndented = true
+         WriteIndented = true,
+         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
        });
     }
     catch (JsonException ex)

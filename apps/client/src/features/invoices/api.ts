@@ -36,4 +36,8 @@ export class UseInvoicesApiSvc {
   public getInvoicesCsr(): ObsOnOkT<{ invoices: InvoiceT[] }> {
     return this.useAoi.get(LibApiArgs.withURL('/invoices').toastOnErr().pushOnErr());
   }
+
+  public markAsPaid(invoiceId: number): ObsOnOkT<void> {
+    return this.useAoi.patch(LibApiArgs.withURL(`/invoices/${invoiceId}`).toastOnFulfilled());
+  }
 }
