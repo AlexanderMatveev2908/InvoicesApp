@@ -5,9 +5,22 @@
     display: flex;
   }
 
-  @apply justify-center items-center gap-[12px];
+  @apply relative;
 
-  .root__svg {
-    @apply w-[10px] h-[10px] text-blue_0;
+  .root__btn {
+    @apply flex justify-center items-center gap-[12px];
+
+    .root__svg {
+      @apply w-[10px] h-[10px] text-blue_0;
+    }
+  }
+
+  .root__drop {
+    z-index: 50;
+    @apply absolute min-h-full h-fit w-[350%] top-[125%] left-1/2 -translate-x-1/2 p-[24px] rounded-[8px] flex flex-col gap-[15px];
+
+    .drop__opt {
+      @apply cursor-pointer flex justify-start items-center gap-[15px];
+    }
   }
 }

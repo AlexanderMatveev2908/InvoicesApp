@@ -64,8 +64,7 @@ export class App extends UseInjCtxHk implements OnInit, AfterViewInit {
 
   private refetchOnTrigger(): void {
     this.useEffect(() => {
-      const keyRefetch: number = this.invoicesSlice.getRefetchKey();
-      if (!keyRefetch) return;
+      void this.invoicesSlice.getRefetchKey();
       this.getInvoicesCsr();
     });
   }
