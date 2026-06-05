@@ -1,3 +1,33 @@
 <app-bg-black [isBlack]="isBlack()" />
 
-<div class="root" [ngClass]="useTheme.ifDark('bg-black_0', 'bg-white')"></div>
+<div class="root" [ngClass]="useTheme.ifDark('bg-blue_3', 'bg-white')">
+  <div class="root__title">
+    <span class="hd__m" [ngClass]="useTheme.ifDark('text-white', 'text-gray_3')">New Invoice</span>
+  </div>
+
+  <form class="root__form" [formGroup]="form">
+    <div class="form__bill_from">
+      <span class="hd__s text-blue_0">Bill From</span>
+
+      <app-txt-form-input
+        [txtInput]="InvoicesUiFct.billFromStreet"
+        [ctrl]="getCtrl(InvoicesUiFct.billFromStreet.name)"
+      />
+
+      <div class="bill_form__row">
+        <app-txt-form-input
+          [txtInput]="InvoicesUiFct.billFromCity"
+          [ctrl]="getCtrl(InvoicesUiFct.billFromCity.name)"
+        />
+        <app-txt-form-input
+          [txtInput]="InvoicesUiFct.billFromZip"
+          [ctrl]="getCtrl(InvoicesUiFct.billFromZip.name)"
+        />
+        <app-txt-form-input
+          [txtInput]="InvoicesUiFct.billFromCountry"
+          [ctrl]="getCtrl(InvoicesUiFct.billFromCountry.name)"
+        />
+      </div>
+    </div>
+  </form>
+</div>

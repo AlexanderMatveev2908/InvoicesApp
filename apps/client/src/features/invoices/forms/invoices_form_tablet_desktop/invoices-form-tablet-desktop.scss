@@ -1,3 +1,18 @@
 .root {
-  @apply w-[616px] h-full fixed top-[80px] left-0;
+  z-index: 200;
+
+  @apply w-[616px] h-full fixed top-[70px] left-0 rounded-tr-[20px] p-[56px];
+
+  .root__title {
+  }
+
+  .root__form {
+    .form__bill_from {
+      @apply mt-[40px] flex flex-col gap-[24px];
+    }
+
+    .bill_form__row {
+      @apply flex justify-between items-center gap-[24px];
+    }
+  }
 }
