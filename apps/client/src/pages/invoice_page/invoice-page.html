@@ -10,9 +10,10 @@
       [isPop]="isPop()"
       [title]="'Confirm Deletion'"
       [description]="descriptionDelete()"
-      [cb]="deleteCb"
+      [cb]="cbDelete"
       [action]="'Delete'"
       [toggle]="toggle"
+      [isPending]="deletingTracker.isPending()"
     />
   </ng-template>
 </app-page-wrapper>

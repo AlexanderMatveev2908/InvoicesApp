@@ -13,7 +13,7 @@
     <span>Cancel</span>
   </button>
 
-  <button type="submit" class="bg-blue_0 text-white">
-    <span>Save Changes</span>
+  <button (click)="setAction()('pending')" type="submit" class="bg-blue_0 text-white">
+    <span>{{ isPendingSave() ? 'Pending...' : 'Save Changes' }}</span>
   </button>
 </div>

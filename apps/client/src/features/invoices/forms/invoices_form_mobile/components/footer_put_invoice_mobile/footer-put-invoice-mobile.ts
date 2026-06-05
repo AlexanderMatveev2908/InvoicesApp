@@ -12,5 +12,8 @@ import { ChangeDetectionStrategy, Component, inject, input, InputSignal } from '
 export class FooterPutInvoiceMobile {
   public readonly resetFormDefault: InputSignal<() => void> = input.required();
 
+  public readonly setAction: InputSignal<(status: string) => void> = input.required();
+  public readonly isPendingSave: InputSignal<boolean> = input.required();
+
   public readonly useTheme: UseThemeSvc = inject(UseThemeSvc);
 }

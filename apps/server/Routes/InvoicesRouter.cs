@@ -12,5 +12,6 @@ public static class InvoicesRouter
     api.MapGet("/invoices", InvoicesCtrl.GetInvoices);
     api.MapDelete("/invoices/{invoiceId}", InvoicesCtrl.DeleteInvoice);
     api.MapPatch("/invoices/{invoiceId}", InvoicesCtrl.PatchInvoice);
+    api.MapPut("/invoices/{invoiceId}", InvoicesCtrl.PutInvoice).AddEndpointFilter<RootFilter<InvoiceDto>>();
   }
 }

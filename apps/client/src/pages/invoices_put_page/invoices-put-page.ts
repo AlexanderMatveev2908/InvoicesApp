@@ -18,6 +18,7 @@ import { UseApiTrackerHk } from '@/core/hooks/use_api_tracker';
 import { InvoiceFormT } from '@/features/invoices/paperwork/InvoiceFormMng';
 import { UseInvoicesApiSvc } from '@/features/invoices/api';
 import { PageWrapper } from '@/common/components/hoc/page_wrapper/page-wrapper';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-invoices-put-page',
@@ -34,10 +35,22 @@ export class InvoicesPutPage {
   public readonly useInvoicesApi: UseInvoicesApiSvc = inject(UseInvoicesApiSvc);
 
   public readonly saveTracker = new UseApiTrackerHk();
-  public readonly draftTracker = new UseApiTrackerHk();
 
   public readonly submitSave = (data: InvoiceFormT): void => {
-    this.saveTracker.track(this.useInvoicesApi.savePendingInvoice(data));
+    const invoiceId: number = Number(this.currInvoice()?.id ?? 0);
+
+    this.saveTracker
+      .track(
+        this.useInvoicesApi
+          .saveChanges(invoiceId, { ...data, status: this.currInvoice()?.status! })
+          .pipe(
+            tap(() => {
+              this.invoicesSlice.refreshKey();
+              this.useNav.replace(`/invoices/${invoiceId}`, { from: null });
+            }),
+          ),
+      )
+      .subscribe();
   };
 
   public readonly currInvoice: Signal<Optional<InvoiceT>> = computed(() =>

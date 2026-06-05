@@ -18,7 +18,7 @@ import { RouterLink } from '@angular/router';
 import { InvoicesSlice } from '@/features/invoices/slice';
 import { UseInvoicesApiSvc } from '@/features/invoices/api';
 import { UseApiTrackerHk } from '@/core/hooks/use_api_tracker';
-import { tap } from 'rxjs';
+import { finalize, tap } from 'rxjs';
 import { UseNavSvc } from '@/core/services/use_nav';
 
 @Component({

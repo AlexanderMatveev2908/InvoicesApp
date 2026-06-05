@@ -28,4 +28,5 @@ export class Popup extends UseInjCtxHk {
   public readonly action: InputSignal<string> = input.required();
   public readonly cb: InputSignal<() => void> = input.required();
   public readonly toggle: InputSignal<() => void> = input.required();
+  public readonly isPending: InputSignal<boolean> = input.required();
 }

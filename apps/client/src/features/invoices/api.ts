@@ -2,7 +2,7 @@ import { UseApiSvc } from '@/core/api';
 import { inject, Injectable } from '@angular/core';
 import { InvoiceFormT } from './paperwork/InvoiceFormMng';
 import { ApiStatusT, ObsOnOkT } from '@/common/types/api';
-import { InvoiceT } from '@/common/types/invoices';
+import { InvoiceStatusT, InvoiceT } from '@/common/types/invoices';
 import { LibApiArgs } from '@/core/lib/api/args_api';
 
 @Injectable({
@@ -39,5 +39,18 @@ export class UseInvoicesApiSvc {
 
   public markAsPaid(invoiceId: number): ObsOnOkT<void> {
     return this.useAoi.patch(LibApiArgs.withURL(`/invoices/${invoiceId}`).toastOnFulfilled());
+  }
+
+  public deleteInvoice(invoiceId: number): ObsOnOkT<void> {
+    return this.useAoi.delete(LibApiArgs.withURL(`/invoices/${invoiceId}`).toastOnFulfilled());
+  }
+
+  public saveChanges(
+    invoiceId: number,
+    invoice: InvoiceFormT & { status: InvoiceStatusT },
+  ): ObsOnOkT<{ invoice: InvoiceT }> {
+    return this.useAoi.put(
+      LibApiArgs.withURL(`/invoices/${invoiceId}`).body(invoice).toastOnFulfilled(),
+    );
   }
 }
