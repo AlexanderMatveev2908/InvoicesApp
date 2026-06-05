@@ -4,9 +4,13 @@
     display: none;
   }
 
-  @apply justify-center items-center gap-[12px];
+  @apply relative;
 
-  .root__svg {
-    @apply w-[10px] h-[10px] text-blue_0;
+  .root__btn {
+    @apply flex justify-center items-center gap-[12px];
+
+    .btn__svg {
+      @apply w-[10px] h-[10px] text-blue_0;
+    }
   }
 }
