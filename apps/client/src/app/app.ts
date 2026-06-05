@@ -16,10 +16,18 @@ import { UseSsrSvc } from '@/core/services/use_ssr';
 import { InvoicesSlice } from '@/features/invoices/slice';
 import { Nullable } from '@/common/types/general';
 import { UseScrollSvc } from '@/core/services/use_scroll';
+import { InvoicesFormTabletDesktop } from '@/features/invoices/forms/invoices_form_tablet_desktop/invoices-form-tablet-desktop';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Toast, WakeUp, NavbarMobileTablet, SidebarDesktop],
+  imports: [
+    RouterOutlet,
+    Toast,
+    WakeUp,
+    NavbarMobileTablet,
+    SidebarDesktop,
+    InvoicesFormTabletDesktop,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -64,7 +72,7 @@ export class App extends UseInjCtxHk implements OnInit, AfterViewInit {
 
   private refetchOnTrigger(): void {
     this.useEffect(() => {
-      void this.invoicesSlice.getRefetchKey();
+      void this.invoicesSlice.refreshKey();
       this.getInvoicesCsr();
     });
   }

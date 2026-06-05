@@ -1,15 +1,17 @@
-import { InvoiceT } from '@/common/types/invoices';
+import { InvoiceStatusT, InvoiceT } from '@/common/types/invoices';
 import { createReducer, on } from '@ngrx/store';
 import { InvoicesActT } from './actions';
 
 export interface InvoicesStateT {
   invoices: InvoiceT[];
   refreshKey: number;
+  invoiceBar: boolean;
 }
 
 const initState: InvoicesStateT = {
   invoices: [],
   refreshKey: 0,
+  invoiceBar: false,
 };
 
 export const invoicesReducer = createReducer(
@@ -22,5 +24,9 @@ export const invoicesReducer = createReducer(
   on(InvoicesActT.REFRESH_KEY, (state: InvoicesStateT) => ({
     ...state,
     refreshKey: state.refreshKey + 1,
+  })),
+  on(InvoicesActT.SET_INVOICE_BAR, (_: InvoicesStateT, action: { val: boolean }) => ({
+    ..._,
+    invoiceBar: action.val,
   })),
 );

@@ -1,12 +1,12 @@
 .root {
   display: none;
+  z-index: 500;
 
   @media (max-width: 1439px) {
     display: flex;
     position: fixed;
   }
 
-  z-index: 100;
   @apply top-0 left-0 right-0 h-[72px];
 
   .root__left {
